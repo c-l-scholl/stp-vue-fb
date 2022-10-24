@@ -1,5 +1,7 @@
 <template>
-  <button type="button" onclick="document.location='index.html'">Back</button>
+  <button type="button">
+    <router-link to="/">Back</router-link>
+  </button>
 
   <button type="button" onclick="document.location='BPMHelp.html'">
     Help
@@ -33,11 +35,21 @@
     <br> <br>
       </p>
 
+      <!-- need to implement these  -->
 
-      <!-- <form<label for="Heartbeat">Heartbeat (BPM):</label> -->
-      <!-- <input type="number" id="Heartbeat" name="Heartbeat" placeholder="" min="20" max="200" step=1/>
+      <form
+        @submit.prevent="checkBPM()"  
+      >
+        <label for="Heartbeat">Heartbeat (BPM):</label>
+        <input 
+          v-model="bpm"
+          type="number" 
+          class="Heartbeat" 
+          placeholder="" 
+          step=1/>
+      </form>
 
-      <input type="submit" value="Submit" id = "Submit" onclick="btnFunction();revFunction(); myfunc(); check(); submitResetIfNeeded()"> </form>  -->
+      
 
       <p>
         Note: This value must be a whole number, at least two digits, no more than three.
@@ -53,6 +65,16 @@ export default {
   data() {
     return {
       bpm: null
+    }
+  },
+  methods: {
+    checkBPM() {
+      if(!this.bpm || this.bpm < 20 || this.bpm > 200) {
+        this.bpm = null
+        //print out something that tells the user they entered an invalid value
+      }
+      
+      console.log(this.bpm)
     }
   }
 }

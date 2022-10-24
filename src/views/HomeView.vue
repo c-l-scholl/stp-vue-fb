@@ -8,11 +8,15 @@
       we will provide you a playlist of music to match your current state!
     </p>
 
-    <button type="button" @click="document.location='CalcBP.html'">
-      Start
+    <button type="button">
+      <router-link to="/calc-bpm">
+        Start
+      </router-link>
+      
     </button>
 
-    <button type="button" onclick="document.location='About.html'">
+    <!-- doesn't work yet -->
+    <button type="button">
       About
     </button>
 </template>
