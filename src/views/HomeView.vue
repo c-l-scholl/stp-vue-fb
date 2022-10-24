@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <h1>heartBeat</h1>
+    <p>
+      Welcome to your personalized playlist generator, courtesy of Spotify music
+      and data. <br /> <br>
+      In a matter of
+      minutes, with your input heartbeat and mood, <br />
+      we will provide you a playlist of music to match your current state!
+    </p>
+
+    <button type="button" @click="document.location='CalcBP.html'">
+      Start
+    </button>
+
+    <button type="button" onclick="document.location='About.html'">
+      About
+    </button>
 </template>
-
+    
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+
 }
 </script>
+
+<style>
+
+</style>
