@@ -73,7 +73,7 @@ export default {
         this.bpm = null
         //print out something that tells the user they entered an invalid value
       }
-      
+      //store value in firestore, same with moods
       console.log(this.bpm)
     }
   }
