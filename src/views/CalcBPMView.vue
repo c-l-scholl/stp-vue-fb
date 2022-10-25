@@ -45,7 +45,7 @@
           v-model="bpm"
           type="number" 
           class="Heartbeat" 
-          placeholder="" 
+          placeholder="Enter Heartbeat" 
           step=1/>
       </form>
 
@@ -61,6 +61,9 @@
 </template>
 
 <script>
+import { db } from '../firebase/firebase.js'
+import { doc, setDoc } from 'firebase/firestore'
+
 export default {
   data() {
     return {
@@ -71,10 +74,14 @@ export default {
     checkBPM() {
       if(!this.bpm || this.bpm < 20 || this.bpm > 200) {
         this.bpm = null
-        //print out something that tells the user they entered an invalid value
+        // print out something that tells the user 
+        // they entered an invalid value
       }
-      //store value in firestore, same with moods
-      console.log(this.bpm)
+      this.setBpmInFB()
+    },
+    async setBpmInFB() {
+      const docRef = doc(db, "BPM-moods", "UserData")
+      await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
     }
   }
 }
