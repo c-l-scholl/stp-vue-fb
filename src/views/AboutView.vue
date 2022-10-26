@@ -15,15 +15,11 @@
     </p>
   
       <button type="button">
-        <router-link to="/calc-bpm">
-          Start
+        <router-link to="/home">
+          Back
         </router-link>
-        
       </button>
   
-      <button type="button">
-        About
-      </button>
   </template>
       
   <script>
