@@ -3,9 +3,11 @@
     <router-link to="/">Back</router-link>
   </button>
 
-  <button type="button" onclick="document.location='BPMHelp.html'">
-    Help
-  </button>
+  <button type="button">
+      <router-link to="/about-main">
+      Help
+    </router-link>
+    </button>
   <h1>Step 1: Your Heartbeat</h1>
 
   <p> Enter your heartbeat. <br /> <br>

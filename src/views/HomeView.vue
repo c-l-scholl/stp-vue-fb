@@ -19,9 +19,8 @@
       <router-link to="/about-main">
       About
     </router-link>
-
     </button>
-    
+
 </template>
     
 <script>
