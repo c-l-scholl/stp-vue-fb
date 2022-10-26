@@ -18,7 +18,7 @@ const routes = [
     component: CalcBPMView
   },
   {
-    path: '/moods',
+    path: '/mood',
     name: 'moods',
     component: MoodsView
   },

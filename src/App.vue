@@ -1,10 +1,9 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> | 
-    <router-link to="/calc-bpm">Get Heartbeat</router-link> |
-    <router-link to="/moods">Moods</router-link>
+    <router-link to="/calc-bpm">Get Heartbeat</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
