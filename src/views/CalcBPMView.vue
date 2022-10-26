@@ -4,7 +4,7 @@
   </button>
 
   <button type="button">
-      <router-link to="/about-main">
+      <router-link to="/bpm-help">
       Help
     </router-link>
     </button>
