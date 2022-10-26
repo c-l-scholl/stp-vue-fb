@@ -58,6 +58,10 @@
 
         <br>
         <br>
+      
+      <button type="button">
+        <router-link to="/skip-bpm">Skip</router-link>
+    </button>
 </template>
 
 <script>
