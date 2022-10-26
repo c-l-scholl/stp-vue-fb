@@ -15,7 +15,7 @@
     </p>
   
       <button type="button">
-        <router-link to="/home">
+        <router-link to="/">
           Back
         </router-link>
       </button>
