@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CalcBPMView from '../views/CalcBPMView.vue' 
+import MoodsView from '../views/MoodsView.vue' 
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/calc-bpm',
     name: 'calc-bpm',
     component: CalcBPMView
+  },
+  {
+    path: '/moods',
+    name: 'moods',
+    component: MoodsView
   }
 ]
 
