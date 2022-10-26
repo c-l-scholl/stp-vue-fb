@@ -21,7 +21,6 @@
         
       </button>
   
-      <!-- doesn't work yet -->
       <button type="button">
         About
       </button>

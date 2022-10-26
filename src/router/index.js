@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CalcBPMView from '../views/CalcBPMView.vue' 
 import MoodsView from '../views/MoodsView.vue' 
+import AboutView from '../views/AboutView.vue' 
+
 
 const routes = [
   {
