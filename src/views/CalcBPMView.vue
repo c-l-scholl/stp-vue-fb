@@ -49,6 +49,10 @@
           class="Heartbeat" 
           placeholder="Enter Heartbeat" 
           step=1/>
+
+          <button type="reset" value = "Reset">
+          Reset
+          </button>
       </form>
 
       
@@ -61,9 +65,15 @@
         <br>
         <br>
       
+
       <button type="button">
         <router-link to="/skip-bpm">Skip</router-link>
-    </button>
+      </button>
+
+      <button type="button">
+        <router-link to="/moods">Next</router-link>
+      </button>
+
 </template>
 
 <script>
@@ -91,6 +101,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
