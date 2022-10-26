@@ -1,7 +1,9 @@
 <template>
-    
     <button type="button">
         <router-link to="/calc-bpm">Back</router-link>
+    </button>
+    <button type="button" onclick="document.location='BPMHelp.html'">
+        Help
     </button>
     <h1>Step 1: Your Estimated Heartbeat</h1>
         <p>From the drop down, select your estimated state. <br> <br>
