@@ -18,7 +18,13 @@ const routes = [
     path: '/moods',
     name: 'moods',
     component: MoodsView
+  },
+  {
+    path: '/about-main',
+    name: 'about-main',
+    component: AboutView
   }
+
 ]
 
 const router = createRouter({

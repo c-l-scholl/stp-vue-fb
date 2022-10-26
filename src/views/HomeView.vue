@@ -15,9 +15,10 @@
       
     </button>
 
-    <!-- doesn't work yet -->
     <button type="button">
+      <router-link to="/about-main">
       About
+    </router-link>
     </button>
 </template>
     
