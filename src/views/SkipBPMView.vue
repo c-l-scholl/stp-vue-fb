@@ -10,6 +10,21 @@
         Normal--> You are doing normal activity feeling average <br>
         High --> You are stressed, maybe upset, exercising perhaps <br>
     </p>
+
+
+    <form action="">
+
+        <button type="reset" value = "Reset">
+          Reset
+          </button>
+
+    </form>
+
+
+    <br><br><br>
+    <button type="button">
+        <router-link to="/moods">Next</router-link>
+      </button>
   
 </template>
 
