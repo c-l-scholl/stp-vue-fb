@@ -1,0 +1,42 @@
+<template>
+    <h1>How to Measure your Heartbeat</h1>
+      <p>
+        Do one of the following to find your heartbeat. <br> <br>
+        1. At the wrist, lightly press the index and middle fingers 
+        of one hand on the opposite wrist, just below the base of the thumb. <br> <br>
+
+        OR <br><br>
+
+        1. At the neck, lightly press the side of the neck, just below your jawbone. <br>
+        2. Count the number of beats in 15 seconds, and multiply by four. <br> <br>
+
+        That's your heart rate. <br>
+        Remember that number and press "Back" to enter it. <br> <br>
+
+        Still having trouble? <br>
+        Follow this link to watch a brief youtube video. <br>
+
+
+        <a href=" https://www.youtube.com/watch?t=2&v=BSlRvD-CZSo&feature=emb_imp_woyt">Heartbeat How To Video</a>
+
+
+
+    </p>
+  
+      <button type="button">
+        <router-link to="/calc-bpm">
+          Back
+        </router-link>
+      </button>
+  
+  </template>
+      
+  <script>
+  export default {
+  
+  }
+  </script>
+  
+  <style>
+  
+  </style>
