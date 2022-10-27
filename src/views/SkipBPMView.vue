@@ -1,6 +1,6 @@
 <template>
     <button type="button">
-        <router-link to="/calc-bpm">Back</router-link>
+        <router-link :to="{name: 'calc-bpm'}">Back</router-link>
     </button>
     <h1>Step 1: Your Estimated Heartbeat</h1>
         <p>From the drop down, select your estimated state. <br> <br>
@@ -28,14 +28,14 @@
 
         <button type="reset" value = "Reset">
           Reset
-          </button>
+        </button>
 
     </form>
 
 
     <br><br><br>
     <button type="button">
-        <router-link to="/mood">Next</router-link>
+        <router-link :to="{name: 'mood'}">Next</router-link>
       </button>
   
 </template>
