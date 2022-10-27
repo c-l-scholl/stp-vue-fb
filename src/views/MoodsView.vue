@@ -42,7 +42,7 @@
   <button disabled id="btnNext" type="button">
     Next
   </button>
-  <button id="relbtn" type="button">
+  <button type="reset" value = "Reset">
     Reset
   </button>
 </template>

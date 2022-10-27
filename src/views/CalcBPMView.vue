@@ -71,7 +71,7 @@
       </button>
 
       <button type="button">
-        <router-link to="/moods">Next</router-link>
+        <router-link to="/mood">Next</router-link>
       </button>
 
 </template>
