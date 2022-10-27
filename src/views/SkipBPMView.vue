@@ -11,6 +11,18 @@
         High --> You are stressed, maybe upset, exercising perhaps <br>
     </p>
 
+    <select 
+    name="BPM" 
+    id="BPM" 
+    value=""
+    v-model="bpm"
+    >
+    <option value="" selected disabled>Select an Option</option>
+    <option value="Low">Low</option>
+    <option value="Happy">Normal</option>
+    <option value="Silly">High</option>
+  </select>
+
 
     <form action="">
 
@@ -29,9 +41,7 @@
 </template>
 
 <script>
-export default {
 
-}
 </script>
 
 <style>
