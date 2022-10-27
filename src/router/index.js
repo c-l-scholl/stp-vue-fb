@@ -5,6 +5,7 @@ import MoodsView from '../views/MoodsView.vue'
 import AboutView from '../views/AboutView.vue'
 import SkipBPMView from '../views/SkipBPMView.vue' 
 import BPMHelpView from '../views/BPMHelpView.vue' 
+import PlaylistOutputView from '../views/PlaylistOutputView.vue' 
 
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     path: '/bpm-help',
     name: 'bpm-help',
     component: BPMHelpView
+  },
+  {
+    path: '/playlist-output',
+    name: 'playlist-output',
+    component: PlaylistOutputView
   }
 
 ]
