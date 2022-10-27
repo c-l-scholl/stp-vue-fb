@@ -28,9 +28,8 @@
         <button type="reset" value = "Reset">
           Reset
         </button>
-
     </form>
-    <button @click="setBpminFB()">Submit</button>
+    <button @click="setBpmInFB()">Submit</button>
 
 
     <br><br><br>
@@ -53,6 +52,7 @@ export default {
   },
   methods: {
     async setBpmInFB() {
+      console.log(this.bpm)
       const docRef = doc(db, "BPM-moods", "UserData")
       await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
     }
