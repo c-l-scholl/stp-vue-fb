@@ -12,17 +12,14 @@
     </p>
 
     <select 
-    name="BPM" 
-    id="BPM" 
-    value=""
     v-model="bpm"
     type="number" 
     class="Heartbeat"
     >
     <option value="" selected disabled>Select an Option</option>
-    <option value=60>Low</option>
-    <option value=80>Normal</option>
-    <option value=120>High</option>
+    <option value="Low">Low</option>
+    <option value="Normal">Normal</option>
+    <option value="High">High</option>
   </select>
     <form action="">
         <button type="reset" value = "Reset">
