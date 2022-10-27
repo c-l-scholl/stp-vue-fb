@@ -16,21 +16,21 @@
     id="BPM" 
     value=""
     v-model="bpm"
+    type="number" 
+    class="Heartbeat"
     >
     <option value="" selected disabled>Select an Option</option>
-    <option value="Low">Low</option>
-    <option value="Happy">Normal</option>
-    <option value="Silly">High</option>
+    <option value=60>Low</option>
+    <option value=80>Normal</option>
+    <option value=120>High</option>
   </select>
-
-
     <form action="">
-
         <button type="reset" value = "Reset">
           Reset
         </button>
 
     </form>
+    <button @click="setBpminFB()">Submit</button>
 
 
     <br><br><br>
@@ -41,6 +41,23 @@
 </template>
 
 <script>
+
+import { db } from '../firebase/firebase.js'
+import { doc, setDoc } from 'firebase/firestore'
+
+export default {
+  data() {
+    return {
+      bpm: null,
+    }
+  },
+  methods: {
+    async setBpmInFB() {
+      const docRef = doc(db, "BPM-moods", "UserData")
+      await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
+    }
+  }
+}
 
 </script>
 
