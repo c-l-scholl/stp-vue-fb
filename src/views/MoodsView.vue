@@ -38,9 +38,6 @@
     <option value="Hot">Hot</option>
   </select>
   <button @click="setMoodinFB()">Submit</button>
-    <!--<input 
-      type="submit" 
-      value="Submit" /> -->
 
   <button disabled id="btnNext" type="button">
     Next
