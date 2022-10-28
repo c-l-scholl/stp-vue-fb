@@ -12,10 +12,20 @@ import { collection, getDocs, getDoc } from 'firebase/firestore'
 export default {
   data() {
     return {
-      songs: []
+      songs: [],
+      //bpm: get from firebase
     }
   },
   methods: {
+    /*
+      filter by bpm
+      songs.filter(song => {
+        song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
+      })
+
+    */
+
+    
 
   },
   async mounted() {
