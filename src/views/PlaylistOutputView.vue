@@ -14,6 +14,13 @@ export default {
     return {
       songs: [],
       //bpm: get from firebase
+      //moods: [] put in array
+      //moodData: Map<mood, dataObject> 
+      //dataObject: []
+      /*
+        dataObject contains metric type (i.e. danceability, speechiness)
+        and bounds for each one based on the mood
+      */
     }
   },
   methods: {
@@ -21,6 +28,17 @@ export default {
       filter by bpm
       songs.filter(song => {
         song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
+      })
+
+    */
+
+    /*
+      filter by mood 
+      dataObjects.forEach(() => {
+        songs.filter(song => {
+          song.data().[whatever the data thing is] < data.upperBound ||
+          song.data().[same thing] > data.lowerBound
+        })
       })
 
     */
