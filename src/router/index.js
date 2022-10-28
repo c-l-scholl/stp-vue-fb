@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/mood',
-    name: 'moods',
+    name: 'mood',
     component: MoodsView
   },
   {

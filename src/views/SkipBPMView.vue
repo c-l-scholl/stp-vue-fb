@@ -1,6 +1,6 @@
 <template>
     <button type="button">
-        <router-link to="/calc-bpm">Back</router-link>
+        <router-link :to="{name: 'calc-bpm'}">Back</router-link>
     </button>
     <h1>Step 1: Your Estimated Heartbeat</h1>
         <p>From the drop down, select your estimated state. <br> <br>
@@ -11,27 +11,51 @@
         High --> You are stressed, maybe upset, exercising perhaps <br>
     </p>
 
-
+    <select 
+    v-model="bpm"
+    type="number" 
+    class="Heartbeat"
+    >
+    <option value="" selected disabled>Select an Option</option>
+    <option value="Low">Low</option>
+    <option value="Normal">Normal</option>
+    <option value="High">High</option>
+  </select>
     <form action="">
-
         <button type="reset" value = "Reset">
           Reset
-          </button>
-
+        </button>
     </form>
+    <button @click="setBpmInFB()">Submit</button>
 
 
     <br><br><br>
     <button type="button">
-        <router-link to="/mood">Next</router-link>
+        <router-link :to="{name: 'mood'}">Next</router-link>
       </button>
   
 </template>
 
 <script>
-export default {
 
+import { db } from '../firebase/firebase.js'
+import { doc, setDoc } from 'firebase/firestore'
+
+export default {
+  data() {
+    return {
+      bpm: null,
+    }
+  },
+  methods: {
+    async setBpmInFB() {
+      console.log(this.bpm)
+      const docRef = doc(db, "BPM-moods", "UserData")
+      await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
+    }
+  }
 }
+
 </script>
 
 <style>
