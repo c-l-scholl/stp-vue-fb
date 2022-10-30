@@ -8,6 +8,7 @@
         OR <br><br>
 
         1. At the neck, lightly press the side of the neck, just below your jawbone. <br>
+        
         2. Count the number of beats in 15 seconds, and multiply by four. <br> <br>
 
         That's your heart rate. <br>

@@ -10,36 +10,16 @@
     </button>
   <h1>Step 1: Your Heartbeat</h1>
 
-  <p> Enter your heartbeat. <br /> <br>
-        Follow these steps: <br>
-
-        <br>
-        1. Using you index and middle fingers together, find your pulse in your wrist or neck
-        <br>
-        2. Start a timer for 15 seconds on your phone, computer, watch or simply have a friend count
-        
+  <p> Enter your heartbeat using the 15 second timer below.  <br />
+    Click Start when ready. <br>
+    
         <br>
 
-        3.  Now, take that number of beats and multiply it by 4
-
-        <br>
-
-        4.  Done! Now you have your heartbeat. 
 
 
         <br>
-        <br>
-        Was this too confusing? <br>
-        No problem, click the above "Help" button for more details and a video. <br><br>
-        Don't want to do it? <br>
-        No problem too! Click the "Skip" button below to enter an estimation. 
-
-    <br> <br>
       </p>
-
-      <!-- need to implement these  -->
-
-      <form
+        <form
         @submit.prevent="checkBPM()"  
       >
         <label for="Heartbeat">Heartbeat (BPM):</label>
@@ -53,18 +33,14 @@
           <button type="reset" value = "Reset">
           Reset
           </button>
-      </form>
+        </form>
+        <br><br><br><br>
+       
+        Click the above "Help" button for more details and a video. <br><br>
+        Don't want to do it? <br>
+        No problem too! Click the "Skip" button below to enter an estimation. 
 
-      
-
-      <p>
-        Note: This value must be a whole number, at least two digits, no more than three.
-
-      </p>
-
-        <br>
-        <br>
-      
+    <br> <br>
 
       <button type="button">
         <router-link to="/skip-bpm">Skip</router-link>
@@ -74,7 +50,41 @@
         <router-link to="/mood">Next</router-link>
       </button>
 
+
+
+
+
+
+
+
+
+
+
+
+
+      <vue-countdown-timer
+    @start_callback="startCallBack('event started')"
+    @end_callback="endCallBack('event ended')"
+    :start-time="'2018-10-10 00:00:00'"
+    :end-time="1481450115"
+    :interval="1000"
+    :start-label="'Until start:'"
+    :end-label="'Until end:'"
+    label-position="begin"
+    :end-text="'Event ended!'"
+    :day-txt="'days'"
+    :hour-txt="'hours'"
+    :minutes-txt="'minutes'"
+    :seconds-txt="'seconds'">
+  </vue-countdown-timer>
+
 </template>
+
+
+
+
+
+
 
 <script>
 import { db } from '../firebase/firebase.js'
@@ -102,8 +112,12 @@ export default {
   }
 }
 
+
+
 </script>
 
 <style>
 
+
 </style>
+
