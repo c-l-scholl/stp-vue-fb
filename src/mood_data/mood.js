@@ -1,0 +1,4 @@
+let moodData = {
+    musicInfo: [],
+    ranges: []
+}
