@@ -13,24 +13,30 @@ export default {
   data() {
     return {
       songs: [],
-      //bpm: get from firebase
-      //moods: [] put in array
-      //moodData: Map<mood, dataObject> 
+      bpm: null,
+      moods: [], // put in array
+      //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
       /*
         dataObject contains metric type (i.e. danceability, speechiness)
         and bounds for each one based on the mood
       */
     }
+    
   },
   methods: {
-    /*
-      filter by bpm
-      songs.filter(song => {
-        song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
-      })
+    
+      //filter by bpm
+      filterByBpm() {
+        songs.filter(song => {
+          song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
+        })
+        console.log(songs[0].trackName)
+      },
+      
+      
 
-    */
+    
 
     /*
       filter by mood 
@@ -42,15 +48,26 @@ export default {
       })
 
     */
-
     
 
   },
   async mounted() {
-    const querySnapshot = await getDocs(collection(db, "spotifydata"))
-    querySnapshot.forEach((song) => {
+    const allSongData = await getDocs(collection(db, "spotifydata"))
+    allSongData.forEach((song) => {
       this.songs.push(song.data())
     })
+
+    // const userData = await getDoc(collection(db, "BPM-moods", "UserData"))
+    // this.bpm = userData.data();
+    // console.log(this.bpm)
+    // very bad code need to fix 
+    // if(userData.data().mood1 !== null) {
+    //   this.moods.push(userData.data().mood1)
+    // }
+    // if(userData.data().mood2 !== null) {
+    //   this.moods.push(userData.data().mood2)
+    // }
+
   }
 }
 </script>

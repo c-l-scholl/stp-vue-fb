@@ -90,10 +90,11 @@
 import { db } from '../firebase/firebase.js'
 import { doc, setDoc } from 'firebase/firestore'
 
+
 export default {
   data() {
     return {
-      bpm: null
+      bpm: null,
     }
   },
   methods: {
@@ -108,7 +109,7 @@ export default {
     async setBpmInFB() {
       const docRef = doc(db, "BPM-moods", "UserData")
       await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
-    }
+    },
   }
 }
 

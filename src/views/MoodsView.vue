@@ -39,8 +39,8 @@
   </select>
   <button @click="setMoodinFB()">Submit</button>
 
-  <button disabled id="btnNext" type="button">
-    Next
+  <button>
+    <router-link to="/playlist-output">Next</router-link>
   </button>
   <button type="reset" value = "Reset">
     Reset
