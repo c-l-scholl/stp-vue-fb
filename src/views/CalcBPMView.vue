@@ -15,12 +15,12 @@
     
         <br>
 
-
+        <p> The download will begin in <span id="countdowntimer2">10 </span> Seconds</p>
 
         <br>
       </p>
         <form
-        @submit.prevent="checkBPM()"  
+        @submit.prevent="checkBPM()" 
       >
         <label for="Heartbeat">Heartbeat (BPM):</label>
         <input 
@@ -50,33 +50,13 @@
         <router-link to="/mood">Next</router-link>
       </button>
 
+      <button type="button" @click="timeleft=15">
+        Start Timer
+      </button>
 
 
+      
 
-
-
-
-
-
-
-
-
-
-      <vue-countdown-timer
-    @start_callback="startCallBack('event started')"
-    @end_callback="endCallBack('event ended')"
-    :start-time="'2018-10-10 00:00:00'"
-    :end-time="1481450115"
-    :interval="1000"
-    :start-label="'Until start:'"
-    :end-label="'Until end:'"
-    label-position="begin"
-    :end-text="'Event ended!'"
-    :day-txt="'days'"
-    :hour-txt="'hours'"
-    :minutes-txt="'minutes'"
-    :seconds-txt="'seconds'">
-  </vue-countdown-timer>
 
 </template>
 
@@ -95,9 +75,18 @@ export default {
   data() {
     return {
       bpm: null,
+      countdown: 10
     }
   },
   methods: {
+    countDownTimer () {
+      if (this.countDown > 0) {
+        setTimeout(() => {
+          this.countDown -= 1
+          this.countDownTimer()
+        }, 1000)
+      }
+    },
     checkBPM() {
       if(!this.bpm || this.bpm < 20 || this.bpm > 200) {
         this.bpm = null
@@ -111,9 +100,20 @@ export default {
       const docRef = doc(db, "BPM-moods", "UserData")
       await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
     },
+    created () {
+      this.countDownTimer()
+    },
   }
 }
 
+// https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
+  var timeleft = 0;
+  var downloadTimer = setInterval(function(){
+  timeleft--;
+  document.getElementById("countdowntimer2").textContent = timeleft;
+  if(timeleft <= 0)
+      clearInterval(downloadTimer);
+  },1000);
 
 
 </script>
