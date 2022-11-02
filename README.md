@@ -5,6 +5,12 @@
 npm install
 ```
 
+## Other installations
+```
+npm install --save mitt
+npm install firebase
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
