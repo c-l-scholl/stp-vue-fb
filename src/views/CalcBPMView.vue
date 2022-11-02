@@ -62,7 +62,7 @@
 
 
 
-      <vue-countdown-timer
+      <!-- <vue-countdown-timer
     @start_callback="startCallBack('event started')"
     @end_callback="endCallBack('event ended')"
     :start-time="'2018-10-10 00:00:00'"
@@ -76,7 +76,7 @@
     :hour-txt="'hours'"
     :minutes-txt="'minutes'"
     :seconds-txt="'seconds'">
-  </vue-countdown-timer>
+  </vue-countdown-timer> -->
 
 </template>
 
@@ -87,9 +87,7 @@
 
 
 <script>
-import { db } from '../firebase/firebase.js'
-import { doc, setDoc } from 'firebase/firestore' // why no work
-import { TimerComp } from '../components/TimerComp.vue'
+import TimerComp from '../components/TimerComp.vue'
 
 
 export default {
@@ -98,9 +96,7 @@ export default {
       bpm: null,
     }
   },
-  components: {
-    TimerComp
-  },
+  components: { TimerComp },
   methods: {
     checkBPM() {
       if(!this.bpm || this.bpm < 20 || this.bpm > 200) {

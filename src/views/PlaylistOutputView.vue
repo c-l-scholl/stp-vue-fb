@@ -32,6 +32,24 @@ export default {
           song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
         })
         console.log(songs[0].trackName)
+      },
+      setBpm() {
+        this.emitter.on('user-bpm', bpm => {
+          this.bpm = bpm
+          console.log("user bpm: " + this.bpm)
+        })
+      },
+      setMoods() {
+        this.emitter.on('user-mood', mood => {
+          this.moods.push(mood)
+          console.log("user mood: " + this.moods[0])
+        })
+      },
+      async getSongsFromFB() { // only call where its needed, filter when grabbing data to decrease traffic
+        const allSongData = await getDocs(collection(db, "spotifydata"))
+        allSongData.forEach((song) => {
+          this.songs.push(song.data())
+        })
       }
       
       
@@ -51,33 +69,13 @@ export default {
     
 
   },
-  async mounted() {
-    this.emitter.on('user-bpm', bpm => {
-      this.bpm = bpm
-      console.log("user bpm: " + this.bpm)
-    })
-
-    this.emitter.on('user-mood', mood => {
-      this.moods.push(mood)
-      console.log("user mood: " + moods[0])
-    })
-
-    const allSongData = await getDocs(collection(db, "spotifydata"))
-    allSongData.forEach((song) => {
-      this.songs.push(song.data())
-    })
-
-    // const userData = await getDoc(collection(db, "BPM-moods", "UserData"))
-    // this.bpm = userData.data();
-    // console.log(this.bpm)
-    // very bad code need to fix 
-    // if(userData.data().mood1 !== null) {
-    //   this.moods.push(userData.data().mood1)
-    // }
-    // if(userData.data().mood2 !== null) {
-    //   this.moods.push(userData.data().mood2)
-    // }
-
+  mounted() {
+    this.setBpm()
+    this.setMoods()
+    if(songs[0] === null) {
+      //this.getSongsFromFB()
+    }
+    
   }
 }
 </script>

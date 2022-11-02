@@ -37,7 +37,7 @@
     <option value="Hurt">Hurt</option>
     <option value="Hot">Hot</option>
   </select>
-  <button @click="setMoodinFB()">Submit</button>
+  <button @click="setMood()">Submit</button>
 
   <button>
     <router-link to="/playlist-output">Next</router-link>
@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
-import { doc, setDoc } from 'firebase/firestore'
 
 export default {
   data() {
@@ -57,15 +55,7 @@ export default {
       mood: null,
     }
   },
-  methods: {
-    async setMoodinFB() {
-      if(this.mood !== null) {
-        console.log(this.mood)
-        const docRef = doc(db, "BPM-moods", "UserData")
-        await setDoc(docRef, { mood1: this.mood }, { merge: true })  
-      }
-            
-    },
+  methods: {     
     setMood() {
       if(this.mood != null) {
         console.log(this.mood)
