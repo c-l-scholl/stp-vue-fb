@@ -69,6 +69,7 @@
 <script>
 import { db } from '../firebase/firebase.js'
 import { doc, setDoc } from 'firebase/firestore' // why no work
+import { TimerComp } from '../components/TimerComp.vue'
 
 
 export default {
@@ -77,6 +78,9 @@ export default {
       bpm: null,
       countdown: 10
     }
+  },
+  components: {
+    TimerComp
   },
   methods: {
     countDownTimer () {
