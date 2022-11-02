@@ -14,8 +14,11 @@
     Click Start when ready. <br>
     
         <br>
+        <button type="button" @click="timeleft=15">
+        Start Timer
+        </button>
 
-        <p> The download will begin in <span id="countdowntimer2">10 </span> Seconds</p>
+        <p>  <span id="countdowntimer2">0 </span> Seconds Remaining</p>
 
         <br>
       </p>
@@ -49,14 +52,6 @@
       <button type="button">
         <router-link to="/mood">Next</router-link>
       </button>
-
-      <button type="button" @click="timeleft=15">
-        Start Timer
-      </button>
-
-
-      
-
 
 </template>
 
