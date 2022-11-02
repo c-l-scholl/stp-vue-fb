@@ -104,7 +104,8 @@ export default {
         // print out something that tells the user 
         // they entered an invalid value
       }
-      this.setBpmInFB()
+      //this.setBpmInFB()
+      this.emitter.emit("user-bpm", this.bpm)
     },
     async setBpmInFB() {
       const docRef = doc(db, "BPM-moods", "UserData")

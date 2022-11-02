@@ -7,7 +7,7 @@
 
 <script>
 import { db } from '../firebase/firebase.js'
-import { collection, getDocs, getDoc } from 'firebase/firestore'
+import { collection, getDocs, } from 'firebase/firestore'
 
 export default {
   data() {
@@ -32,7 +32,7 @@ export default {
           song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
         })
         console.log(songs[0].trackName)
-      },
+      }
       
       
 
@@ -52,6 +52,16 @@ export default {
 
   },
   async mounted() {
+    this.emitter.on('user-bpm', bpm => {
+      this.bpm = bpm
+      console.log("user bpm: " + this.bpm)
+    })
+
+    this.emitter.on('user-mood', mood => {
+      this.moods.push(mood)
+      console.log("user mood: " + moods[0])
+    })
+
     const allSongData = await getDocs(collection(db, "spotifydata"))
     allSongData.forEach((song) => {
       this.songs.push(song.data())

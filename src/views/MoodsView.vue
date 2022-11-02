@@ -65,6 +65,12 @@ export default {
         await setDoc(docRef, { mood1: this.mood }, { merge: true })  
       }
             
+    },
+    setMood() {
+      if(this.mood != null) {
+        console.log(this.mood)
+        this.emitter.emit('user-mood', this.mood)
+      }
     }
   }
 }
