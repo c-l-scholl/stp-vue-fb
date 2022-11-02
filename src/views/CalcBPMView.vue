@@ -88,7 +88,7 @@
 
 <script>
 import { db } from '../firebase/firebase.js'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore' // why no work
 
 
 export default {
