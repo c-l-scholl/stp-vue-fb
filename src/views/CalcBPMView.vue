@@ -14,6 +14,10 @@
     Click Start when ready. <br> </p>
 
     <br>
+    <button type="button" @click="restart()">
+      Reset Timer
+    </button>
+    <br>
     <button type="button" @click="play()">
       Start Timer
     </button>
@@ -96,8 +100,12 @@ export default {
     play() {
       this.timerEnabled = true;
     },
-    pause() {
+    //pause() {
+      //this.timerEnabled = false;
+    //},
+    restart() {
       this.timerEnabled = false;
+      this.timerCount = 15;
     },
     checkBPM() {
       if (!this.bpm || this.bpm < 20 || this.bpm > 200) {
