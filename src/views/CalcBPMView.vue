@@ -14,13 +14,19 @@
     Click Start when ready. <br> </p>
 
     <br>
-    <button type="button" @click="timeleft = 15">
+    <button type="button" @click="play()">
       Start Timer
     </button>
 
   <p>
-    <span id="countdowntimer2">0 </span> Seconds Remaining
+    <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
+
+    <span v-if="timerEnabled">
+    {{ timerCount }} </span>
   </p>
+
+
+
   <form @submit.prevent="checkBPM()">
     <label for="Heartbeat">Heartbeat (BPM):</label>
     <input v-model="bpm" type="number" class="Heartbeat" placeholder="Enter Heartbeat" step=1 />
@@ -57,22 +63,41 @@
 import TimerComp from '../components/TimerComp.vue'
 
 
+//https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
 export default {
   data() {
     return {
       bpm: null,
-      countdown: 10
+      timerEnabled: false,
+      timerCount: 15
     }
   },
-  components: { TimerComp },
-  methods: {
-    countDownTimer() {
-      if (this.countDown > 0) {
+  watch: {
+    timerEnabled(value) {
+      if (value) {
         setTimeout(() => {
-          this.countDown -= 1
-          this.countDownTimer()
-        }, 1000)
+          this.timerCount--;
+        }, 1000);
       }
+    },
+    
+    timerCount: {
+      handler(value) {
+        if (value > 0 && this.timerEnabled) {
+          setTimeout(() => {
+            this.timerCount--;
+          }, 1000);
+        }
+      },
+      immediate: true // This ensures the watcher is triggered upon creation
+    }
+  } ,
+  methods: {
+    play() {
+      this.timerEnabled = true;
+    },
+    pause() {
+      this.timerEnabled = false;
     },
     checkBPM() {
       if (!this.bpm || this.bpm < 20 || this.bpm > 200) {
@@ -86,9 +111,6 @@ export default {
     async setBpmInFB() {
       const docRef = doc(db, "BPM-moods", "UserData")
       await setDoc(docRef, { bpm: this.bpm }, { merge: true })
-    },
-    created() {
-      this.countDownTimer()
     },
   }
 }
