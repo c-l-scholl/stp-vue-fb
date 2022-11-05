@@ -1,5 +1,5 @@
 <template>
-  <h1>Step 4: Your Playlist</h1>
+  <h1>Step 3: Your Playlist</h1>
   <p>
     Your Playlist is below!
   </p>
@@ -12,7 +12,7 @@ import { collection, getDocs, } from 'firebase/firestore'
 export default {
   data() {
     return {
-      songs: [],
+      songs: null,
       bpm: null,
       moods: [], // put in array
       //moodData: Map<mood, [] of dataObject> 
@@ -27,28 +27,17 @@ export default {
   methods: {
     
       //filter by bpm
-      filterByBpm() {
-        songs.filter(song => {
-          song.data().bpm < this.bpm + 20 || song.data().bpm > this.bpm - 20
-        })
-        console.log(songs[0].trackName)
-      },
-      setBpm() {
-        this.emitter.on('user-bpm', bpm => {
-          this.bpm = bpm
-          console.log("user bpm: " + this.bpm)
-        })
-      },
-      setMoods() {
-        this.emitter.on('user-mood', mood => {
-          this.moods.push(mood)
-          console.log("user mood: " + this.moods[0])
-        })
+      filterByBpm(tempo) {
+        return (tempo < this.bpm + 20) && (tempo > this.bpm - 20)
       },
       async getSongsFromFB() { // only call where its needed, filter when grabbing data to decrease traffic
         const allSongData = await getDocs(collection(db, "spotifydata"))
         allSongData.forEach((song) => {
-          this.songs.push(song.data())
+          if(this.filterByBpm(song.data().tempo)) {
+            this.songs.push(song.data())
+            console.log(song.data().trackName)
+          }
+          
         })
       }
       
@@ -70,10 +59,17 @@ export default {
 
   },
   mounted() {
-    this.setBpm()
-    this.setMoods()
-    if(songs[0] === null) {
-      //this.getSongsFromFB()
+    this.emitter.on('user-bpm', bpm => {
+      this.bpm = bpm
+      console.log("user bpm: " + this.bpm)
+    })
+    this.emitter.on('user-mood', mood => {
+      this.moods.push(mood)
+      console.log("user mood: " + this.moods[0])
+    })
+    if(!this.songs) {
+      this.songs = []
+      this.getSongsFromFB()
     }
     
   }

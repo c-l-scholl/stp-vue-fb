@@ -26,19 +26,19 @@
     <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
 
     <span v-if="timerEnabled">
-    {{ timerCount }} </span>
+      {{ timerCount }}
+    </span>
   </p>
 
 
 
-  <form @submit.prevent="checkBPM()">
-    <label for="Heartbeat">Heartbeat (BPM):</label>
-    <input v-model="bpm" type="number" class="Heartbeat" placeholder="Enter Heartbeat" step=1 />
 
-    <button type="reset" value="Reset">
-      Reset
-    </button>
-  </form>
+  <label for="Heartbeat">Heartbeat (BPM):</label>
+  <input v-model="bpm" type="number" class="Heartbeat" placeholder="Enter Heartbeat" step=1/>
+
+  <button type="reset" value="Reset">
+    Reset
+  </button>
   <br><br><br><br>
 
   Click the above "Help" button for more details and a video. <br><br>
@@ -51,7 +51,7 @@
     <router-link to="/skip-bpm">Skip</router-link>
   </button>
 
-  <button type="button">
+  <button type="button" @click="checkBpm()">
     <router-link to="/mood">Next</router-link>
   </button>
 
@@ -107,30 +107,26 @@ export default {
       this.timerEnabled = false;
       this.timerCount = 15;
     },
-    checkBPM() {
+    checkBpm() {
       if (!this.bpm || this.bpm < 20 || this.bpm > 200) {
         this.bpm = null
         // print out something that tells the user 
         // they entered an invalid value
       }
-      //this.setBpmInFB()
       this.emitter.emit("user-bpm", this.bpm)
-    },
-    async setBpmInFB() {
-      const docRef = doc(db, "BPM-moods", "UserData")
-      await setDoc(docRef, { bpm: this.bpm }, { merge: true })
-    },
+      console.log(this.bpm)
+    }
   }
 }
 
 // https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
-var timeleft = 0;
-var downloadTimer = setInterval(function () {
-  timeleft--;
-  //document.getElementById("countdowntimer2").textContent = timeleft;
-  if (timeleft <= 0)
-    clearInterval(downloadTimer);
-}, 1000);
+// var timeleft = 0;
+// var downloadTimer = setInterval(function () {
+//   timeleft--;
+//   //document.getElementById("countdowntimer2").textContent = timeleft;
+//   if (timeleft <= 0)
+//     clearInterval(downloadTimer);
+// }, 1000);
 
 
 </script>
