@@ -127,7 +127,7 @@ export default {
 var timeleft = 0;
 var downloadTimer = setInterval(function () {
   timeleft--;
-  document.getElementById("countdowntimer2").textContent = timeleft;
+  //document.getElementById("countdowntimer2").textContent = timeleft;
   if (timeleft <= 0)
     clearInterval(downloadTimer);
 }, 1000);
