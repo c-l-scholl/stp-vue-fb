@@ -19,14 +19,15 @@ export default {
   data() {
     return {
       songs: [],
-      bpm: 60, //only for testing purposes, set to null
-      moods: ['happy'], //only for testing purposes, set to empty 
+      bpm: 80, //only for testing purposes, set to null
+      moods: ['Happy'], //only for testing purposes, set to empty 
       //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
       /*
         dataObject contains metric type (i.e. danceability, speechiness)
         and bounds for each one based on the mood
       */
+      gotSongs: false
     }
     
   },
@@ -58,6 +59,22 @@ export default {
 
     */
 
+    filterByMood(song) {
+      console.log('current mood: ' + this.moods[0])
+      switch(this.moods[0]) {
+        case 'Happy':
+          return song.liveness >= 0.6 && song.energy >= 0.6
+        case 'Sad':
+          this.songs.filter(song => {
+            song.acousticness >= 0.6 && song.danceability < 0.4
+          })
+          break;
+        default:
+          console.log('The current mood ' + this.moods[0] + ' is not availabe yet')
+      }
+        
+    },
+
   },
   mounted() {
     this.emitter.on('user-bpm', bpm => {
@@ -76,14 +93,16 @@ export default {
       .then((res) => res.json())
       .then(data => {
         data.forEach((song) => {
-          if(this.filterByBpm(song.tempo)) {
+          if(this.filterByBpm(song.tempo) && this.filterByMood(song)) {
             this.songs.push(song)
           }
         })
       })
       .catch(err => console.log(err.message))
     
-  }
+    
+  },
+  
 }
 </script>
 

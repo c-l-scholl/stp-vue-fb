@@ -9,6 +9,7 @@
         <h3>Song Details</h3>
         <p>Artist: {{ song.artist_name }}</p>
         <p>Tempo: {{ song.tempo }}</p>
+        <p>Liveness: {{ song.liveness }}</p>
       </ModalComp>
       <div class="buttondiv">
         <button @click="toggleModal()" class="button">i</button>
