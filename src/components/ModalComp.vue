@@ -1,17 +1,18 @@
 <template>
-    <div class="backdrop" @click.self="closeModal">
-      <div class="modal">
-        <!-- default content only shows if no slot is passed in-->
-        <slot>default content</slot>
-      </div>
-    </div>
-  </template>
+  <div class="modal" @click="closeModal()">
+    <!-- default content only shows if no slot is passed in-->
+    <slot>default content</slot>
+  
+  </div>
+</template>
   
   <script>
   export default {
-    props: ['songName', 'songTempo', 'songMood'],
+    props: [],
     data() {
-  
+      return{
+
+      }
     },
     methods: {
       closeModal() {
@@ -28,20 +29,18 @@
     .modal {
       width: 400px;
       padding: 20px;
-      margin: 100px auto;
       background-color: white;
       border-radius: 10px;
     }
   
     .backdrop {
-      top: 0;
-      position: fixed;
+      position: relative;
       background-color: rgba(0, 0, 0, 0.5);
       width: 100%;
       height: 100%;
     }
   
-    .modal h1 {
+    .modal h3 {
       color: #03cfb4;
       border: none;
       padding-bottom: 10px;

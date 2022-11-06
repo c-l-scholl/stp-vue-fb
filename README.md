@@ -1,5 +1,5 @@
 # stp-vue-fb
-
+## REMEBER TO UNINSTALL JSON-SERVER
 ## Project setup
 ```
 npm install

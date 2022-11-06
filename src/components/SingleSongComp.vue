@@ -1,13 +1,19 @@
 <template>
     <div class="song">
-      <h3>
-        {{ songName }}
-      </h3>
-      <ModalComp @close="toggleModal()" v-if="showModal">
-        <h1>Song Details</h1>
-        <p>Tempo: something</p>
+      <div class="songName">
+        <h3>
+          {{ song.track_name }}
+        </h3>
+      </div>
+      <ModalComp @close="toggleModal()" v-if="showModal" >
+        <h3>Song Details</h3>
+        <p>Artist: {{ song.artist_name }}</p>
+        <p>Tempo: {{ song.tempo }}</p>
       </ModalComp>
-      <button @click="toggleModal()" class="button">i</button>
+      <div class="buttondiv">
+        <button @click="toggleModal()" class="button">i</button>
+      </div>
+      
     </div>
     
   </template>
@@ -21,7 +27,7 @@
         showModal: false
       }
     },
-    props: ["songName"],
+    props: ["song"],
     components: { ModalComp },
     methods: {
       toggleModal() {
@@ -40,13 +46,25 @@
       margin: 5px;
       padding: 10px 20px;
       cursor: pointer;
-    }
-    .song h3 {
-      display: inline-block;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
     }
+    .songName {
+      display: flex;
+    }
+    .buttondiv {
+      display: flex;
+
+    }
+
     .button {
-      display: inline-block;
-      margin-left: 20px;
+      border-radius: 13px;
+      border-width: 0px;
+      height: 25px;
+      width: 25px;
+      font-weight: bold;
+
     }
     </style>

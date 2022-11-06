@@ -14,12 +14,13 @@ import { db } from '../firebase/firebase.js'
 import { collection, getDocs, } from 'firebase/firestore'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
 
+
 export default {
   data() {
     return {
       songs: [],
-      bpm: null,
-      moods: [], // put in array
+      bpm: 60, //only for testing purposes, set to null
+      moods: ['happy'], //only for testing purposes, set to empty 
       //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
       /*
@@ -45,7 +46,7 @@ export default {
           }
           
         })
-      }
+      },
     /*
       filter by mood 
       dataObjects.forEach(() => {
@@ -67,9 +68,20 @@ export default {
       this.moods.push(mood)
       console.log("user mood: " + this.moods[0])
     })
-    if(!this.songs) {
-      this.getSongsFromFB()
-    }
+    
+    // this.getSongsFromFB()
+
+    // for testing purposes, get songs from json
+    fetch('http://localhost:3000/songs')
+      .then((res) => res.json())
+      .then(data => {
+        data.forEach((song) => {
+          if(this.filterByBpm(song.tempo)) {
+            this.songs.push(song)
+          }
+        })
+      })
+      .catch(err => console.log(err.message))
     
   }
 }

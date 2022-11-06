@@ -1,10 +1,12 @@
 <template>
   <div>
-    <!-- <div :key="song.id" v-for="song in songs">
-      <SingleSongComp :song="song" songName="Great Mistakes"></SingleSongComp>
+    <div :key="song.id" v-for="song in songs">
+      <SingleSongComp 
+        :song="song">
+      </SingleSongComp>
 
-    </div> -->
-    <SingleSongComp :song="song" songName="Great Mistakes"></SingleSongComp>
+    </div>
+    <!-- <SingleSongComp songName="Great Mistakes"></SingleSongComp> -->
   </div>
 
 </template>
