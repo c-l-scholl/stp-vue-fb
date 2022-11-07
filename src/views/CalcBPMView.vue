@@ -1,26 +1,32 @@
 <template>
-  <button type="button">
-    <router-link to="/">Back</router-link>
-  </button>
-
-  <button type="button">
-    <router-link to="/bpm-help">
-      Help
-    </router-link>
-  </button>
+  
   <h1>Step 1: Your Heartbeat</h1>
 
-  <p> Enter your heartbeat using the 15 second timer below. <br />
-    Click Start when ready. <br> </p>
+  <!-- <button type="button" class="back">
+    <router-link to="/">Back</router-link>
+  </button> -->
+  
+
+
+  <p> Count your heartbeats during the 15 second timer </p>
+  <div class="intro">
+    <h3>Don't know how?  </h3>
+    <router-link to="/bpm-help" class="toHelp">
+      Help
+    </router-link>
+  </div>
+  <h2>Click Start Timer when ready. <br> </h2>
 
     <br>
-    <button type="button" @click="restart()">
-      Reset Timer
-    </button>
-    <br>
-    <button type="button" @click="play()">
-      Start Timer
-    </button>
+    <div class="timerButtons">
+      <button type="button" @click="restart()" class="reset">
+        Reset Timer
+      </button>
+      <button type="button" @click="play()" class="start">
+        Start Timer
+      </button>
+    </div>
+    
 
   <p>
     <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
@@ -33,35 +39,28 @@
 
 
 
-  <label for="Heartbeat">Heartbeat (BPM):</label>
-  <input v-model="bpm" type="number" class="Heartbeat" placeholder="Enter Heartbeat" step=1/>
+  <label for="Heartbeat">Number of beats: </label>
+  <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1/>
 
   <button type="reset" value="Reset">
     Reset
   </button>
   <br><br><br><br>
 
-  Click the above "Help" button for more details and a video. <br><br>
   Don't want to do it? <br>
   No problem too! Click the "Skip" button below to enter an estimation.
 
   <br> <br>
 
-  <button type="button">
-    <router-link to="/skip-bpm">Skip</router-link>
-  </button>
+    <router-link to="/skip-bpm" class="skip">
+      Skip
+    </router-link>
 
-  <button type="button" @click="checkBpm()">
-    <router-link to="/mood">Next</router-link>
-  </button>
+    <router-link to="/mood" @click="checkBpm()" class="toMood">
+      Next
+    </router-link>
 
 </template>
-
-
-
-
-
-
 
 <script>
 import TimerComp from '../components/TimerComp.vue'
@@ -108,11 +107,12 @@ export default {
       this.timerCount = 15;
     },
     checkBpm() {
-      if (!this.bpm || this.bpm < 20 || this.bpm > 200) {
+      if (!this.bpm || this.bpm < 5 || this.bpm > 40) {
         this.bpm = null
         // print out something that tells the user 
         // they entered an invalid value
       }
+      this.bpm *= 4 // calculates actual heartrate
       this.emitter.emit("user-bpm", this.bpm)
       console.log(this.bpm)
     }
@@ -132,6 +132,60 @@ export default {
 </script>
 
 <style>
+  .intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+  }
+
+  .intro h3 {
+    display: flex;
+    margin-right: 15px;
+  }
+
+  .toHelp {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    background-color: rgb(13, 181, 103);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: opacity 0.15s;
+  }
+
+  .toHelp:hover {
+    opacity: 0.8;
+  }
+
+  .timerButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .reset,
+  .start {
+    display: flex;
+    border-width: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    transition: opacity 0.15s;
+  }
+
+  .reset:hover, 
+  .start:hover {
+    opacity: 0.6;
+  }
+
+  .reset {
+    margin-right: 10px;
+    background-color: red;
+  }
+
+  .start {
+    background-color: green;
+  }
 </style>
 
