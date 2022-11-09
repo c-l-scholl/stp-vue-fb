@@ -41,6 +41,11 @@ const routes = [
     component: BPMHelpView
   },
   {
+    path: '/mood-help',
+    name: 'mood-help',
+    component: MoodHelpView
+  },
+  {
     path: '/playlist-output',
     name: 'playlist-output',
     component: PlaylistOutputView

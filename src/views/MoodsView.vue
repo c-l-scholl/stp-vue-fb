@@ -2,9 +2,9 @@
   <button type="button">
     Back
   </button>
-  <button type="button">
-    Help
-  </button>
+  <router-link to="/mood-help" class="toHelp">
+      Help
+    </router-link>
   <h1>Step 2: Your Mood</h1>
   <p>
     Pick your current or desired mood. <br>
