@@ -28,9 +28,7 @@
     <option value="Nervous">Nervous</option>
     <option value="Annoyed">Annoyed</option>
     <option value="Sad">Sad</option>
-    <option value="Surprised">Surprised</option>
     <option value="Angry">Angry</option>
-    <option value="Confused">Confused</option>
     <option value="Sleepy">Sleepy</option>
     <option value="Hurt">Hurt</option>
   </select>

@@ -1,7 +1,16 @@
 <template>
     <h1>Mood Help</h1>
     <p>
-    
+        Below are more detailed descriptions of our limited list of moods. <br>
+        <br>
+        1. Calm -- not showing any emotions <br>
+        2. Happy -- feeling or showing pleasure or contentment <br>
+        3. Nervous -- easily agitated or alarmed, anxious, high strung <br>
+        4. Annoyed -- irritated, bothered <br>
+        5. Sad -- unhappy, feeling or showing sorrow<br>
+        6. Angry -- feeling and showing hostility and displeasure <br>
+        7. Sleepy -- tired, needing sleep <br>
+        8. Hurt -- injured, in pain <br>
     </p>
   
      
