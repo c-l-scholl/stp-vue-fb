@@ -72,7 +72,8 @@ export default {
     return {
       bpm: null,
       timerEnabled: false,
-      timerCount: 15
+      timerCount: 15,
+      bpmMultiplier: 4
     }
   },
   watch: {
@@ -112,7 +113,7 @@ export default {
         // print out something that tells the user 
         // they entered an invalid value
       }
-      this.bpm *= 4 // calculates actual heartrate
+      this.bpm *= this.bpmMultiplier // calculates actual heartrate
       this.emitter.emit("user-bpm", this.bpm)
       console.log(this.bpm)
     }

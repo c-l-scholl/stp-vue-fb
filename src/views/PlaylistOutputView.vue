@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
-import { collection, getDocs, } from 'firebase/firestore'
+// import { db } from '../firebase/firebase.js'
+// import { collection, getDocs, } from 'firebase/firestore'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
 
 
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       songs: [],
-      bpm: 80, //only for testing purposes, set to null
+      bpm: 44, //only for testing purposes, set to null
       moods: ['Happy'], //only for testing purposes, set to empty 
       //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
@@ -77,11 +77,11 @@ export default {
 
   },
   mounted() {
-    this.emitter.on('user-bpm', bpm => {
+    this.emitter.on("user-bpm", bpm => {
       this.bpm = bpm
       console.log("user bpm: " + this.bpm)
     })
-    this.emitter.on('user-mood', mood => {
+    this.emitter.on("user-mood", mood => {
       this.moods.push(mood)
       console.log("user mood: " + this.moods[0])
     })
