@@ -20,22 +20,16 @@
     v-model="mood"
     >
     <option value="" selected disabled>Select an Option</option>
-    <option value="Calm">Calm</option>
     <option value="Happy">Happy</option>
-    <option value="Silly">Silly</option>
     <option value="Relaxed">Relaxed</option>
     <option value="Nervous">Nervous</option>
     <option value="Annoyed">Annoyed</option>
     <option value="Sad">Sad</option>
-    <option value="Shy">Shy</option>
     <option value="Surprised">Surprised</option>
-    <option value="Hungry">Hungry</option>
     <option value="Angry">Angry</option>
     <option value="Confused">Confused</option>
     <option value="Sleepy">Sleepy</option>
-    <option value="Sick">Sick</option>
     <option value="Hurt">Hurt</option>
-    <option value="Hot">Hot</option>
   </select>
   <button @click="setMood()">Submit</button>
 
