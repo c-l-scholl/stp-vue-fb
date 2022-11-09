@@ -1,7 +1,7 @@
 <template>
-  <button type="button">
-    Back
-  </button>
+  <router-link to="/calc-bpm" class="back">
+      Back
+    </router-link>
   <router-link to="/mood-help" class="toHelp">
       Help
     </router-link>
@@ -67,5 +67,27 @@ export default {
 </script>
 
 <style>
+  .back {
+    background-color: rgb(10, 97, 190);
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .toHelp {
+    background-color: rgb(13, 181, 103);
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .back:hover,
+  .toHelp:hover {
+    opacity: 0.8;
+  }
 
 </style>
