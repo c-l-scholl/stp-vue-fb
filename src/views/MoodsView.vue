@@ -1,10 +1,13 @@
 <template>
-  <router-link to="/calc-bpm" class="back">
+  <div class="intro">
+    <router-link to="/calc-bpm" class="back">
       Back
     </router-link>
-  <router-link to="/mood-help" class="toHelp">
+    <router-link to="/mood-help" class="toHelp">
       Help
     </router-link>
+  </div>
+  
   <h1>Step 2: Your Mood</h1>
   <p>
     Pick your current or desired mood. <br>
@@ -67,6 +70,12 @@ export default {
 </script>
 
 <style>
+  .intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .back {
     background-color: rgb(10, 97, 190);
     color: white;
@@ -81,7 +90,7 @@ export default {
     text-decoration: none;
     color: white;
     padding: 8px 12px;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: opacity 0.15s;
   }
 
