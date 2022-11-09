@@ -43,7 +43,6 @@
 
 <script>
 import { db } from '../firebase/firebase.js'
-import { doc, setDoc, } from 'firebase/firestore'
 
 export default {
   data() {
@@ -59,8 +58,8 @@ export default {
       }
     },
     async setMoodInFB() {
-      const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
-      await setDoc(docRef, { mood: this.mood }, { merge: true })        
+      // const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
+      // await setDoc(docRef, { mood: this.mood }, { merge: true })        
     }
   }
 }

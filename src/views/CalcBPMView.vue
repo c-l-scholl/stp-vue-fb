@@ -65,7 +65,6 @@
 <script>
 import TimerComp from '../components/TimerComp.vue'
 import { db } from '../firebase/firebase.js'
-import { doc, setDoc, } from 'firebase/firestore'
 
 
 //https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
@@ -121,8 +120,8 @@ export default {
       console.log(this.bpm)
     }, 
     async setBpmInFB() {
-      const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
-      await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
+      // const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
+      // await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
     }
   }
 }

@@ -11,9 +11,8 @@
 
 <script>
 import { db } from '../firebase/firebase.js'
-import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore'
+import { ref, child, get, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
-import { SongData, songDataConverter } from '../firebase/firebaseconverter.js'
 
 
 export default {
@@ -50,44 +49,20 @@ export default {
           console.log('The current mood ' + this.mood+ ' is not availabe yet')
       }
     },
-    async getSongsFromFB() { // could be used to get data, but still janky and makes way too many calls
-      const q = query(collection(db, "spotifydata"), where("tempo", ">=", this.bpm - 20), where("tempo", "<=", this.bpm - 20))
-      const querySnapshot = await getDocs(q)
-      querySnapshot.forEach((doc) => {
-        this.songs.push(doc.data())
-        console.log(doc.data())
+    async getSongsFromFB() { 
+      const dbRef = ref(db, 'songs/')
+      onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val()
+          this.songs.push(childData)
+        })
       })
-    
     },
-    async getUserValues() {
-      const docRef = doc(db, "cities", "SF");
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        this.bpm = docSnap.data().bpm
-        this.mood = docSnap.data().mood
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }
-
+    
   },
   mounted() {
-    // this.emitter.on("user-bpm", bpm => {
-    //   this.bpm = bpm
-    //   console.log("user bpm: " + this.bpm)
-    // })
-    // this.emitter.on("user-mood", mood => {
-    //   this.moods.push(mood)
-    //   console.log("user mood: " + this.moods[0])
-    // })
     this.getSongsFromFB()
     //this.getUserValues()
-    
-
-    
-    // this.getSongsFromFB()
 
     // for testing purposes, get songs from json
     // fetch('http://localhost:3000/songs')
