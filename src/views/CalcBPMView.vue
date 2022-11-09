@@ -42,9 +42,6 @@
   <label for="Heartbeat">Number of beats: </label>
   <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1/>
 
-  <button type="reset" value="Reset">
-    Reset
-  </button>
   <br><br><br><br>
 
   Don't want to do it? <br>
