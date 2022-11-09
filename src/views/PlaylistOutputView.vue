@@ -10,17 +10,18 @@
 </template>
 
 <script>
-// import { db } from '../firebase/firebase.js'
-// import { collection, getDocs, } from 'firebase/firestore'
+import { db } from '../firebase/firebase.js'
+import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
+import { SongData, songDataConverter } from '../firebase/firebaseconverter.js'
 
 
 export default {
   data() {
     return {
       songs: [],
-      bpm: 44, //only for testing purposes, set to null
-      moods: ['Happy'], //only for testing purposes, set to empty 
+      bpm: 50, //only for testing purposes, set to null
+      mood: 'Happy', //only for testing purposes, set to empty 
       //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
       /*
@@ -35,70 +36,70 @@ export default {
   methods: {
     
       //filter by bpm
-      filterByBpm(tempo) {
-        return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo * 2 < this.bpm + 20) && (tempo * 2 > this.bpm - 20)))
-      },
-      async getSongsFromFB() { // only call where its needed, filter when grabbing data to decrease traffic
-        const allSongData = await getDocs(collection(db, "spotifydata"))
-        allSongData.forEach((song) => {
-          if(this.filterByBpm(song.data().tempo)) {
-            this.songs.push(song.data())
-            console.log(song.data().trackName)
-          }
-          
-        })
-      },
-    /*
-      filter by mood 
-      dataObjects.forEach(() => {
-        songs.filter(song => {
-          song.data().[whatever the data thing is] < data.upperBound ||
-          song.data().[same thing] > data.lowerBound
-        })
-      })
-
-    */
-
+    filterByBpm(tempo) {
+      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo * 2 < this.bpm + 20) && (tempo * 2 > this.bpm - 20)))
+    },
     filterByMood(song) {
-      console.log('current mood: ' + this.moods[0])
-      switch(this.moods[0]) {
+      console.log('current mood: ' + this.mood)
+      switch(this.mood) {
         case 'Happy':
           return song.liveness >= 0.6 && song.energy >= 0.6
         case 'Sad':
-          this.songs.filter(song => {
-            song.acousticness >= 0.6 && song.danceability < 0.4
-          })
-          break;
+          return song.acousticness >= 0.6 && song.danceability < 0.4
         default:
-          console.log('The current mood ' + this.moods[0] + ' is not availabe yet')
+          console.log('The current mood ' + this.mood+ ' is not availabe yet')
       }
-        
     },
+    async getSongsFromFB() { // could be used to get data, but still janky and makes way too many calls
+      const q = query(collection(db, "spotifydata"), where("tempo", ">=", this.bpm - 20), where("tempo", "<=", this.bpm - 20))
+      const querySnapshot = await getDocs(q)
+      querySnapshot.forEach((doc) => {
+        this.songs.push(doc.data())
+        console.log(doc.data())
+      })
+    
+    },
+    async getUserValues() {
+      const docRef = doc(db, "cities", "SF");
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        this.bpm = docSnap.data().bpm
+        this.mood = docSnap.data().mood
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
 
   },
   mounted() {
-    this.emitter.on("user-bpm", bpm => {
-      this.bpm = bpm
-      console.log("user bpm: " + this.bpm)
-    })
-    this.emitter.on("user-mood", mood => {
-      this.moods.push(mood)
-      console.log("user mood: " + this.moods[0])
-    })
+    // this.emitter.on("user-bpm", bpm => {
+    //   this.bpm = bpm
+    //   console.log("user bpm: " + this.bpm)
+    // })
+    // this.emitter.on("user-mood", mood => {
+    //   this.moods.push(mood)
+    //   console.log("user mood: " + this.moods[0])
+    // })
+    this.getSongsFromFB()
+    //this.getUserValues()
+    
+
     
     // this.getSongsFromFB()
 
     // for testing purposes, get songs from json
-    fetch('http://localhost:3000/songs')
-      .then((res) => res.json())
-      .then(data => {
-        data.forEach((song) => {
-          if(this.filterByBpm(song.tempo) && this.filterByMood(song)) {
-            this.songs.push(song)
-          }
-        })
-      })
-      .catch(err => console.log(err.message))
+    // fetch('http://localhost:3000/songs')
+    //   .then((res) => res.json())
+    //   .then(data => {
+    //     data.forEach((song) => {
+    //       if(this.filterByBpm(song.tempo) && this.filterByMood(song)) {
+    //         this.songs.push(song)
+    //       }
+    //     })
+    //   })
+    //   .catch(err => console.log(err.message))
     
     
   },

@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { db } from '../firebase/firebase.js'
+import { doc, setDoc, } from 'firebase/firestore'
 
 export default {
   data() {
@@ -53,8 +55,12 @@ export default {
     setMood() {
       if(this.mood != null) {
         console.log(this.mood)
-        this.emitter.emit('user-mood', this.mood)
+        this.setMoodInFB()
       }
+    },
+    async setMoodInFB() {
+      const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
+      await setDoc(docRef, { mood: this.mood }, { merge: true })        
     }
   }
 }

@@ -64,6 +64,8 @@
 
 <script>
 import TimerComp from '../components/TimerComp.vue'
+import { db } from '../firebase/firebase.js'
+import { doc, setDoc, } from 'firebase/firestore'
 
 
 //https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
@@ -114,8 +116,13 @@ export default {
         // they entered an invalid value
       }
       this.bpm *= this.bpmMultiplier // calculates actual heartrate
-      this.emitter.emit("user-bpm", this.bpm)
+      //this.emitter.emit("user-bpm", this.bpm)
+      this.setBpmInFB()
       console.log(this.bpm)
+    }, 
+    async setBpmInFB() {
+      const docRef = doc(db, "userdata", "MkBUCRRG9r3If0tfpFt8")
+      await setDoc(docRef, { bpm: this.bpm }, { merge: true })        
     }
   }
 }
