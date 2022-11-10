@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       songs: [],
-      bpm: 50, //only for testing purposes, set to null
-      mood: 'Happy', //only for testing purposes, set to empty 
+      bpm: null, //only for testing purposes, set to null
+      mood: null, //only for testing purposes, set to empty 
       //moodData: Map<mood, [] of dataObject> 
       //dataObject: []
       /*
@@ -58,11 +58,34 @@ export default {
         })
       })
     },
+    async getUserValues() {
+      const dbRef = ref(db)
+      get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
+        if(bpmSnapshot.exists()) {
+          this.bpm = bpmSnapshot.val().bpm
+          console.log(this.bpm)
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      })
+      get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
+        if(moodSnapshot.exists()) {
+          this.mood = moodSnapshot.val().mood
+          console.log(this.mood)
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      })
+    }
     
   },
   mounted() {
+    this.getUserValues()
     this.getSongsFromFB()
-    //this.getUserValues()
 
     // for testing purposes, get songs from json
     // fetch('http://localhost:3000/songs')
