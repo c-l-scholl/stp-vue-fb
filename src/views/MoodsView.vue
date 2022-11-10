@@ -1,10 +1,13 @@
 <template>
-  <button type="button">
-    Back
-  </button>
-  <button type="button">
-    Help
-  </button>
+  <div class="intro">
+    <router-link to="/calc-bpm" class="back">
+      Back
+    </router-link>
+    <router-link to="/mood-help" class="toHelp">
+      Help
+    </router-link>
+  </div>
+  
   <h1>Step 2: Your Mood</h1>
   <p>
     Pick your current or desired mood. <br>
@@ -25,9 +28,7 @@
     <option value="Nervous">Nervous</option>
     <option value="Annoyed">Annoyed</option>
     <option value="Sad">Sad</option>
-    <option value="Surprised">Surprised</option>
     <option value="Angry">Angry</option>
-    <option value="Confused">Confused</option>
     <option value="Sleepy">Sleepy</option>
     <option value="Hurt">Hurt</option>
   </select>
@@ -66,5 +67,33 @@ export default {
 </script>
 
 <style>
+  .intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .back {
+    background-color: rgb(10, 97, 190);
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+  }
+
+  .toHelp {
+    background-color: rgb(13, 181, 103);
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: opacity 0.15s;
+  }
+
+  .back:hover,
+  .toHelp:hover {
+    opacity: 0.8;
+  }
 
 </style>
