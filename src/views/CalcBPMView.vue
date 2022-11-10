@@ -48,14 +48,16 @@
   No problem too! Click the "Skip" button below to enter an estimation.
 
   <br> <br>
-
+  <div class="routers">
     <router-link to="/skip-bpm" class="skip">
       Skip
     </router-link>
 
-    <router-link to="/mood" @click="checkBpm()" class="toMood">
+    <router-link to="/mood" @click="checkBpm()" class="toMood" :class="{ 'canPress': !isValidBpm }">
       Next
     </router-link>
+  </div>
+    
 
 </template>
 
@@ -71,7 +73,7 @@ export default {
       bpm: null,
       timerEnabled: false,
       timerCount: 15,
-      bpmMultiplier: 4
+      bpmMultiplier: 4,
     }
   },
   watch: {
@@ -169,7 +171,9 @@ export default {
   }
 
   .reset,
-  .start {
+  .start,
+  .toMood, 
+  .skip {
     display: flex;
     border-width: 0;
     padding: 10px 15px;
@@ -191,5 +195,34 @@ export default {
   .start {
     background-color: green;
   }
+
+  .routers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+  }
+  .toMood,
+  .skip {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+  }
+
+  .toMood {
+    background-color: blue;
+  }
+
+  .skip {
+    background-color: grey;
+  }
+
+  .canPress {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+
 </style>
 
