@@ -6,7 +6,6 @@
       </SingleSongComp>
 
     </div>
-    <!-- <SingleSongComp songName="Great Mistakes"></SingleSongComp> -->
   </div>
 
 </template>
@@ -18,7 +17,7 @@ import SingleSongComp from './SingleSongComp.vue'
 export default {
   data() {
     return {
-      showModal: false
+      showModal: false,
     }
   },
   props: {
@@ -28,8 +27,6 @@ export default {
     SingleSongComp,
   },
   emits: [],
-  methods: {
-    
-  }
+  methods: {  },
 }
 </script>

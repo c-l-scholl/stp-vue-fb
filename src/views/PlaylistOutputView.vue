@@ -4,7 +4,7 @@
     Your Playlist is below!
   </p>
   <div class="container">
-    <SongDisplayComp :songs="songs"/>
+    <SongDisplayComp :songs="randomSongs"/>
   </div>
   
 </template>
@@ -18,16 +18,12 @@ import SongDisplayComp from '@/components/SongDisplayComp.vue'
 export default {
   data() {
     return {
-      songs: [],
-      bpm: null, //only for testing purposes, set to null
-      mood: null, //only for testing purposes, set to empty 
-      //moodData: Map<mood, [] of dataObject> 
-      //dataObject: []
-      /*
-        dataObject contains metric type (i.e. danceability, speechiness)
-        and bounds for each one based on the mood
-      */
-      gotSongs: false
+      songs: null,
+      bpm: null, 
+      mood: null,  
+      hasUserData: false,
+      randomSongs: [],
+      numRandomSongs: 5
     }
     
   },
@@ -36,31 +32,38 @@ export default {
     
       //filter by bpm
     filterByBpm(tempo) {
-      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo * 2 < this.bpm + 20) && (tempo * 2 > this.bpm - 20)))
+      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
     filterByMood(song) {
       console.log('current mood: ' + this.mood)
       switch(this.mood) {
         case 'Happy':
-          return song.liveness >= 0.6 && song.energy >= 0.6
+          return song.danceability >= 0.5 && song.energy >= 0.5 && song.valence >= 0.3
         case 'Sad':
           return song.acousticness >= 0.6 && song.danceability < 0.4
         default:
           console.log('The current mood ' + this.mood+ ' is not availabe yet')
       }
     },
-    async getSongsFromFB() { 
+    getSongsFromFB() { 
+      this.songs = []
       const dbRef = ref(db, 'songs/')
       onValue(dbRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-          const childData = childSnapshot.val()
-          this.songs.push(childData)
+          const songData = childSnapshot.val()
+          if(this.filterByBpm(songData.tempo) && this.filterByMood(songData)) {
+            this.songs.push(songData)
+          }
+          
         })
+        this.randomizeSongList()
       })
+      
     },
     async getUserValues() {
+      // get bpm from firebase
       const dbRef = ref(db)
-      get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
+      await get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
         if(bpmSnapshot.exists()) {
           this.bpm = bpmSnapshot.val().bpm
           console.log(this.bpm)
@@ -70,7 +73,8 @@ export default {
       }).catch((error) => {
         console.error(error);
       })
-      get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
+      // get mood from realtime 
+      await get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
         if(moodSnapshot.exists()) {
           this.mood = moodSnapshot.val().mood
           console.log(this.mood)
@@ -80,12 +84,32 @@ export default {
       }).catch((error) => {
         console.error(error);
       })
+
+      // after retrieving data, get songs from firebase 
+      this.hasUserData = true;
+      this.getSongsFromFB()
+    },
+    // limits number of songs output and gets random playlist everytime 
+    randomizeSongList() { 
+      this.randomSongs = []
+      const totalNumSongs = this.songs.length
+      for(let i = 0; i < this.numRandomSongs; i++) {
+        const randomSong = this.songs[Math.floor(Math.random() * totalNumSongs)]
+        if(!(this.randomSongs.includes(randomSong))) {
+          this.randomSongs.push(randomSong)
+        }
+      }
     }
     
   },
   mounted() {
-    this.getUserValues()
-    this.getSongsFromFB()
+    if(this.bpm === null && this.mood === null) {
+      this.hasUserData = false;
+      this.getUserValues()
+    } else {
+      this.hasUserData = true
+    }
+    
 
     // for testing purposes, get songs from json
     // fetch('http://localhost:3000/songs')
@@ -109,7 +133,7 @@ export default {
 
 
 .container {
-  max-width: 500px;
+  max-width: 750px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;

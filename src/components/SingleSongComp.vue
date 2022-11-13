@@ -8,7 +8,7 @@
       <ModalComp @close="toggleModal()" v-if="showModal" >
         <h3>Song Details</h3>
         <p>Artist: {{ song.artist_name }}</p>
-        <p>Tempo: {{ song.tempo }}</p>
+        <p>Tempo: {{ roundedTempo }}</p>
         <p>Liveness: {{ song.liveness }}</p>
       </ModalComp>
       <div class="buttondiv">
@@ -25,7 +25,8 @@
   export default {
     data() {
       return {
-        showModal: false
+        showModal: false,
+        roundedTempo: null
       }
     },
     props: ["song"],
@@ -34,6 +35,9 @@
       toggleModal() {
         this.showModal = !this.showModal
       }
+    },
+    created() {
+      this.roundedTempo = Math.floor(this.song.tempo) + " bpm"
     }
   };
   </script>
@@ -54,6 +58,10 @@
     }
     .songName {
       display: flex;
+    }
+
+    .songName h3 {
+      font-size: 20px;
     }
     .buttondiv {
       display: flex;
