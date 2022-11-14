@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import { db } from '../firebase/firebase.js'
-import { ref, set } from 'firebase/database'
 
 export default {
   data() {
@@ -56,14 +54,9 @@ export default {
     setMood() {
       if(this.mood != null) {
         console.log(this.mood)
-        this.setMoodInFB()
+        this.$store.commit('setMood', this.mood)
       }
     },
-    async setMoodInFB() {
-      set(ref(db, 'userMood/' + 0), {
-        mood: this.mood 
-      });    
-    }
   }
 }
 </script>

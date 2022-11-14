@@ -7,7 +7,8 @@ npm install
 
 ## Other installations
 ```
-npm install --save mitt
+npm install vuex@next --save
+
 npm install firebase
 ```
 

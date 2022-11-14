@@ -1,12 +1,26 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import { createStore } from "vuex";
+import App from "./App.vue";
+import router from "./router";
 
-// emitter information from https://stackoverflow.com/questions/63471824/vue-js-3-event-bus
-import mitt from 'mitt';
-const emitter = mitt();
 const app = createApp(App);
-app.config.globalProperties.emitter = emitter;
+// vuex implementation 
+const store = createStore({
+	state() {
+		return {
+			bpm: 5,
+			mood: "",
+		};
+	},
+  mutations: {
+    setBpm(state, bpm) {
+      state.bpm = bpm
+    },
+    setMood(state, mood) {
+      state.mood = mood
+    }
+  }
+});
+app.use(store)
 
-
-app.use(router).mount('#app')
+app.use(router).mount("#app");

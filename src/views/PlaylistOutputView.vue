@@ -11,7 +11,7 @@
 
 <script>
 import { db } from '../firebase/firebase.js'
-import { ref, child, get, onValue } from 'firebase/database'
+import { ref, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
 
 
@@ -32,6 +32,7 @@ export default {
     
       //filter by bpm
     filterByBpm(tempo) {
+      console.log('user bpm: ' + this.bpm)
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
     filterByMood(song) {
@@ -60,36 +61,36 @@ export default {
       })
       
     },
-    async getUserValues() {
-      // get bpm from firebase
-      const dbRef = ref(db)
-      await get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
-        if(bpmSnapshot.exists()) {
-          this.bpm = bpmSnapshot.val().bpm
-          console.log(this.bpm)
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      })
-      // get mood from realtime 
-      await get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
-        if(moodSnapshot.exists()) {
-          this.mood = moodSnapshot.val().mood
-          console.log(this.mood)
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      })
+    // async getUserValues() {
+    //   // get bpm from firebase
+    //   const dbRef = ref(db)
+    //   await get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
+    //     if(bpmSnapshot.exists()) {
+    //       this.bpm = bpmSnapshot.val().bpm
+    //       console.log(this.bpm)
+    //     } else {
+    //       console.log("No data available");
+    //     }
+    //   }).catch((error) => {
+    //     console.error(error);
+    //   })
+    //   // get mood from realtime 
+    //   await get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
+    //     if(moodSnapshot.exists()) {
+    //       this.mood = moodSnapshot.val().mood
+    //       console.log(this.mood)
+    //     } else {
+    //       console.log("No data available");
+    //     }
+    //   }).catch((error) => {
+    //     console.error(error);
+    //   })
 
-      // after retrieving data, get songs from firebase 
-      this.hasUserData = true;
-      this.getSongsFromFB()
-    },
-    // limits number of songs output and gets random playlist everytime 
+    //   // after retrieving data, get songs from firebase 
+    //   this.hasUserData = true;
+    //   this.getSongsFromFB()
+    // },
+    // // limits number of songs output and gets random playlist everytime 
     randomizeSongList() { 
       this.randomSongs = []
       const totalNumSongs = this.songs.length
@@ -102,13 +103,22 @@ export default {
     }
     
   },
+  
   mounted() {
-    if(this.bpm === null && this.mood === null) {
-      this.hasUserData = false;
-      this.getUserValues()
-    } else {
-      this.hasUserData = true
-    }
+    // uses vuex to get data from other views
+    this.bpm = this.$store.state.bpm
+    this.mood = this.$store.state.mood
+
+    this.getSongsFromFB()
+    
+    // if(this.bpm === null && this.mood === null) {
+    //   this.hasUserData = false;
+    //   this.getUserValues()
+    // } else {
+    //   this.hasUserData = true
+    // }
+
+
     
 
     // for testing purposes, get songs from json
