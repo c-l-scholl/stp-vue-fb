@@ -1,9 +1,9 @@
 <template>
   <div class="intro">
-    <router-link to="/calc-bpm" class="back">
+    <router-link to="/calc-bpm" class="backCalc">
       Back
     </router-link>
-    <router-link to="/mood-help" class="toHelp">
+    <router-link to="/mood-help" class="toMoodHelp">
       Help
     </router-link>
   </div>
@@ -66,28 +66,31 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px 15px;
   }
 
-  .back {
-    background-color: rgb(10, 97, 190);
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 3px;
-    transition: opacity 0.15s;
-  }
-
-  .toHelp {
-    background-color: rgb(13, 181, 103);
-    text-decoration: none;
-    color: white;
-    padding: 8px 12px;
+  .backCalc,
+  .toMoodHelp {
+    display: flex;
+    border-width: 0;
+    margin: 5px;
+    padding: 10px 15px;
     border-radius: 5px;
+    color: white;
     transition: opacity 0.15s;
+    text-decoration: none;
   }
 
-  .back:hover,
-  .toHelp:hover {
+  .backCalc {
+    background-color: rgb(10, 97, 190);
+  }
+
+  .toMoodHelp {
+    background-color: rgb(13, 181, 103);
+  }
+
+  .backCalc:hover,
+  .toMoodHelp:hover {
     opacity: 0.8;
   }
 
