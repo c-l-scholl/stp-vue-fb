@@ -13,12 +13,11 @@
     Pick your current or desired mood. <br>
     For a detailed description of the moods, please click the "Help" button above.
   </p>
-  <br>
-  <label for="Mood"> Choose the best descriptor of your mood:</label>
 
   <select 
     name="Mood" 
     id="Mood" 
+    class="mood"
     value=""
     v-model="mood"
     >
@@ -32,14 +31,15 @@
     <option value="Sleepy">Sleepy</option>
     <option value="Hurt">Hurt</option>
   </select>
-  <button @click="setMood()">Submit</button>
-
-  <button>
-    <router-link to="/playlist-output">Next</router-link>
-  </button>
-  <button type="reset" value = "Reset">
-    Reset
-  </button>
+  <br>
+  <div class="moodRouters">
+    <button type="reset" value = "Reset" class="moodReset">
+      Reset
+    </button>
+    <router-link to="/playlist-output" @click="setMood()" class="toPlaylist">
+      Next
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -62,7 +62,8 @@ export default {
 </script>
 
 <style>
-  .intro {
+  .intro, 
+  .moodRouters {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +71,9 @@ export default {
   }
 
   .backCalc,
-  .toMoodHelp {
+  .toMoodHelp,
+  .toPlaylist,
+  .moodReset {
     display: flex;
     border-width: 0;
     margin: 5px;
@@ -81,7 +84,7 @@ export default {
     text-decoration: none;
   }
 
-  .backCalc {
+  .backCalc, .toPlaylist {
     background-color: rgb(10, 97, 190);
   }
 
@@ -89,9 +92,28 @@ export default {
     background-color: rgb(13, 181, 103);
   }
 
+  .moodReset {
+    background-color: grey;
+  }
+
   .backCalc:hover,
   .toMoodHelp:hover {
     opacity: 0.8;
   }
+
+  .mood{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: 10px 10px 0 0 rgba(black,.03);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    font-size: large;
+  }
+
 
 </style>
