@@ -14,11 +14,9 @@
 
     </p>
   
-      <button type="button">
-        <router-link to="/">
-          Back
-        </router-link>
-      </button>
+    <router-link to="/" class="back">
+      Back
+    </router-link>
   
   </template>
       
