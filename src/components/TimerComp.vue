@@ -61,9 +61,28 @@ export default {
 </script>
 
 <style>
-.timerButtons {
+  .timerButtons {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .reset {
+    margin-right: 10px;
+    background-color: red;
+  }
+
+  .start {
+    background-color: green;
+  } 
+
+  .reset,
+  .start {
+    display: flex;
+    border-width: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    transition: opacity 0.15s;
   }
   </style>

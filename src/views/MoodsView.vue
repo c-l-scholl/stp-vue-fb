@@ -36,7 +36,7 @@
     <button type="reset" value = "Reset" class="moodReset">
       Reset
     </button>
-    <router-link to="/playlist-output" @click="setMood()" class="toPlaylist">
+    <router-link to="/playlist-output" @click="setMood()" class="toPlaylist" :class="{ 'disabled': !this.checkMood() }">
       Next
     </router-link>
   </div>
@@ -50,18 +50,24 @@ export default {
       mood: null,
     }
   },
-  methods: {     
+  methods: {    
+    checkMood() {
+      return this.mood !== null
+    }, 
     setMood() {
-      if(this.mood != null) {
+      if(this.checkMood()) {
         console.log(this.mood)
         this.$store.commit('setMood', this.mood)
       }
     },
+  },
+  beforeRouteLeave (to, from) {
+    return this.checkMood()
   }
 }
 </script>
 
-<style>
+<style scoped>
   .intro, 
   .moodRouters {
     display: flex;
@@ -113,6 +119,11 @@ export default {
     box-sizing: border-box;
     text-align: center;
     font-size: large;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
   }
 
 

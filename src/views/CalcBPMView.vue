@@ -64,16 +64,13 @@ export default {
       return (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
     }, 
     setUserBpm() {
-      if(this.checkBpm()) { // calculates actual heartrate
+      if(this.checkBpm()) { 
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
         console.log(this.bpm)
       } 
-
     }
   },
   beforeRouteLeave(to, from) {
-    console.log(this.bpm)
-    console.log(this.checkBpm())
     return this.checkBpm()
   }
 }
@@ -81,7 +78,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .intro {
     display: flex;
     justify-content: center;
