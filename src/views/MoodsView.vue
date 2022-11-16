@@ -45,6 +45,7 @@
 <script>
 
 export default {
+  name: "MoodsView",
   data() {
     return {
       mood: null,
@@ -60,9 +61,6 @@ export default {
         this.$store.commit('setMood', this.mood)
       }
     },
-  },
-  beforeRouteLeave (to, from) {
-    return this.checkMood()
   }
 }
 </script>

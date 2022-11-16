@@ -21,7 +21,13 @@
   </div>
 
   <label for="Heartbeat">Number of beats: </label>
-  <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1/>
+  <input v-model="bpm" 
+    type="number" 
+    class="Heartbeat" 
+    placeholder="*ba-dump*" 
+    step=1 
+    @input="checkBpm"
+  />
 
   <br><br><br><br>
 
@@ -35,9 +41,23 @@
     </router-link>
 
     
-    <router-link to="/mood" @click="setUserBpm()" class="toMood" :class="{ 'disabled': !this.checkBpm() }">
+    <router-link 
+      to="/mood" 
+      @click="setUserBpm" 
+      class="toMood" 
+      :class="{ 'disabled': !this.isValidBpm }"
+    >
       Next
     </router-link>
+
+    <!-- <router-link
+      to="/mood"
+      v-slot="{href, navigate}"
+    >
+      <button :href="href" @click="navigate" class='toMoodButton' :disabled="!isValidBpm">
+        Next
+      </button>
+    </router-link> -->
     
   </div>
     
@@ -54,6 +74,7 @@ export default {
     return {
       bpm: null,
       bpmMultiplier: 4,
+      isValidBpm: false
     }
   },
   components: {
@@ -61,7 +82,8 @@ export default {
   },
   methods: {
     checkBpm() {
-      return (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
+
+      this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
     }, 
     setUserBpm() {
       if(this.checkBpm()) { 
@@ -70,9 +92,15 @@ export default {
       } 
     }
   },
-  beforeRouteLeave(to, from) {
-    return this.checkBpm()
+  beforeRouteLeave (to, from) {
+    if(to.name === 'mood') {
+      return this.checkBpm()
+    } else {
+      return true
+    }
+    
   }
+
 }
 
 

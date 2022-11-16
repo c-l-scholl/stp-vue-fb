@@ -8,8 +8,8 @@ const app = createApp(App);
 const store = createStore({
 	state() {
 		return {
-			bpm: 5,
-			mood: "",
+			bpm: null,
+			mood: null,
 		};
 	},
   mutations: {
