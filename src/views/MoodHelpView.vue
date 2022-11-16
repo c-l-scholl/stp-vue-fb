@@ -10,7 +10,7 @@
         5. Sad -- unhappy, feeling or showing sorrow<br>
         6. Angry -- feeling and showing hostility and displeasure <br>
         7. Sleepy -- tired, needing sleep <br>
-        8. Hurt -- injured, in pain <br>
+        8. Heartbroken -- suffering from overwhelming distress <br>
     </p>
   
      
