@@ -29,7 +29,7 @@
     <option value="Sad">Sad</option>
     <option value="Angry">Angry</option>
     <option value="Sleepy">Sleepy</option>
-    <option value="Hurt">Hurt</option>
+    <option value="Heartbroken">Heartbroken</option>
   </select>
   <br>
   <div class="moodRouters">

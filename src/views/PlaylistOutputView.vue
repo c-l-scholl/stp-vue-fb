@@ -41,9 +41,21 @@ export default {
         case 'Happy':
           return song.danceability >= 0.5 && song.energy >= 0.5 && song.valence >= 0.3
         case 'Sad':
-          return song.acousticness >= 0.6 && song.danceability < 0.4
+          return song.acousticness >= 0.6 && song.speechiness >= 0.1 && song.valence <= 0.5
+        case 'Relaxed':
+          return song.acousticness >= 0.6 && song.valence >= 0.4 && song.valence <= 0.6
+        case 'Nervous':
+          return song.energy >= 0.6 && song.speechiness >= 0.1
+        case 'Angry':
+          return song.danceability >= 0.4 && song.energy >= 0.5 && song.speechiness >= 0.1
+        case 'Annoyed':
+          return song.liveness >= 0.5 && song.speechiness >= 0.1
+        case 'Sleepy':
+          return song.acousticness >= 0.6 && song.danceability <= 0.4 && song.energy <= 0.4
+        case 'Heartbroken':
+          return song.energy <= 0.4 && song.speechiness >= 0.1 && song.valence <= 0.5
         default:
-          console.log('The current mood ' + this.mood+ ' is not availabe yet')
+          console.log('The current mood ' + this.mood+ ' is not available yet')
       }
     },
     getSongsFromFB() { 
