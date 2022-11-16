@@ -5,9 +5,6 @@
   <!-- <button type="button" class="back">
     <router-link to="/">Back</router-link>
   </button> -->
-  
-
-
   <p> Count your heartbeats during the 15 second timer </p>
   <div class="intro">
     <h3>Don't know how?  </h3>
@@ -18,26 +15,10 @@
   <h2>Click Start Timer when ready. <br> </h2>
 
     <br>
-    <div class="timerButtons">
-      <button type="button" @click="restart()" class="reset">
-        Reset Timer
-      </button>
-      <button type="button" @click="play()" class="start">
-        Start Timer
-      </button>
-    </div>
-    
 
-  <p>
-    <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
-
-    <span v-if="timerEnabled">
-      {{ timerCount }}
-    </span>
-  </p>
-
-
-
+  <div>
+    <TimerComp />
+  </div>
 
   <label for="Heartbeat">Number of beats: </label>
   <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1/>
@@ -70,42 +51,13 @@ export default {
   data() {
     return {
       bpm: null,
-      timerEnabled: false,
-      timerCount: 15,
       bpmMultiplier: 4,
     }
   },
-  watch: {
-    timerEnabled(value) {
-      if (value) {
-        setTimeout(() => {
-          this.timerCount--;
-        }, 1000);
-      }
-    },
-    
-    timerCount: {
-      handler(value) {
-        if (value > 0 && this.timerEnabled) {
-          setTimeout(() => {
-            this.timerCount--;
-          }, 1000);
-        }
-      },
-      immediate: true // This ensures the watcher is triggered upon creation
-    }
-  } ,
+  components: {
+    TimerComp
+  },
   methods: {
-    play() {
-      this.timerEnabled = true;
-    },
-    //pause() {
-      //this.timerEnabled = false;
-    //},
-    restart() {
-      this.timerEnabled = false;
-      this.timerCount = 15;
-    },
     checkBpm() {
       if (!this.bpm || this.bpm < 5 || this.bpm > 40) {
         this.bpm = null
@@ -118,15 +70,6 @@ export default {
     }, 
   }
 }
-
-// https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
-// var timeleft = 0;
-// var downloadTimer = setInterval(function () {
-//   timeleft--;
-//   //document.getElementById("countdowntimer2").textContent = timeleft;
-//   if (timeleft <= 0)
-//     clearInterval(downloadTimer);
-// }, 1000);
 
 
 </script>
