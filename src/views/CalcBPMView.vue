@@ -34,9 +34,11 @@
       Skip
     </router-link>
 
-    <router-link to="/mood" @click="checkBpm()" class="toMood">
+    
+    <router-link to="/mood" @click="setUserBpm()" class="toMood" :class="{ 'disabled': !this.checkBpm() }">
       Next
     </router-link>
+    
   </div>
     
 
@@ -59,15 +61,20 @@ export default {
   },
   methods: {
     checkBpm() {
-      if (!this.bpm || this.bpm < 5 || this.bpm > 40) {
-        this.bpm = null
-        // print out something that tells the user 
-        // they entered an invalid value
-      }
-      this.bpm *= this.bpmMultiplier // calculates actual heartrate
-      this.$store.commit('setBpm', this.bpm)
-      console.log(this.bpm)
+      return (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
     }, 
+    setUserBpm() {
+      if(this.checkBpm()) { // calculates actual heartrate
+        this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
+        console.log(this.bpm)
+      } 
+
+    }
+  },
+  beforeRouteLeave(to, from) {
+    console.log(this.bpm)
+    console.log(this.checkBpm())
+    return this.checkBpm()
   }
 }
 
@@ -149,6 +156,11 @@ export default {
 
   .toMood {
     background-color: blue;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
   }
 
   .skip {
