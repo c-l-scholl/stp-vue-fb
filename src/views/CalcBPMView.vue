@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     checkBpm() {
-
       this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
     }, 
     setUserBpm() {
@@ -94,7 +93,7 @@ export default {
   },
   beforeRouteLeave (to, from) {
     if(to.name === 'mood') {
-      return this.checkBpm()
+      return this.isValidBpm
     } else {
       return true
     }
