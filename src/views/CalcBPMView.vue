@@ -86,7 +86,7 @@ export default {
       this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
     }, 
     setUserBpm() {
-      if(this.checkBpm()) { 
+      if(this.isValidBpm) { 
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
         console.log(this.bpm)
       } 

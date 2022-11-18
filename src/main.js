@@ -22,5 +22,4 @@ const store = createStore({
   }
 });
 app.use(store)
-
 app.use(router).mount("#app");

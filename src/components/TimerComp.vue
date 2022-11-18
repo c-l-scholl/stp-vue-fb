@@ -1,4 +1,11 @@
 <template>
+
+  
+  <div>
+    <span v-if="timerEnabled">
+      {{ timerCount }}
+    </span>
+  </div>
   
   <div class="timerButtons">
     <button type="button" @click="restart()" class="reset">
@@ -8,22 +15,20 @@
       Start Timer
     </button>
   </div>
-  <div>
     <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
-
-    <span v-if="timerEnabled">
-      {{ timerCount }}
-    </span>
-  </div>
 </template>
  
 <script>
+
 export default {
   data() {
     return {
       timerEnabled: false,
       timerCount: 15,
     }
+  },
+  components: {
+    
   },
   watch: {
     timerEnabled(value) {

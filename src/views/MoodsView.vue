@@ -36,7 +36,7 @@
     <button type="reset" value = "Reset" class="moodReset">
       Reset
     </button>
-    <router-link to="/playlist-output" @click="setMood()" class="toPlaylist" :class="{ 'disabled': !this.checkMood() }">
+    <router-link to="/playlist-output" @click="setMood()" class="toPlaylist" :class="{ 'disabled': !this.isValidMood }">
       Next
     </router-link>
   </div>
@@ -49,19 +49,31 @@ export default {
   data() {
     return {
       mood: null,
+      isValidMood: false
     }
   },
   methods: {    
     checkMood() {
-      return this.mood !== null
+      this.isValidMood = (this.mood !== null)
     }, 
     setMood() {
-      if(this.checkMood()) {
+      if(this.isValidMood) {
         console.log(this.mood)
         this.$store.commit('setMood', this.mood)
       }
     },
+  },
+  beforeRouteLeave (to, from) {
+    if(to.name === 'playlist-output') {
+      return this.isValidMood
+    } else {
+      return true
+    }
+  },
+  updated() {
+    this.isValidMood = (this.mood !== null)
   }
+
 }
 </script>
 
