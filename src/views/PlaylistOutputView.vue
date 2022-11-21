@@ -73,36 +73,6 @@ export default {
       })
       
     },
-    // async getUserValues() {
-    //   // get bpm from firebase
-    //   const dbRef = ref(db)
-    //   await get(child(dbRef, 'userBpm/0')).then((bpmSnapshot) => {
-    //     if(bpmSnapshot.exists()) {
-    //       this.bpm = bpmSnapshot.val().bpm
-    //       console.log(this.bpm)
-    //     } else {
-    //       console.log("No data available");
-    //     }
-    //   }).catch((error) => {
-    //     console.error(error);
-    //   })
-    //   // get mood from realtime 
-    //   await get(child(dbRef, 'userMood/0')).then((moodSnapshot) => {
-    //     if(moodSnapshot.exists()) {
-    //       this.mood = moodSnapshot.val().mood
-    //       console.log(this.mood)
-    //     } else {
-    //       console.log("No data available");
-    //     }
-    //   }).catch((error) => {
-    //     console.error(error);
-    //   })
-
-    //   // after retrieving data, get songs from firebase 
-    //   this.hasUserData = true;
-    //   this.getSongsFromFB()
-    // },
-    // // limits number of songs output and gets random playlist everytime 
     randomizeSongList() { 
       this.randomSongs = []
       const totalNumSongs = this.songs.length
@@ -122,13 +92,6 @@ export default {
     this.mood = this.$store.state.mood
 
     this.getSongsFromFB()
-    
-    // if(this.bpm === null && this.mood === null) {
-    //   this.hasUserData = false;
-    //   this.getUserValues()
-    // } else {
-    //   this.hasUserData = true
-    // }
 
 
     

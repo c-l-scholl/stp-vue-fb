@@ -45,6 +45,7 @@
       border: none;
       padding-bottom: 10px;
     }
+
   
     .modal .actions {
       text-align: center;
