@@ -1,17 +1,17 @@
 <template>
   <div class="helpButton">
-      <router-link to="/bpm-help" class="toHelp">
-        ?
-      </router-link>
+    <router-link to="/bpm-help" class="toHelp">
+      ?
+    </router-link>
   </div>
   <div class="page">
     <div class="title">
-      <h1>Step 1: Your Heartbeat</h1> 
-      
+      <h1>Step 1: Your Heartbeat</h1>
+
     </div>
 
     <div class="instructions">
-      <h3> 
+      <h3>
         Count your heartbeats during the 15 second timer
       </h3>
     </div>
@@ -19,13 +19,13 @@
       <h3>Don't know how? </h3>
 
     </div> -->
-    
+
     <div class="timerText">
       <h3>Click Start Timer when ready. </h3>
     </div>
     <TimerComp />
 
-    
+
     <div class="userInput">
       <div class="inputBox">
         <label for="Heartbeat">Number of beats: </label>
@@ -33,10 +33,10 @@
       </div>
       <div class="nextButton">
         <router-link to="/mood" @click="setUserBpm" class="toMood" :class="{ 'disabled': !this.isValidBpm }">
-        Next
+          Next
         </router-link>
       </div>
-      
+
     </div>
 
     <div class="skipText">
@@ -112,6 +112,7 @@ export default {
   position: relative;
   top: 50px;
 }
+
 .intro {
   align-items: center;
 

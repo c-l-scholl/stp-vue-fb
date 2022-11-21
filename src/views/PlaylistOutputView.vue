@@ -7,6 +7,11 @@
     <div class="container">
       <SongDisplayComp :songs="randomSongs"/>
     </div>
+    <div class="toHome">
+      <router-link to="/" class="homeButton">
+        Home
+      </router-link>
+    </div>
   </div>
   
   
@@ -122,6 +127,20 @@ export default {
 .page {
   position: relative;
   top: 50px;
+}
+
+.homeButton {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(26, 169, 216);
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: opacity 0.15s;
+}
+
+.homeButton:hover{
+  opacity: 0.8;
 }
 
 .container {
