@@ -74,11 +74,11 @@
     .song:hover {
       background: #dfdede;
       border: 3px solid green;
-      
     }
 
     .song:active {
       background: #d6d6d6;
+      box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.15);
     }
 
     .songName {
