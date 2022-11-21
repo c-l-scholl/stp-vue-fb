@@ -16,8 +16,8 @@
       For a detailed description of the moods, please click the ? above.
     </p>
 
-    <select name="Mood" id="Mood" class="mood" value="" v-model="mood" placeholder = "Select an Option">
-      <option value="" selected disabled>Select an Option</option>
+    <select name="Mood" id="Mood" class="mood" value="" v-model="mood">
+      <option value="" selected disabled > Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>
       <option value="Nervous">Nervous</option>
