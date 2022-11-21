@@ -1,11 +1,14 @@
 <template>
-  <h1>Step 3: Your Playlist</h1>
-  <p>
-    Your Playlist is below!
-  </p>
-  <div class="container">
-    <SongDisplayComp :songs="randomSongs"/>
+  <div class="page">
+    <h1>Step 3: Your Playlist</h1>
+    <p>
+      Your Playlist is below!
+    </p>
+    <div class="container">
+      <SongDisplayComp :songs="randomSongs"/>
+    </div>
   </div>
+  
   
 </template>
 
@@ -114,8 +117,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+.page {
+  position: relative;
+  top: 50px;
+}
 
 .container {
   max-width: 750px;

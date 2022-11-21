@@ -1,7 +1,7 @@
 <template>
 
   
-  <div>
+  <div class="timer">
     <span v-if="timerEnabled">
       {{ timerCount }}
     </span>
@@ -66,10 +66,28 @@ export default {
 </script>
 
 <style>
+
+  .timer {
+    margin-bottom: 45px;
+    font-size: 75px;
+    font-weight: bold;
+  }
   .timerButtons {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px;
+  }
+
+  .reset:hover, 
+  .start:hover {
+    opacity: 0.8;
+  }
+
+  .reset:active,
+  .start:active {
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.15);
+    opacity: 0.6px;
   }
 
   .reset {
@@ -85,9 +103,10 @@ export default {
   .start {
     display: flex;
     border-width: 0;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 50px 20px;
+    border-radius: 200px;
     color: white;
     transition: opacity 0.15s;
+    font-weight: bold;
   }
   </style>

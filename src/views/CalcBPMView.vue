@@ -1,56 +1,56 @@
 <template>
-  
-  <h1>Step 1: Your Heartbeat</h1>
-
-  <!-- <button type="button" class="back">
-    <router-link to="/">Back</router-link>
-  </button> -->
-  <p> Count your heartbeats during the 15 second timer </p>
-  <div class="intro">
-    <h3>Don't know how?  </h3>
-    <router-link to="/bpm-help" class="toHelp">
-      Help
-    </router-link>
+  <div class="helpButton">
+      <router-link to="/bpm-help" class="toHelp">
+        ?
+      </router-link>
   </div>
-  <h2>Click Start Timer when ready. <br> </h2>
+  <div class="page">
+    <div class="title">
+      <h1>Step 1: Your Heartbeat</h1> 
+      
+    </div>
 
-    <br>
+    <div class="instructions">
+      <h3> 
+        Count your heartbeats during the 15 second timer
+      </h3>
+    </div>
+    <!-- <div class="intro">
+      <h3>Don't know how? </h3>
 
-  <div>
+    </div> -->
+    
+    <div class="timerText">
+      <h3>Click Start Timer when ready. </h3>
+    </div>
     <TimerComp />
-  </div>
-
-  <label for="Heartbeat">Number of beats: </label>
-  <input v-model="bpm" 
-    type="number" 
-    class="Heartbeat" 
-    placeholder="*ba-dump*" 
-    step=1 
-    @input="checkBpm"
-  />
-
-  <br><br><br><br>
-
-  Don't want to do it? <br>
-  No problem too! Click the "Skip" button below to enter an estimation.
-
-  <br> <br>
-  <div class="routers">
-    <router-link to="/skip-bpm" class="skip">
-      Skip
-    </router-link>
 
     
-    <router-link 
-      to="/mood" 
-      @click="setUserBpm" 
-      class="toMood" 
-      :class="{ 'disabled': !this.isValidBpm }"
-    >
-      Next
-    </router-link>
+    <div class="userInput">
+      <div class="inputBox">
+        <label for="Heartbeat">Number of beats: </label>
+        <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1 @input="checkBpm" />
+      </div>
+      <div class="nextButton">
+        <router-link to="/mood" @click="setUserBpm" class="toMood" :class="{ 'disabled': !this.isValidBpm }">
+        Next
+        </router-link>
+      </div>
+      
+    </div>
 
-    <!-- <router-link
+    <div class="skipText">
+      <!-- <p>
+        Don't want to do it?
+        No problem! 
+      </p>
+      <p>Click the "Skip" button below to enter an estimation.</p> -->
+    </div>
+    <div class="routers">
+      <router-link to="/skip-bpm" class="skip">
+        Skip
+      </router-link>
+      <!-- <router-link
       to="/mood"
       v-slot="{href, navigate}"
     >
@@ -58,9 +58,11 @@
         Next
       </button>
     </router-link> -->
-    
+
+    </div>
   </div>
-    
+
+
 
 </template>
 
@@ -82,22 +84,22 @@ export default {
   },
   methods: {
     checkBpm() {
-      this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40) 
-    }, 
+      this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40)
+    },
     setUserBpm() {
-      if(this.isValidBpm) { 
+      if (this.isValidBpm) {
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
         console.log(this.bpm)
-      } 
+      }
     }
   },
-  beforeRouteLeave (to, from) {
-    if(to.name === 'mood') {
+  beforeRouteLeave(to, from) {
+    if (to.name === 'mood') {
       return this.isValidBpm
     } else {
       return true
     }
-    
+
   }
 
 }
@@ -106,96 +108,110 @@ export default {
 </script>
 
 <style scoped>
-  .intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.page {
+  position: relative;
+  top: 50px;
+}
+.intro {
+  align-items: center;
 
-  }
+}
 
-  .intro h3 {
-    display: flex;
-    margin-right: 15px;
-  }
+.instructions {
+  margin-bottom: 50px;
+}
 
-  .toHelp {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    background-color: rgb(13, 181, 103);
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: opacity 0.15s;
-  }
+.helpButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-  .toHelp:hover {
-    opacity: 0.8;
-  }
+.intro h3 {
+  display: flex;
+  margin-right: 15px;
+}
 
-  .timerButtons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.timerText {
+  margin-bottom: 50px;
+}
 
-  .reset,
-  .start,
-  .toMood, 
-  .skip {
-    display: flex;
-    border-width: 0;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: white;
-    transition: opacity 0.15s;
-  }
+.toHelp {
+  max-width: 50px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  background-color: rgb(13, 181, 103);
+  padding: 10px 15px;
+  border-radius: 30px;
+  transition: opacity 0.15s;
+}
 
-  .reset:hover, 
-  .start:hover {
-    opacity: 0.6;
-  }
+.toHelp:hover {
+  opacity: 0.8;
+}
 
-  .reset {
-    margin-right: 10px;
-    background-color: red;
-  }
+.timerButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .start {
-    background-color: green;
-  }
+.userInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  margin-top: 25px;
+}
 
-  .routers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    
-  }
-  .toMood,
-  .skip {
-    color: white;
-    text-decoration: none;
-    margin: 5px;
-  }
-
-  .toMood {
-    background-color: blue;
-  }
-
-  .disabled {
-    cursor: not-allowed;
-    opacity: 0.2;
-  }
-
-  .skip {
-    background-color: grey;
-  }
-
-  .canPress {
-    opacity: 0.2;
-    cursor: not-allowed;
-  }
+.inputBox {
+  padding: 10px;
+}
 
 
+.toMood,
+.skip {
+  display: flex;
+  border-width: 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  transition: opacity 0.15s;
+}
+
+
+.routers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.toMood,
+.skip {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.toMood {
+  background-color: blue;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.skip {
+  background-color: grey;
+}
+
+.canPress {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
 </style>
 
