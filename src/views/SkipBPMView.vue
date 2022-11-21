@@ -51,9 +51,19 @@ export default {
   },
   methods: {
     setBpm() {
-      this.emitter.emit('user-bpm', this.bpm)
-      console.log(this.bpm)
+      if (this.isValidBpm) {
+        this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
+        console.log(this.bpm)
+      }
     }
+  },
+  beforeRouteLeave(to, from) {
+    if (to.name === 'mood') {
+      return this.isValidBpm
+    } else {
+      return true
+    }
+
   }
 }
 
