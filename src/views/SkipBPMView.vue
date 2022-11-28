@@ -17,8 +17,9 @@
     <select 
     v-model="bpm"
     class="Heartbeat"
-    @input="checkBpm()"
+    @click="checkBpm()" 
     >
+    <!-- ^not the greatest way to do this -->
     <option value="" selected disabled>Select an Option</option>
     <option value=55>Normal</option>
     <option value=85>Raised</option>
@@ -53,7 +54,8 @@ export default {
   },
   methods: {
     checkBpm() {
-      this.isValidBpm = (this.bpm !== null && this.bpm >= 55 && this.bpm <= 110)
+      this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
+      console.log(this.isValidBpm)
     },
     setBpm() {
       if (this.isValidBpm) {
