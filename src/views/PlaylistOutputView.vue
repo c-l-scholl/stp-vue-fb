@@ -33,11 +33,12 @@ export default {
   },
   components: { SongDisplayComp },
   methods: {
-      //filter by bpm
+      //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
       console.log('user bpm: ' + this.bpm)
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
+    //filter songs by relevant metrics for step 2
     filterByMood(song) {
       console.log('current mood: ' + this.mood)
       switch(this.mood) {
@@ -61,6 +62,7 @@ export default {
           console.log('The current mood ' + this.mood+ ' is not available yet')
       }
     },
+    //song retrieval 
     getSongsFromFB() { 
       this.songs = []
       const dbRef = ref(db, 'songs/')
@@ -74,6 +76,7 @@ export default {
         this.randomizeSongList()
       })
     },
+    //random selection of top 5
     randomizeSongList() { 
       this.randomSongs = []
       const totalNumSongs = this.songs.length
