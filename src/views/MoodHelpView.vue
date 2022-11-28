@@ -2,7 +2,7 @@
   <div class="page">
     <h1>Mood Help</h1>
     <p>
-      Below are more detailed descriptions of our limited list of moods. <br>
+      Below are more detailed descriptions of our list of moods. <br>
       <br>
       1. Calm -- not showing any emotions <br>
       2. Happy -- feeling or showing pleasure or contentment <br>
