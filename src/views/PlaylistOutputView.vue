@@ -13,15 +13,12 @@
       </router-link>
     </div>
   </div>
-  
-  
 </template>
 
 <script>
 import { db } from '../firebase/firebase.js'
 import { ref, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
-
 
 export default {
   data() {
@@ -33,11 +30,9 @@ export default {
       randomSongs: [],
       numRandomSongs: 5
     }
-    
   },
   components: { SongDisplayComp },
   methods: {
-    
       //filter by bpm
     filterByBpm(tempo) {
       console.log('user bpm: ' + this.bpm)
@@ -74,12 +69,10 @@ export default {
           const songData = childSnapshot.val()
           if(this.filterByBpm(songData.tempo) && this.filterByMood(songData)) {
             this.songs.push(songData)
-          }
-          
+          } 
         })
         this.randomizeSongList()
       })
-      
     },
     randomizeSongList() { 
       this.randomSongs = []
@@ -91,39 +84,17 @@ export default {
         }
       }
     }
-    
   },
-  
   mounted() {
     // uses vuex to get data from other views
     this.bpm = this.$store.state.bpm
     this.mood = this.$store.state.mood
-
     this.getSongsFromFB()
-
-
-    
-
-    // for testing purposes, get songs from json
-    // fetch('http://localhost:3000/songs')
-    //   .then((res) => res.json())
-    //   .then(data => {
-    //     data.forEach((song) => {
-    //       if(this.filterByBpm(song.tempo) && this.filterByMood(song)) {
-    //         this.songs.push(song)
-    //       }
-    //     })
-    //   })
-    //   .catch(err => console.log(err.message))
-    
-    
   },
-  
 }
 </script>
 
 <style scoped>
-
 .page {
   position: relative;
   top: 50px;
@@ -152,6 +123,7 @@ export default {
   padding: 30px;
   border-radius: 5px;
 }
+
 .btn {
   display: inline-block;
   background: #000;
@@ -165,12 +137,15 @@ export default {
   font-size: 15px;
   font-family: inherit;
 }
+
 .btn:focus {
   outline: none;
 }
+
 .btn:active {
   transform: scale(0.98);
 }
+
 .btn-block {
   display: block;
   width: 100%;
