@@ -28,8 +28,8 @@
 
     <div class="userInput">
       <div class="inputBox">
-        <label for="Heartbeat">Number of beats: </label>
-        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="*ba-dump*" step=1 @input="checkBpm" />
+        <!-- <label for="Heartbeat" class="beats-label">Number of beats: </label> -->
+        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1 @input="checkBpm" />
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
 
@@ -176,6 +176,9 @@ export default {
   font-size: large;
 }
 
+.beats-label {
+  font-size: large;
+}
 .userInput {
   display: flex;
   align-items: center;
