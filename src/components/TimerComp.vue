@@ -1,9 +1,10 @@
 <template>
 
   
-  <div class="timer">
-    <span v-if="timerEnabled">
-      {{ timerCount }}
+  <div class="timer"> 
+    <span v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
+      {{ timerCount }} 
+
     </span>
   </div>
   
@@ -23,8 +24,8 @@
 export default {
   data() {
     return {
-      timerEnabled: false,
-      timerCount: 15,
+      timerEnabled: false, //boolean to conditionally show
+      timerCount: 15, //15 seconds long
     }
   },
   components: {
@@ -32,7 +33,7 @@ export default {
   },
   watch: {
     timerEnabled(value) {
-      if (value) {
+      if (value) { //if timer has time left, count down
         setTimeout(() => {
           this.timerCount--;
         }, 1000);
@@ -52,14 +53,14 @@ export default {
   },
   methods: {
     play() {
-      this.timerEnabled = true;
+      this.timerEnabled = true; 
     },
     //pause() {
       //this.timerEnabled = false;
     //},
     restart() {
-      this.timerEnabled = false;
-      this.timerCount = 15;
+      this.timerEnabled = false; //this hides the timer again
+      this.timerCount = 15; //wipes timer, resets to 15 seconds
     },
   }
 }
