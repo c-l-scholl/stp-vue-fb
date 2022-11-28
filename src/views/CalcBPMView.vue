@@ -17,7 +17,7 @@
     </div>
     <!-- <div class="intro">
       <h3>Don't know how? </h3>
-
+      
     </div> -->
 
     <div class="timerText">
