@@ -17,6 +17,7 @@
     <select 
     v-model="bpm"
     class="Heartbeat"
+    @input="checkBpm()"
     >
     <option value="" selected disabled>Select an Option</option>
     <option value=55>Normal</option>
@@ -47,9 +48,13 @@ export default {
   data() {
     return {
       bpm: null,
+      isValidBpm: false
     }
   },
   methods: {
+    checkBpm() {
+      this.isValidBpm = (this.bpm !== null && this.bpm >= 55 && this.bpm <= 110)
+    },
     setBpm() {
       if (this.isValidBpm) {
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
