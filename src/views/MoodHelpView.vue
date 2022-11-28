@@ -14,14 +14,10 @@
       8. Heartbroken -- suffering from overwhelming distress <br>
     </p>
 
-
     <router-link to="/mood" class="back">
       Back
     </router-link>
   </div>
-
-
-
 </template>
       
 <script>
@@ -35,6 +31,7 @@ export default {
   position: relative;
   top: 50px;
 }
+
 .back {
   background-color: rgb(10, 97, 190);
   color: white;

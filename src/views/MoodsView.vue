@@ -14,8 +14,9 @@
       For a detailed description of the moods, please click the ? above.
     </p>
 
+    <!--sets possible values for mood drop down -->
     <select name="Mood" id="Mood" class="mood" value="" v-model="mood" @click="checkMood()">
-      <option value="" selected disabled> Select an Option</option>
+      <option value="" selected disabled > Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>
       <option value="Nervous">Nervous</option>
@@ -31,6 +32,7 @@
         :class="{ 'disabled': !this.isValidMood }">
         Next
       </router-link>
+      <!-- Next button created, disabled until a mood is selected -->
     </div>
   </div>
 </template>
@@ -42,20 +44,19 @@ export default {
 
   data() {
     return {
-      mood: null,
-      isValidMood: false,
-      fromRouterName: null
+      mood: null, //mood starts as empty
+      isValidMood: false //starts as not valid entry to lock next button
     }
   },
   components: { BackButtonComp },
   methods: {
     checkMood() {
-      this.isValidMood = (this.mood !== null)
+      this.isValidMood = (this.mood !== null) //is the mood a valid selection from our list?
     },
     setMood() {
       if (this.isValidMood) {
         console.log(this.mood)
-        this.$store.commit('setMood', this.mood)
+        this.$store.commit('setMood', this.mood) //if so, log to console and save input for algorithm
       }
     },
   },

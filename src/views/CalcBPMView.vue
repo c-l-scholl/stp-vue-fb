@@ -31,11 +31,14 @@
         <label for="Heartbeat">Number of beats: </label>
         <input v-model="bpm" type="number" class="heartbeat-input" placeholder="*ba-dump*" step=1 @input="checkBpm" />
       </div>
+      <!-- creates input entry box, checking input against method below, looking for valid entry -->
+
       <div class="nextButton">
         <router-link to="/mood" @click="setUserBpm" class="toMood" :class="{ 'disabled': !this.isValidBpm }">
           Next
         </router-link>
       </div>
+      <!-- Button disabled if no entry or not in valid range-->
 
     </div>
 
@@ -67,26 +70,27 @@
 </template>
 
 <script>
-import TimerComp from '../components/TimerComp.vue'
+import TimerComp from '../components/TimerComp.vue' 
+//pulls in text based timer created in separate vue 
 
 
 //https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
 export default {
   data() {
     return {
-      bpm: null,
-      bpmMultiplier: 4,
-      isValidBpm: false
+      bpm: null, //sets bpm entry as empty from start
+      bpmMultiplier: 4, //because 15 second timer, standardizes input to beats per minute
+      isValidBpm: false //boolean watcher set to ensure next button starts as disabled
     }
   },
   components: {
     TimerComp
   },
   methods: {
-    checkBpm() {
+    checkBpm() { //is bpm in valid human range and is it an entered value?
       this.isValidBpm = (this.bpm !== null && this.bpm >= 5 && this.bpm <= 40)
     },
-    setUserBpm() {
+    setUserBpm() { //stores valid input as the user bpm and logs to save
       if (this.isValidBpm) {
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
         console.log(this.bpm)

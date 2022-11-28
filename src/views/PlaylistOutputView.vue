@@ -14,15 +14,12 @@
       </router-link>
     </div>
   </div>
-  
-  
 </template>
 
 <script>
 import { db } from '../firebase/firebase.js'
 import { ref, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
-
 
 export default {
   data() {
@@ -35,16 +32,15 @@ export default {
       numRandomSongs: 5,
       loading: true
     }
-    
   },
   components: { SongDisplayComp },
   methods: {
-    
-      //filter by bpm
+      //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
       console.log('user bpm: ' + this.bpm)
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
+    //filter songs by relevant metrics for step 2
     filterByMood(song) {
       console.log('current mood: ' + this.mood)
       switch(this.mood) {
@@ -68,6 +64,7 @@ export default {
           console.log('The current mood ' + this.mood+ ' is not available yet')
       }
     },
+    //song retrieval 
     getSongsFromFB() { 
       this.songs = []
       const dbRef = ref(db, 'songs/')
@@ -76,13 +73,12 @@ export default {
           const songData = childSnapshot.val()
           if(this.filterByBpm(songData.tempo) && this.filterByMood(songData)) {
             this.songs.push(songData)
-          }
-          
+          } 
         })
         this.randomizeSongList()
       })
-      
     },
+    //random selection of top 5
     randomizeSongList() { 
       this.randomSongs = []
       const totalNumSongs = this.songs.length
@@ -94,39 +90,17 @@ export default {
       }
       this.loading = false
     }
-    
   },
-  
   mounted() {
     // uses vuex to get data from other views
     this.bpm = this.$store.state.bpm
     this.mood = this.$store.state.mood
-
     this.getSongsFromFB()
-
-
-    
-
-    // for testing purposes, get songs from json
-    // fetch('http://localhost:3000/songs')
-    //   .then((res) => res.json())
-    //   .then(data => {
-    //     data.forEach((song) => {
-    //       if(this.filterByBpm(song.tempo) && this.filterByMood(song)) {
-    //         this.songs.push(song)
-    //       }
-    //     })
-    //   })
-    //   .catch(err => console.log(err.message))
-    
-    
   },
-  
 }
 </script>
 
 <style scoped>
-
 .page {
   position: relative;
   top: 50px;
@@ -155,6 +129,7 @@ export default {
   padding: 30px;
   border-radius: 5px;
 }
+
 .btn {
   display: inline-block;
   background: #000;
@@ -168,12 +143,15 @@ export default {
   font-size: 15px;
   font-family: inherit;
 }
+
 .btn:focus {
   outline: none;
 }
+
 .btn:active {
   transform: scale(0.98);
 }
+
 .btn-block {
   display: block;
   width: 100%;

@@ -8,7 +8,7 @@ const app = createApp(App);
 const store = createStore({
 	state() {
 		return {
-			bpm: null,
+			bpm: null, 
 			mood: null,
 		};
 	},
