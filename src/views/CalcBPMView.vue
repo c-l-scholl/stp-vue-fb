@@ -29,7 +29,7 @@
     <div class="userInput">
       <div class="inputBox">
         <label for="Heartbeat">Number of beats: </label>
-        <input v-model="bpm" type="number" class="Heartbeat" placeholder="*ba-dump*" step=1 @input="checkBpm" />
+        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="*ba-dump*" step=1 @input="checkBpm" />
       </div>
       <div class="nextButton">
         <router-link to="/mood" @click="setUserBpm" class="toMood" :class="{ 'disabled': !this.isValidBpm }">
@@ -95,9 +95,9 @@ export default {
   },
   beforeRouteLeave(to, from) {
     if (to.name === 'mood') {
-      return this.isValidBpm
+      return (this.isValidBpm)
     } else {
-      return true
+      return (true)
     }
 
   }
@@ -156,6 +156,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.heartbeat-input {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #eee;
+  box-shadow: 10px 10px 0 0 rgba(black, .03);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: large;
 }
 
 .userInput {

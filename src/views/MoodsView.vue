@@ -1,14 +1,12 @@
 <template>
   <div class="intro">
-      <router-link to="/calc-bpm" class="backCalc">
-        Back
-      </router-link>
-      <router-link to="/mood-help" class="toMoodHelp">
-        ?
-      </router-link>
-    </div>
+    <BackButtonComp />
+    <router-link to="/mood-help" class="to-mood-help">
+      ?
+    </router-link>
+  </div>
   <div class="page">
-    
+
 
     <h1>Step 2: Your Mood</h1>
     <p>
@@ -16,8 +14,8 @@
       For a detailed description of the moods, please click the ? above.
     </p>
 
-    <select name="Mood" id="Mood" class="mood" value="" v-model="mood">
-      <option value="" selected disabled > Select an Option</option>
+    <select name="Mood" id="Mood" class="mood" value="" v-model="mood" @click="checkMood()">
+      <option value="" selected disabled> Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>
       <option value="Nervous">Nervous</option>
@@ -28,11 +26,8 @@
       <option value="Heartbroken">Heartbroken</option>
     </select>
     <br>
-    <div class="moodRouters">
-      <button type="reset" value="Reset" class="moodReset">
-        Reset
-      </button>
-      <router-link to="/playlist-output" @click="setMood()" class="toPlaylist"
+    <div class="mood-routers">
+      <router-link to="/playlist-output" @click="setMood()" class="to-playlist"
         :class="{ 'disabled': !this.isValidMood }">
         Next
       </router-link>
@@ -41,15 +36,18 @@
 </template>
 
 <script>
+import BackButtonComp from '../components/BackButtonComp.vue'
 
 export default {
-  name: "MoodsView",
+
   data() {
     return {
       mood: null,
-      isValidMood: false
+      isValidMood: false,
+      fromRouterName: null
     }
   },
+  components: { BackButtonComp },
   methods: {
     checkMood() {
       this.isValidMood = (this.mood !== null)
@@ -63,15 +61,11 @@ export default {
   },
   beforeRouteLeave(to, from) {
     if (to.name === 'playlist-output') {
-      return this.isValidMood
-    } else {
-      return true
-    }
+      return (this.isValidMood)
+    } 
+    return (true)
   },
-  updated() {
-    this.isValidMood = (this.mood !== null)
-  }
-
+  
 }
 </script>
 
@@ -79,7 +73,8 @@ export default {
 .page {
   top: 50px;
 }
-.moodRouters {
+
+.mood-routers {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,10 +88,8 @@ export default {
   justify-content: space-between;
 }
 
-.backCalc,
-.toMoodHelp,
-.toPlaylist,
-.moodReset {
+.to-mood-help,
+.to-playlist{
   display: flex;
   border-width: 0;
   margin: 5px;
@@ -107,22 +100,16 @@ export default {
   text-decoration: none;
 }
 
-.backCalc,
-.toPlaylist {
+.to-playlist {
   background-color: rgb(10, 97, 190);
 }
 
-.toMoodHelp {
+.to-mood-help {
   background-color: rgb(13, 181, 103);
   border-radius: 50px;
 }
 
-.moodReset {
-  background-color: grey;
-}
-
-.backCalc:hover,
-.toMoodHelp:hover {
+.to-mood-help:hover {
   opacity: 0.8;
 }
 

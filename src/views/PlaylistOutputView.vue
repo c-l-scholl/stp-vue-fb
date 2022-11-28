@@ -5,6 +5,7 @@
       Your Playlist is below!
     </p>
     <div class="container">
+      <p v-if="loading">Loading Songs...</p>
       <SongDisplayComp :songs="randomSongs"/>
     </div>
     <div class="toHome">
@@ -31,7 +32,8 @@ export default {
       mood: null,  
       hasUserData: false,
       randomSongs: [],
-      numRandomSongs: 5
+      numRandomSongs: 5,
+      loading: true
     }
     
   },
@@ -90,6 +92,7 @@ export default {
           this.randomSongs.push(randomSong)
         }
       }
+      this.loading = false
     }
     
   },

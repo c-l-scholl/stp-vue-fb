@@ -1,8 +1,6 @@
 <template>
     <div class="intro">
-      <router-link to="/calc-bpm" class="backCalc">
-        Back
-      </router-link>
+      <BackButtonComp />
     </div>
     
     <h1>Step 1: Your Estimated Heartbeat</h1>
@@ -25,16 +23,8 @@
     <option value=85>Raised</option>
     <option value=110>High</option>
   </select>
-  <div class="skipRouters">
-    <!-- <form action="">
-        <button type="reset" value = "Reset">
-          Reset
-        </button>
-    </form> -->
-    <button type="reset" value = "Reset" class="skipReset">
-      Reset
-    </button>
-    <router-link to="/mood" @click="setBpm()" class="toMoodSkip">
+  <div class="skip-routers">
+    <router-link to="/mood" @click="setBpm()" class="to-mood-skip">
       Next
     </router-link>
   </div>
@@ -44,6 +34,7 @@
 </template>
 
 <script>
+import BackButtonComp from '@/components/BackButtonComp.vue'
 
 export default {
   data() {
@@ -52,6 +43,7 @@ export default {
       isValidBpm: false
     }
   },
+  components: { BackButtonComp },
   methods: {
     checkBpm() {
       this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
@@ -76,7 +68,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .intro {
     display: flex;
     justify-content: center;
@@ -84,9 +76,7 @@ export default {
     padding: 10px 15px;
   }
 
-  .backCalc,
-  .skipReset,
-  .toMoodSkip {
+  .to-mood-skip {
     display: flex;
     border-width: 0;
     margin: 5px;
@@ -111,20 +101,15 @@ export default {
     font-size: large;
   }
 
-  .skipRouters {
+  .skip-routers {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 15px;
   }
 
-  .backCalc,
-  .toMoodSkip {
+  .to-mood-skip {
     background-color: rgb(10, 97, 190);
-  }
-
-  .skipReset {
-    background-color: grey;
   }
 
 </style>

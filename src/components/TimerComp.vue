@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
   .timer {
     margin-bottom: 45px;

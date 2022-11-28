@@ -14,18 +14,17 @@
 
 
     </p>
-
-    <router-link to="/" class="back">
-      Back
-    </router-link>
+    <BackButtonComp/>
   </div>
 
 
 </template>
       
 <script>
-export default {
+import BackButtonComp from '@/components/BackButtonComp.vue';
 
+export default {
+  components: { BackButtonComp }
 }
 </script>
   
