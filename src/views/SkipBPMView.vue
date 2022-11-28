@@ -20,6 +20,7 @@
     @click="checkBpm()" 
     >
     <!-- ^not the greatest way to do this -->
+    <!-- Assigning bpm values to categorical selections to use check bpm again -->
     <option value="" selected disabled>Select an Option</option>
     <option value=55>Normal</option>
     <option value=85>Raised</option>
@@ -48,19 +49,19 @@
 export default {
   data() {
     return {
-      bpm: null,
-      isValidBpm: false
+      bpm: null, //bpm starts as empty
+      isValidBpm: false //bpm starts as not valid to lock next button
     }
   },
   methods: {
     checkBpm() {
       this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
-      console.log(this.isValidBpm)
+      console.log(this.isValidBpm) //if valid, log to console and save for algorithim 
     },
     setBpm() {
       if (this.isValidBpm) {
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
-        console.log(this.bpm)
+        console.log(this.bpm) //if valid, log selection to console and save for algorithim
       }
     }
   },
