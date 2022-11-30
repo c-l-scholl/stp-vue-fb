@@ -4,12 +4,6 @@
   </button>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
   .go-back {
     border-width: 0;
