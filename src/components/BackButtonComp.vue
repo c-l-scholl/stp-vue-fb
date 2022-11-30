@@ -24,4 +24,6 @@ export default {
   .go-back:hover {
     opacity: 0.8;
   }
+
+  
 </style>

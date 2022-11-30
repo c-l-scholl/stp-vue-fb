@@ -25,13 +25,11 @@
     <option value=110>High</option>
   </select>
   <div class="skip-routers">
-    <router-link to="/mood" @click="setBpm()" class="to-mood-skip">
+    <router-link to="/mood" @click="setBpm()" class="to-mood-skip" :class="{ 'disabled': !this.isValidBpm }">
       Next
     </router-link>
   </div>
 
-  
-  
 </template>
 
 <script>
@@ -47,7 +45,7 @@ export default {
   components: { BackButtonComp },
   methods: {
     checkBpm() {
-      this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
+      this.isValidBpm = ( this.bpm >= 55 && this.bpm <= 110 ) 
       console.log(this.isValidBpm) //if valid, log to console and save for algorithim 
     },
     setBpm() {
@@ -111,6 +109,11 @@ export default {
 
   .to-mood-skip {
     background-color: rgb(10, 97, 190);
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
   }
 
 </style>
