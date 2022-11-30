@@ -1,11 +1,13 @@
 # stp-vue-fb
-## REMEBER TO UNINSTALL JSON-SERVER
+## REMEMBER TO UNINSTALL JSON-SERVER
 ## Project setup
+First: 
 ```
 npm install
 ```
 
 ## Other installations
+Next: 
 ```
 npm install vuex@next --save
 
