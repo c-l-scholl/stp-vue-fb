@@ -84,7 +84,7 @@ export default {
     height: 40px;
     border-radius: 8px;
     background: white;
-    border: 1px solid #eee;
+    border: 1px solid white;
     box-shadow: 10px 10px 0 0 rgba(black,.03);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
