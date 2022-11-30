@@ -22,7 +22,6 @@
   
 <style scoped>
   .modal {
-    width: 400px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;

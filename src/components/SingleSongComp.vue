@@ -14,6 +14,8 @@
     </div>
     <ModalComp @close="toggleModal()" v-show="showModal" class="modal">
       <h3>Song Details:</h3>
+      <p>Song Title: {{ song.track_name }}</p>
+      <p>|</p>
       <p>Duration: {{ songDuration }}</p>
       <p>|</p>
       <p>Tempo: {{ roundedTempo }}</p>
@@ -132,8 +134,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 150px;
-  margin-right: 100px;
   padding: 5px;
 }
 
