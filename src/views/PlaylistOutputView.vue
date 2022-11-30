@@ -8,8 +8,8 @@
       <p v-if="loading">Loading Songs...</p>
       <SongDisplayComp :songs="randomSongs"/>
     </div>
-    <div class="toHome">
-      <router-link to="/" class="homeButton">
+    <div class="to-home">
+      <router-link to="/" class="home-button">
         Home
       </router-link>
     </div>
@@ -104,7 +104,7 @@ export default {
   position: relative;
   top: 50px;
 }
-.homeButton {
+.home-button {
   text-decoration: none;
   color: white;
   background-color: rgb(26, 169, 216);
@@ -113,7 +113,7 @@ export default {
   border-radius: 5px;
   transition: opacity 0.15s;
 }
-.homeButton:hover{
+.home-button:hover{
   opacity: 0.8;
 }
 .container {
