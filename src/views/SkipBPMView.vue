@@ -1,16 +1,15 @@
 <template>
-    <div class="intro">
-      <BackButtonComp />
-    </div>
-    <h1>Step 1: Your Estimated Heartbeat</h1>
-        <p>From the drop down, select your estimated state. <br> <br>
-
-        Heart Rate Categories: <br> <br>
-        Normal ==> You are relaxed, most likely seated or laying down<br>
-        Raised ==> You are moving, doing some light activity like walking, not in a relaxed state <br>
-        High ==> Your heart is beating hard and fast. You might be exercising or stressed <br>
+  <div class="intro">
+    <BackButtonComp />
+  </div>
+  <h1>Step 1: Your Estimated Heartbeat</h1>
+    <p>From the drop down, select your estimated state. <br> <br>
+    Heart Rate Categories: <br> <br>
+    Normal ==> You are relaxed, most likely seated or laying down<br>
+    Raised ==> You are moving, doing some light activity like walking, not in a relaxed state <br>
+    High ==> Your heart is beating hard and fast. You might be exercising or stressed <br>
     </p>
-    <select 
+  <select 
     v-model="bpm"
     class="heartbeat"
     @click="checkBpm()" 
@@ -30,35 +29,35 @@
 </template>
 
 <script>
-import BackButtonComp from '@/components/BackButtonComp.vue'
-export default {
-  data() {
-    return {
-      bpm: null, //bpm starts as empty
-      isValidBpm: false //bpm starts as not valid to lock next button
-    }
-  },
-  components: { BackButtonComp },
-  methods: {
-    checkBpm() {
-      this.isValidBpm = ( this.bpm >= 55 && this.bpm <= 110 ) 
-      console.log(this.isValidBpm) //if valid, log to console and save for algorithim 
+  import BackButtonComp from '@/components/BackButtonComp.vue'
+  export default {
+    data() {
+      return {
+        bpm: null, //bpm starts as empty
+        isValidBpm: false //bpm starts as not valid to lock next button
+      }
     },
-    setBpm() {
-      if (this.isValidBpm) {
-        this.$store.commit('setBpm', this.bpm)
-        console.log(this.bpm) //if valid, log selection to console and save for algorithim
+    components: { BackButtonComp },
+    methods: {
+      checkBpm() {
+        this.isValidBpm = ( this.bpm >= 55 && this.bpm <= 110 ) 
+        console.log(this.isValidBpm) //if valid, log to console and save for algorithim 
+      },
+      setBpm() {
+        if (this.isValidBpm) {
+          this.$store.commit('setBpm', this.bpm)
+          console.log(this.bpm) //if valid, log selection to console and save for algorithim
+        }
+      }
+    },
+    beforeRouteLeave(to, from) {
+      if (to.name === 'mood') {
+        return this.isValidBpm
+      } else {
+        return true
       }
     }
-  },
-  beforeRouteLeave(to, from) {
-    if (to.name === 'mood') {
-      return this.isValidBpm
-    } else {
-      return true
-    }
   }
-}
 </script>
 
 <style scoped>
