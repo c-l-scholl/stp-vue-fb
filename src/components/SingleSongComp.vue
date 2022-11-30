@@ -121,8 +121,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 150px;
-    margin-right: 100px;
     padding: 5px;
   }
 
