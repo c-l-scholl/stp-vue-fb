@@ -5,7 +5,7 @@
     </span>
   </div>
   
-  <div class="timerButtons">
+  <div class="timer-buttons">
     <button type="button" @click="restart()" class="reset">
       Reset Timer
     </button>
@@ -63,7 +63,7 @@ export default {
     font-size: 75px;
     font-weight: bold;
   }
-  .timerButtons {
+  .timer-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
