@@ -47,12 +47,12 @@ export default {
   },
   methods: {
     play() {
-      this.timerEnabled = true; 
+      setTimeout(() => this.timerEnabled = true, 1000);
     },
     restart() {
       this.timerEnabled = false; //this hides the timer again
       this.timerCount = 15; //wipes timer, resets to 15 seconds
-    },
+    }
   }
 }
 </script>
