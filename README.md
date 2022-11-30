@@ -26,3 +26,6 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Vue Syntax and Help
+See [Creating a Vue Application](https://vuejs.org/guide/essentials/application.html).
