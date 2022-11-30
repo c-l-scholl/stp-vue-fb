@@ -6,8 +6,6 @@
     </router-link>
   </div>
   <div class="page">
-
-
     <h1>Step 2: Your Mood</h1>
     <p>
       Pick your current or desired mood. <br>
@@ -39,9 +37,7 @@
 
 <script>
 import BackButtonComp from '../components/BackButtonComp.vue'
-
 export default {
-
   data() {
     return {
       mood: null, //mood starts as empty
@@ -66,7 +62,6 @@ export default {
     } 
     return (true)
   },
-  
 }
 </script>
 
@@ -74,21 +69,18 @@ export default {
 .page {
   top: 50px;
 }
-
 .mood-routers {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
 }
-
 .intro {
   margin: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .to-mood-help,
 .to-playlist{
   display: flex;
@@ -100,20 +92,16 @@ export default {
   transition: opacity 0.15s;
   text-decoration: none;
 }
-
 .to-playlist {
   background-color: rgb(10, 97, 190);
 }
-
 .to-mood-help {
   background-color: rgb(13, 181, 103);
   border-radius: 50px;
 }
-
 .to-mood-help:hover {
   opacity: 0.8;
 }
-
 .mood {
   position: relative;
   width: 200px;
@@ -127,7 +115,6 @@ export default {
   text-align: center;
   font-size: large;
 }
-
 .disabled {
   cursor: not-allowed;
   opacity: 0.2;
