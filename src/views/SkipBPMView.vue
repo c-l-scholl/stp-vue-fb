@@ -50,7 +50,7 @@ export default {
     },
     setBpm() {
       if (this.isValidBpm) {
-        this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
+        this.$store.commit('setBpm', this.bpm)
         console.log(this.bpm) //if valid, log selection to console and save for algorithim
       }
     }
