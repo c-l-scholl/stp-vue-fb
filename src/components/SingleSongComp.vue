@@ -58,15 +58,13 @@
     created() {
       this.roundedTempo = Math.floor(this.song.tempo) + " bpm"
       this.getDurationInMinutes()
-      
+
       if (this.maxSongNameLength < this.song.track_name.length) {
         this.truncateText()
       } else {
         this.truncatedSongName = this.song.track_name
       }
-      
-    },
-
+    }
   }
 </script>
   
