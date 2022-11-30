@@ -20,13 +20,10 @@
       <p>Tempo: {{ roundedTempo }}</p>
     </ModalComp>
   </div>
-    
-    
   </template>
   
   <script>
   import ModalComp from './ModalComp.vue'
-
   export default {
     data() {
       return {
@@ -51,7 +48,6 @@
         this.songDuration += seconds
       },
     },
-
     created() {
       this.roundedTempo = Math.floor(this.song.tempo) + " bpm"
       this.getDurationInMinutes()
@@ -70,21 +66,17 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .song:hover {
       background: #dfdede;
       border: 3px solid green;
     }
-
     .song:active {
       background: #d6d6d6;
       box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.15);
     }
-
     .songName {
       display: flex;
     }
-
     .songName p {
       font-size: 20px;
     }
@@ -92,31 +84,26 @@
       display: flex;
 
     }
-
     .titleAndArtist {
       display: flex;
       align-items: center;
     }
-
     .songName,
     .artistName {
       display: flex;
     }
-
     .songName p {
       font-size: 25px;
       font-weight: bold;
       color: black;
       padding-right: 10px;
     }
-
     .button {
       border-radius: 13px;
       border-width: 0px;
       height: 25px;
       width: 25px;
       font-weight: bold;
-
     }
     .modal {
       display: flex;
@@ -126,20 +113,15 @@
       margin-right: 100px;
       padding: 5px;
     }
-
     .modal h3 {
       font-size: 20px;
     }
-
     .modal p {
       color: black;
     }
-
     .modal h3,
     .modal p {
       display: flex;
       padding: 5px;
     }
-
-
     </style>

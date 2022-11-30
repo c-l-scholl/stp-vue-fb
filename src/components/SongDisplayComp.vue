@@ -4,16 +4,12 @@
       <SingleSongComp 
         :song="song">
       </SingleSongComp>
-
     </div>
   </div>
-
 </template>
   
 <script>
 import SingleSongComp from './SingleSongComp.vue'
-
-
 export default {
   data() {
     return {
