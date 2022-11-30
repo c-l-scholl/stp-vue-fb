@@ -90,21 +90,17 @@ export default {
   position: relative;
   top: 50px;
 }
-
 .instructions {
   margin-bottom: 50px;
 }
-
 .help-button {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-
 .timer-text {
   margin-bottom: 50px;
 }
-
 .to-help {
   max-width: 50px;
   text-decoration: none;
@@ -115,11 +111,9 @@ export default {
   border-radius: 30px;
   transition: opacity 0.15s;
 }
-
 .to-help:hover {
   opacity: 0.8;
 }
-
 .heartbeat-input {
   position: relative;
   width: 200px;
@@ -133,7 +127,6 @@ export default {
   text-align: center;
   font-size: large;
 }
-
 .user-input {
   display: flex;
   align-items: center;
@@ -141,11 +134,9 @@ export default {
   margin-bottom: 100px;
   margin-top: 25px;
 }
-
 .input-box {
   padding: 10px;
 }
-
 .to-mood,
 .skip {
   display: flex;
@@ -163,7 +154,6 @@ export default {
   align-items: center;
   padding: 10px;
 }
-
 .to-mood {
   background-color: blue;
 }
@@ -174,7 +164,6 @@ export default {
 .skip {
   background-color: grey;
 }
-
 .can-press {
   opacity: 0.2;
   cursor: not-allowed;
