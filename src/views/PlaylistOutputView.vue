@@ -9,7 +9,7 @@
       <SongDisplayComp :songs="randomSongs"/>
     </div>
     <div class="toHome">
-      <router-link to="/" class="homeButton">
+      <router-link to="/" class="home-button">
         Home
       </router-link>
     </div>
@@ -37,12 +37,10 @@ export default {
   methods: {
       //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
-      console.log('user bpm: ' + this.bpm)
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
     //filter songs by relevant metrics for step 2
     filterByMood(song) {
-      console.log('current mood: ' + this.mood)
       switch(this.mood) {
         case 'Happy':
           return song.danceability >= 0.5 && song.energy >= 0.5 && song.valence >= 0.3
@@ -106,7 +104,7 @@ export default {
   top: 50px;
 }
 
-.homeButton {
+.home-button {
   text-decoration: none;
   color: white;
   background-color: rgb(26, 169, 216);
@@ -116,7 +114,7 @@ export default {
   transition: opacity 0.15s;
 }
 
-.homeButton:hover{
+.home-button:hover{
   opacity: 0.8;
 }
 

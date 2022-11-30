@@ -33,12 +33,12 @@
       border-radius: 10px;
     }
   
-    .backdrop {
+    /* .backdrop {
       position: relative;
       background-color: rgba(0, 0, 0, 0.5);
       width: 100%;
       height: 100%;
-    }
+    } */
   
     .modal h3 {
       color: #03cfb4;
@@ -47,7 +47,7 @@
     }
 
   
-    .modal .actions {
+    /* .modal .actions {
       text-align: center;
       margin: 30px 0 10px 0;
       
@@ -60,6 +60,6 @@
       border-radius: 4px;
       text-decoration: none;
       margin: 10px;
-    }
+    } */
   
   </style>
