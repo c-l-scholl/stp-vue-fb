@@ -12,7 +12,7 @@
     </p>
     <select 
     v-model="bpm"
-    class="Heartbeat"
+    class="heartbeat"
     @click="checkBpm()" 
     >
     <!-- ^not the greatest way to do this -->
@@ -78,7 +78,7 @@ export default {
     transition: opacity 0.15s;
     text-decoration: none;
   }
-  .Heartbeat{
+  .heartbeat{
     position: relative;
     width: 200px;
     height: 40px;
