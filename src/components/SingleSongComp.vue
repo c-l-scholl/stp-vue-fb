@@ -12,7 +12,7 @@
         </div>
       </div>  
     </div>
-    <ModalComp @close="toggleModal()" v-show="showModal" class="modal">
+    <ModalComp v-show="showModal" class="modal">
       <h3>Song Details:</h3>
       <p>Song Title: {{ song.track_name }}</p>
       <p>|</p>

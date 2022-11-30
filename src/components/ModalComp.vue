@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" @click="closeModal()">
+  <div class="modal">
     <!-- default content only shows if no slot is passed in-->
     <slot>default content</slot>
   </div>
@@ -13,9 +13,6 @@
       }
     },
     methods: {
-      closeModal() {
-        this.$emit('close')
-      }
     }
   }
 </script>
