@@ -7,41 +7,29 @@
   <div class="page">
     <div class="title">
       <h1>Step 1: Your Heartbeat</h1>
-
     </div>
-
     <div class="instructions">
       <h3>
         Count your heartbeats during the 15 second timer
       </h3>
     </div>
-    <!-- <div class="intro">
-      <h3>Don't know how? </h3>
-
-    </div> -->
-
     <div class="timerText">
       <h3>Click Start Timer when ready. </h3>
     </div>
     <TimerComp />
-
-
     <div class="userInput">
       <div class="inputBox">
         <!-- <label for="Heartbeat" class="beats-label">Number of beats: </label> -->
         <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1 @input="checkBpm" />
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
-
       <div class="nextButton">
         <router-link to="/mood" @click="setUserBpm" class="toMood" :class="{ 'disabled': !this.isValidBpm }">
           Next
         </router-link>
       </div>
       <!-- Button disabled if no entry or not in valid range-->
-
     </div>
-
     <div class="skipText">
       <!-- <p>
         Don't want to do it?
@@ -61,19 +49,13 @@
         Next
       </button>
     </router-link> -->
-
     </div>
   </div>
-
-
-
 </template>
 
 <script>
 import TimerComp from '../components/TimerComp.vue' 
 //pulls in text based timer created in separate vue 
-
-
 //https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
 export default {
   data() {
@@ -103,12 +85,8 @@ export default {
     } else {
       return (true)
     }
-
   }
-
 }
-
-
 </script>
 
 <style scoped>
@@ -116,31 +94,25 @@ export default {
   position: relative;
   top: 50px;
 }
-
 .intro {
   align-items: center;
 
 }
-
 .instructions {
   margin-bottom: 50px;
 }
-
 .helpButton {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-
 .intro h3 {
   display: flex;
   margin-right: 15px;
 }
-
 .timerText {
   margin-bottom: 50px;
 }
-
 .toHelp {
   max-width: 50px;
   text-decoration: none;
@@ -151,17 +123,14 @@ export default {
   border-radius: 30px;
   transition: opacity 0.15s;
 }
-
 .toHelp:hover {
   opacity: 0.8;
 }
-
 .timerButtons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .heartbeat-input {
   position: relative;
   width: 200px;
@@ -175,7 +144,6 @@ export default {
   text-align: center;
   font-size: large;
 }
-
 .beats-label {
   font-size: large;
 }
@@ -186,12 +154,9 @@ export default {
   margin-bottom: 100px;
   margin-top: 25px;
 }
-
 .inputBox {
   padding: 10px;
 }
-
-
 .toMood,
 .skip {
   display: flex;
@@ -201,39 +166,30 @@ export default {
   color: white;
   transition: opacity 0.15s;
 }
-
-
 .routers {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-
 }
-
 .toMood,
 .skip {
   color: white;
   text-decoration: none;
   margin: 5px;
 }
-
 .toMood {
   background-color: blue;
 }
-
 .disabled {
   cursor: not-allowed;
   opacity: 0.2;
 }
-
 .skip {
   background-color: grey;
 }
-
 .canPress {
   opacity: 0.2;
   cursor: not-allowed;
 }
 </style>
-
