@@ -8,16 +8,13 @@
       minutes, with your input heartbeat and mood, <br />
       we will provide you a playlist of music to match your current state!
     </p>
-
     <router-link to="/calc-bpm" class="begin">
       Start
     </router-link>
-
     <router-link to="/about-main" class="about">
       About
     </router-link>
   </div>
-
 </template>
   
 <style scoped>
@@ -25,7 +22,6 @@
   position: relative;
   top: 50px;
 }
-
 .begin,
 .about {
   display: flex;
@@ -40,17 +36,14 @@
   transition: opacity 0.15s;
   text-decoration: none;
 }
-
 .about:hover,
 .begin:hover {
   opacity: 0.6;
 }
-
 .begin {
   font-size: 50px;
   font-weight: bolder;
 }
-
 .about {
   font-size: x-large;
   font-weight: bold;
