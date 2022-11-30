@@ -10,19 +10,13 @@
 
       No problem! We can help. <br>
       Then just select the mood you want to be in!
-
-
-
     </p>
     <BackButtonComp/>
   </div>
-
-
 </template>
       
 <script>
 import BackButtonComp from '@/components/BackButtonComp.vue';
-
 export default {
   components: { BackButtonComp }
 }
@@ -33,5 +27,4 @@ export default {
   position: relative;
   top: 50px;
 }
-
 </style>
