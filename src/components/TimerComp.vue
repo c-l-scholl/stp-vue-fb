@@ -1,14 +1,11 @@
 <template>
-
-  
   <div class="timer"> 
     <span v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
       {{ timerCount }} 
-
     </span>
   </div>
   
-  <div class="timerButtons">
+  <div class="timer-buttons">
     <button type="button" @click="restart()" class="reset">
       Reset Timer
     </button>
@@ -20,7 +17,6 @@
 </template>
  
 <script>
-
 export default {
   data() {
     return {
@@ -29,7 +25,6 @@ export default {
     }
   },
   components: {
-    
   },
   watch: {
     timerEnabled(value) {
@@ -39,7 +34,6 @@ export default {
         }, 1000);
       }
     },
-
     timerCount: {
       handler(value) {
         if (value > 0 && this.timerEnabled) {
@@ -55,9 +49,6 @@ export default {
     play() {
       this.timerEnabled = true; 
     },
-    //pause() {
-      //this.timerEnabled = false;
-    //},
     restart() {
       this.timerEnabled = false; //this hides the timer again
       this.timerCount = 15; //wipes timer, resets to 15 seconds
@@ -67,39 +58,33 @@ export default {
 </script>
 
 <style scoped>
-
   .timer {
     margin-bottom: 45px;
     font-size: 75px;
     font-weight: bold;
   }
-  .timerButtons {
+  .timer-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px;
   }
-
   .reset:hover, 
   .start:hover {
     opacity: 0.8;
   }
-
   .reset:active,
   .start:active {
     box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.15);
     opacity: 0.6px;
   }
-
   .reset {
     margin-right: 10px;
     background-color: red;
   }
-
   .start {
     background-color: green;
   } 
-
   .reset,
   .start {
     display: flex;

@@ -10,8 +10,7 @@
         <div class="artist-name">
           <p>{{ song.artist_name }}</p>
         </div>
-      </div>
-
+      </div>  
     </div>
     <ModalComp @close="toggleModal()" v-show="showModal" class="modal">
       <h3>Song Details:</h3>

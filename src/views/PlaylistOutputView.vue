@@ -8,7 +8,7 @@
       <p v-if="loading">Loading Songs...</p>
       <SongDisplayComp :songs="randomSongs"/>
     </div>
-    <div class="toHome">
+    <div class="to-home">
       <router-link to="/" class="home-button">
         Home
       </router-link>
@@ -20,7 +20,6 @@
 import { db } from '../firebase/firebase.js'
 import { ref, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
-
 export default {
   data() {
     return {
@@ -103,7 +102,6 @@ export default {
   position: relative;
   top: 50px;
 }
-
 .home-button {
   text-decoration: none;
   color: white;
@@ -113,11 +111,9 @@ export default {
   border-radius: 5px;
   transition: opacity 0.15s;
 }
-
 .home-button:hover{
   opacity: 0.8;
 }
-
 .container {
   max-width: 750px;
   margin: 30px auto;
@@ -127,7 +123,6 @@ export default {
   padding: 30px;
   border-radius: 5px;
 }
-
 .btn {
   display: inline-block;
   background: #000;
@@ -141,15 +136,12 @@ export default {
   font-size: 15px;
   font-family: inherit;
 }
-
 .btn:focus {
   outline: none;
 }
-
 .btn:active {
   transform: scale(0.98);
 }
-
 .btn-block {
   display: block;
   width: 100%;

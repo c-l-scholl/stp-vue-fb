@@ -1,11 +1,13 @@
 # stp-vue-fb
-## REMEBER TO UNINSTALL JSON-SERVER
+## REMEMBER TO UNINSTALL JSON-SERVER
 ## Project setup
+First: 
 ```
 npm install
 ```
 
 ## Other installations
+Next: 
 ```
 npm install vuex@next --save
 
@@ -24,3 +26,6 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Vue Syntax and Help
+See [Creating a Vue Application](https://vuejs.org/guide/essentials/application.html).

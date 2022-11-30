@@ -13,19 +13,17 @@
       7. Sleepy -- tired, needing sleep <br>
       8. Heartbroken -- suffering from overwhelming distress <br>
     </p>
-
     <router-link to="/mood" class="back">
       Back
     </router-link>
   </div>
 </template>
-      
+  
 <style scoped>
 .page {
   position: relative;
   top: 50px;
 }
-
 .back {
   background-color: rgb(10, 97, 190);
   color: white;
@@ -34,7 +32,6 @@
   border-radius: 3px;
   transition: opacity 0.15s;
 }
-
 .back:hover {
   opacity: 0.8;
 }
