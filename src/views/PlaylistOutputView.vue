@@ -9,7 +9,7 @@
       <SongDisplayComp :songs="randomSongs"/>
     </div>
     <div class="to-home">
-      <router-link to="/" class="home-button">
+      <router-link to="/" class="home-button" @click="resetDataOnPageLeave">
         Home
       </router-link>
     </div>
@@ -34,7 +34,7 @@ export default {
   },
   components: { SongDisplayComp },
   methods: {
-      //filter songs by bpm for step 1 of algorithim
+    //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 20) && (tempo > (this.bpm * 2) - 20)))
     },
@@ -86,6 +86,10 @@ export default {
         }
       }
       this.loading = false
+    },
+    resetDataOnPageLeave() {
+      this.$store.commit('setBpm', null)
+      this.$store.commit('setMood', null)
     }
   },
   mounted() {
