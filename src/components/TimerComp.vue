@@ -6,10 +6,10 @@
   </div>
   
   <div class="timer-buttons">
-    <button type="button" @click="restart()" class="reset">
+    <button v-if="timerEnabled" type="button" @click="restart()" class="reset">
       Reset Timer
     </button>
-    <button type="button" @click="play()" class="start">
+    <button v-else type="button" @click="play()" class="start">
       Start Timer
     </button>
   </div>
