@@ -1,0 +1,9 @@
+Sorting Algorithm numbers
+'Happy': (song.danceability >= 0.5 && song.energy >= 0.5 && song.valence >= 0.3)
+'Sad': (song.acousticness >= 0.6 && song.speechiness >= 0.1 && song.valence <= 0.5)
+'Relaxed':(song.acousticness >= 0.6 && song.valence >= 0.4 && song.valence <= 0.6)
+'Nervous':(song.energy >= 0.6 && song.speechiness >= 0.1)
+'Angry':(song.danceability >= 0.4 && song.energy >= 0.5 && song.speechiness >= 0.1)
+'Annoyed':(song.liveness >= 0.5 && song.speechiness >= 0.1)
+'Sleepy':(song.acousticness >= 0.6 && song.danceability <= 0.4 && song.energy <= 0.4)
+'Heartbroken': (song.energy <= 0.4 && song.speechiness >= 0.1 && song.valence <= 0.5)
