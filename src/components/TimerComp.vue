@@ -1,16 +1,16 @@
 <template>
-  <div class="timer"> 
-    <span v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
+  <div class="timer" :class="{ 'show-timer': this.timerCreated }"> 
+    <span class="timer-text" v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
       {{ timerCount }} 
     </span>
   </div>
   
   <div class="timer-buttons">
-    <button v-if="timerEnabled" type="button" @click="restart()" class="reset">
-      Reset Timer
-    </button>
-    <button v-else type="button" @click="play()" class="start">
+    <button v-if="!timerEnabled" type="button" @click="play()" class="start">
       Start Timer
+    </button>
+    <button v-else type="button" @click="restart()" class="reset">
+      Reset Timer
     </button>
   </div>
     <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
@@ -22,6 +22,7 @@ export default {
     return {
       timerEnabled: false, //boolean to conditionally show
       timerCount: 15, //15 seconds long
+      timerCreated: false
     }
   },
   components: {
@@ -47,28 +48,36 @@ export default {
   },
   methods: {
     play() {
-      setTimeout(() => this.timerEnabled = true, 1000);
+      this.timerCreated = true
+      setTimeout(() => this.timerEnabled = true, 1000)
     },
     restart() {
-      this.timerEnabled = false; //this hides the timer again
-      this.timerCount = 15; //wipes timer, resets to 15 seconds
+      this.timerEnabled = false //this hides the timer again
+      this.timerCount = 15 //wipes timer, resets to 15 seconds
+      this.timerCreated = false
     }
   }
 }
 </script>
 
 <style scoped>
+
   .timer {
-    margin-bottom: 45px;
-    font-size: 75px;
+    height: 0;
+    transition: height 1s;
     font-weight: bold;
-  }
-  .timer-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 15px;
   }
+  .show-timer {
+    height: 100px;
+  }
+
+  .timer-text {
+    display: flex;
+    font-size: 75px;
+  }
+  
   .reset:hover, 
   .start:hover {
     opacity: 0.8;
@@ -79,7 +88,6 @@ export default {
     opacity: 0.6px;
   }
   .reset {
-    margin-right: 10px;
     background-color: red;
   }
   .start {
@@ -87,10 +95,9 @@ export default {
   } 
   .reset,
   .start {
-    display: flex;
     border-width: 0;
     padding: 50px 20px;
-    border-radius: 200px;
+    border-radius: 75px;
     color: white;
     transition: opacity 0.15s;
     font-weight: bold;

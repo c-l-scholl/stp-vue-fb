@@ -17,11 +17,13 @@
     <div class="timer-text">
       <h3>Click Start Timer when ready. </h3>
     </div>
-    <TimerComp />
+    <div class="timer-comp">
+      <TimerComp />
+    </div>
+    
 
     <div class="user-input">
       <div class="input-box">
-        <!-- <label for="Heartbeat" class="beats-label">Number of beats: </label> -->
         <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1 @input="checkBpm" />
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
@@ -37,14 +39,6 @@
       <router-link to="/skip-bpm" class="skip">
         Skip
       </router-link>
-      <!-- <router-link
-      to="/mood"
-      v-slot="{href, navigate}"
-    >
-      <button :href="href" @click="navigate" class='toMoodButton' :disabled="!isValidBpm">
-        Next
-      </button>
-    </router-link> -->
     </div>
   </div>
 </template>
@@ -148,6 +142,9 @@ export default {
   text-decoration: none;
   margin: 5px;
 }
+.skip {
+  margin-bottom: 200px;
+}
 .routers {
   display: flex;
   justify-content: center;
@@ -163,9 +160,5 @@ export default {
 }
 .skip {
   background-color: grey;
-}
-.can-press {
-  opacity: 0.2;
-  cursor: not-allowed;
 }
 </style>
