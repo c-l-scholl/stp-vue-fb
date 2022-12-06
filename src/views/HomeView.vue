@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>heartBeat</h1>
+    <img src="../images/heartBeatIconTitled.png" height="300">
     <p>
       Welcome to your personalized playlist generator, courtesy of Spotify music
       and data. <br /> <br>
