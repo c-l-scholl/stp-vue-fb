@@ -29,8 +29,8 @@
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
 
-      <div class="next-button">
-        <router-link to="/mood" @click="setUserBpm" class="to-mood" :class="{ 'disabled': !this.isValidBpm }">
+      <div class="next-button-router">
+        <router-link to="/mood" @click="setUserBpm" class="next-button" :class="{ 'disabled': !this.isValidBpm }">
           Next
         </router-link>
       </div>
@@ -81,6 +81,7 @@ export default {
 </script>
 
 <style scoped>
+
 .page {
   position: relative;
   top: 50px;

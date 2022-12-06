@@ -27,7 +27,7 @@
     </select>
     <br>
     <div class="mood-routers">
-      <router-link to="/playlist-output" @click="setMood()" class="to-playlist"
+      <router-link to="/playlist-output" @click="setMood()" class="next-button"
         :class="{ 'disabled': !this.isValidMood }">
         Next
       </router-link>
@@ -81,17 +81,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.to-playlist {
-  display: flex;
-  border-width: 0;
-  margin: 5px;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: white;
-  transition: opacity 0.15s;
-  text-decoration: none;
-  background-color: rgb(10, 97, 190);
 }
 .to-mood-help {
   display: flex;
