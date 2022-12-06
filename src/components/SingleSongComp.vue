@@ -16,6 +16,8 @@
       <h3>Song Details:</h3>
       <p>Song Title: {{ song.track_name }}</p>
       <p>|</p>
+      <p>Artist: {{ song.artist_name }}</p>
+      <p>|</p>
       <p>Duration: {{ songDuration }}</p>
       <p>|</p>
       <p>Tempo: {{ roundedTempo }}</p>
@@ -33,7 +35,7 @@
         roundedTempo: null,
         songDuration: null,
         truncatedSongName: '',
-        maxSongNameLength: 40
+        maxSongNameLength: 30
       }
     },
     props: ["song"],

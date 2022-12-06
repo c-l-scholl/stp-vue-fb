@@ -1,9 +1,15 @@
 <template>
   <div class="page">
-    <h1>Mood Help</h1>
-    <p>
-      Below are more detailed descriptions of our list of moods. <br>
-    </p>
+    <div class="back-button">
+      <BackButtonComp />
+    </div>
+    <div class="intro">
+      <h1>Mood Help</h1>
+      <p>
+        Below are more detailed descriptions of our list of moods. <br>
+      </p>
+    </div>
+
     <div class="written-moods">
       <p>
         1. Calm -- not showing any emotions <br>
@@ -16,29 +22,25 @@
         8. Heartbroken -- suffering from overwhelming distress <br>
       </p>
     </div>
-    <router-link to="/mood" class="back">
-      Back
-    </router-link>
   </div>
 </template>
+
+<script>
+import BackButtonComp from '@/components/BackButtonComp.vue'
+
+export default {
+  components: { BackButtonComp }
+}
+
+</script>
   
 <style scoped>
-.page {
-  position: relative;
-  top: 50px;
-}
-.written-moods{
+.written-moods {
   text-align: center;
 }
-.back {
-  background-color: rgb(10, 97, 190);
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 3px;
-  transition: opacity 0.15s;
-}
-.back:hover {
-  opacity: 0.8;
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>

@@ -28,11 +28,10 @@ export default {
 	},
 	methods: {
 		countDownTimer() {
-      clearTimeout(this.timerId)
 			if (this.countDown > 0) {
 				this.timerId = setTimeout(() => {
-					this.countDown -= 1
-					this.countDownTimer()
+          this.countDown -= 1
+          this.countDownTimer()
 				}, 1000)
 			}
 		},
@@ -40,11 +39,11 @@ export default {
       this.timerCreated = true
       setTimeout(() => {
         this.timerEnabled = true
-        this.countDown = 15
         this.countDownTimer()
-      }, 1000)
+      }, 1500)
 	  },
     restart() {
+      clearTimeout(this.timerId) // stops timer from counting down
       this.timerEnabled = false //this hides the timer again
       this.countDown = 15 //wipes timer, resets to 15 seconds
       this.timerCreated = false
@@ -56,7 +55,7 @@ export default {
 <style scoped>
   .timer {
     height: 0;
-    transition: height 1s;
+    transition: height 1.5s;
     font-weight: bold;
     display: flex;
     justify-content: center;

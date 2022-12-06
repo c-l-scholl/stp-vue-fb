@@ -1,20 +1,25 @@
 <template>
   <div class="page">
-    <h1>Step 3: Your Playlist</h1>
-    <p>
-      Your Playlist is below!
-    </p>
+    <div class="intro-text">
+      <h1>Step 3: Your Playlist</h1>
+      <p>
+        Your Playlist is below!
+      </p>
+    </div>
+
     <div class="container">
       <p v-if="loading">Loading Songs...</p>
-      <SongDisplayComp :songs="randomSongs"/>
+      <SongDisplayComp :songs="randomSongs" />
     </div>
     <div class="to-home">
       <router-link to="/" class="home-button" @click="resetDataOnPageLeave">
         Home
       </router-link>
     </div>
+    <br>
+    <br>
   </div>
-  
+
 </template>
 
 <script>
@@ -25,8 +30,8 @@ export default {
   data() {
     return {
       songs: [],
-      bpm: null, 
-      mood: null,  
+      bpm: null,
+      mood: null,
       hasUserData: false,
       randomSongs: [],
       numRandomSongs: 5,
@@ -37,11 +42,11 @@ export default {
   methods: {
     //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
-      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo  < (this.bpm * 2) + 10) && (tempo > (this.bpm * 2) - 10)))
+      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo < (this.bpm * 2) + 10) && (tempo > (this.bpm * 2) - 10)))
     },
     //filter songs by relevant metrics for step 2
     filterByMood(song) {
-      switch(this.mood) {
+      switch (this.mood) {
         case 'Happy':
           return (song.danceability >= 0.5 && song.energy >= 0.5 && song.valence >= 0.3)
         case 'Sad':
@@ -59,35 +64,34 @@ export default {
         case 'Heartbroken':
           return (song.energy <= 0.4 && song.speechiness >= 0.1 && song.valence <= 0.5)
         default:
-          console.log('The current mood ' + this.mood+ ' is not available yet')
+          console.log('The current mood ' + this.mood + ' is not available yet')
       }
     },
     //song retrieval 
-    getSongsFromFB() { 
+    getSongsFromFB() {
       this.songs = []
       const dbRef = ref(db, 'songs/')
       onValue(dbRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
           const songData = childSnapshot.val()
-          if(this.filterByBpm(songData.tempo) && this.filterByMood(songData)) {
+          if (this.filterByBpm(songData.tempo) && this.filterByMood(songData)) {
             this.songs.push(songData)
-          } 
+          }
         })
-        if(this.songs === []) {
-
-        } else {
+        if (this.songs !== []) {
           this.randomizeSongList()
         }
-        
+
       })
     },
     //random selection of top 5
-    randomizeSongList() { 
+    randomizeSongList() {
       this.randomSongs = []
       const totalNumSongs = this.songs.length
-      for(let i = 0; i < this.numRandomSongs; i++) {
+      const numSongsToGet = Math.min(totalNumSongs, this.numRandomSongs)
+      while (this.randomSongs.length < numSongsToGet) {
         const randomSong = this.songs[Math.floor(Math.random() * totalNumSongs)]
-        if(!(this.randomSongs.includes(randomSong))) {
+        if (!(this.randomSongs.includes(randomSong))) {
           this.randomSongs.push(randomSong)
         }
       }
@@ -111,10 +115,9 @@ export default {
 .page {
   position: relative;
   top: 50px;
+  margin: 15px;
 }
-.to-home {
-  
-}
+
 .home-button {
   text-decoration: none;
   color: white;
@@ -123,18 +126,21 @@ export default {
   padding: 10px 15px;
   border-radius: 5px;
   transition: opacity 0.15s;
-  
+
 }
-.home-button:hover{
+
+.home-button:hover {
   opacity: 0.8;
 }
+
 .container {
   max-width: 750px;
-  margin: 30px auto;
+  margin: 40px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
 }
+
 </style>

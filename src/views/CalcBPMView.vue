@@ -126,7 +126,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 25px;
   margin-top: 25px;
 }
 .input-box {
@@ -142,9 +142,6 @@ export default {
   transition: opacity 0.15s;
   text-decoration: none;
   margin: 5px;
-}
-.skip {
-  margin-bottom: 200px;
 }
 .routers {
   display: flex;
