@@ -7,6 +7,7 @@
 
 <style scoped>
   .go-back {
+    display: flex;
     border-width: 0;
     margin: 5px;
     padding: 10px;
