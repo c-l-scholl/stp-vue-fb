@@ -1,6 +1,7 @@
 <template>
   <div class="page">
-    <h1>heartBeat</h1>
+    <img src="../images/heartBeatIconTitled.png" height="300">
+    <!-- heart color:#E31B4D, accent color: #F8C9D5 -->
     <p>
       Welcome to your personalized playlist generator, courtesy of Spotify music
       and data. <br /> <br>
@@ -28,7 +29,7 @@
 .page {
   position: relative;
   top: 50px;
-  
+  font-size: 1em;
 }
 
 .begin-button,
@@ -38,7 +39,7 @@
 }
 .begin,
 .about {
-  padding: 10px 15px;
+  padding: 0.8em;
   border-width: 0;
   margin: 5px;
   padding: 10px 15px;
@@ -52,12 +53,12 @@
   opacity: 0.6;
 }
 .begin {
-  font-size: 50px;
+  font-size: 4em;
   font-weight: bolder;
   max-width: fit-content;
 }
 .about {
-  font-size: x-large;
+  font-size: 2em;
   font-weight: bold;
   max-width: fit-content;
 }

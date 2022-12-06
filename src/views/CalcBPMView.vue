@@ -1,8 +1,9 @@
 <template>
   <div class="help-button">
     <router-link to="/bpm-help" class="to-help">
-      ?
+      <img src="../images/icons8-question-mark-30.png">
     </router-link>
+    <!-- Question Mark icon by Icons8: https://icons8.com -->
   </div>
   <div class="page">
     <div class="title">
@@ -96,13 +97,13 @@ export default {
   margin-bottom: 50px;
 }
 .to-help {
-  max-width: 50px;
+  max-width: 30px;
   text-decoration: none;
   color: white;
   display: flex;
   background-color: rgb(13, 181, 103);
-  padding: 10px 15px;
-  border-radius: 30px;
+  padding: 10px ;
+  border-radius: 50px;
   transition: opacity 0.15s;
 }
 .to-help:hover {

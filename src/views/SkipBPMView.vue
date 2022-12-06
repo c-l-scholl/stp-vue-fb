@@ -63,9 +63,8 @@
 <style scoped>
   .intro {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px 15px;
+    justify-content: space-between;
   }
   .to-mood-skip {
     display: flex;

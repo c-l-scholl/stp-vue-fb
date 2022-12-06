@@ -2,8 +2,9 @@
   <div class="intro">
     <BackButtonComp />
     <router-link to="/mood-help" class="to-mood-help">
-      ?
+      <img src="../images/icons8-question-mark-30.png">
     </router-link>
+    <!-- Question Mark icon by Icons8: https://icons8.com -->
   </div>
   <div class="page">
     <h1>Step 2: Your Mood</h1>
@@ -81,8 +82,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
-.to-mood-help,
-.to-playlist{
+.to-playlist {
   display: flex;
   border-width: 0;
   margin: 5px;
@@ -91,13 +91,18 @@ export default {
   color: white;
   transition: opacity 0.15s;
   text-decoration: none;
-}
-.to-playlist {
   background-color: rgb(10, 97, 190);
 }
 .to-mood-help {
+  display: flex;
+  border-width: 0;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 30px;
+  color: white;
+  transition: opacity 0.15s;
+  text-decoration: none;
   background-color: rgb(13, 181, 103);
-  border-radius: 50px;
 }
 .to-mood-help:hover {
   opacity: 0.8;
