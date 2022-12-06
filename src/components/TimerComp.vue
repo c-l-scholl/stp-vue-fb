@@ -1,7 +1,7 @@
 <template>
   <div class="timer" :class="{ 'show-timer': this.timerCreated }"> 
     <span class="timer-text" v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
-      {{ timerCount }} 
+      {{ countDown }}
     </span>
   </div>
   
@@ -13,47 +13,40 @@
       Reset Timer
     </button>
   </div>
-    <!-- https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js -->
+	
 </template>
  
 <script>
 export default {
-  data() {
-    return {
+	data() {
+		return {
+			countDown: 15,
       timerEnabled: false, //boolean to conditionally show
-      timerCount: 15, //15 seconds long
-      timerCreated: false
-    }
-  },
-  components: {
-  },
-  watch: {
-    timerEnabled(value) {
-      if (value) { //if timer has time left, count down
-        setTimeout(() => {
-          this.timerCount--;
-        }, 1000);
-      }
-    },
-    timerCount: {
-      handler(value) {
-        if (value > 0 && this.timerEnabled) {
-          setTimeout(() => {
-            this.timerCount--;
-          }, 1000);
-        }
-      },
-      immediate: true // This ensures the watcher is triggered upon creation
-    }
-  },
-  methods: {
+      timerCreated: false,
+      timerId: null
+		}
+	},
+	methods: {
+		countDownTimer() {
+      clearTimeout(this.timerId)
+			if (this.countDown > 0) {
+				this.timerId = setTimeout(() => {
+					this.countDown -= 1
+					this.countDownTimer()
+				}, 1000)
+			}
+		},
     play() {
       this.timerCreated = true
-      setTimeout(() => this.timerEnabled = true, 1000)
-    },
+      setTimeout(() => {
+        this.timerEnabled = true
+        this.countDown = 15
+        this.countDownTimer()
+      }, 1000)
+	  },
     restart() {
       this.timerEnabled = false //this hides the timer again
-      this.timerCount = 15 //wipes timer, resets to 15 seconds
+      this.countDown = 15 //wipes timer, resets to 15 seconds
       this.timerCreated = false
     }
   }
@@ -61,7 +54,6 @@ export default {
 </script>
 
 <style scoped>
-
   .timer {
     height: 0;
     transition: height 1s;
@@ -102,4 +94,4 @@ export default {
     transition: opacity 0.15s;
     font-weight: bold;
   }
-  </style>
+</style>

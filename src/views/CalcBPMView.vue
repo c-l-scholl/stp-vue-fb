@@ -19,7 +19,7 @@
       <h3>Click Start Timer when ready. </h3>
     </div>
     <div class="timer-comp">
-      <TimerComp />
+      <TimerComp/>
     </div>
     
 
@@ -57,7 +57,7 @@ export default {
     }
   },
   components: {
-    TimerComp
+    TimerComp,
   },
   methods: {
     checkBpm() { //is bpm in valid human range and is it an entered value?
