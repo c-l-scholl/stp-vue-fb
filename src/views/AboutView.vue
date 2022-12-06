@@ -11,7 +11,10 @@
       No problem! We can help. <br>
       Then just select the mood you want to be in!
     </p>
-    <BackButtonComp/>
+    <div class="about-router">
+      <BackButtonComp/>
+    </div>
+    
   </div>
 </template>
       
@@ -26,5 +29,10 @@ export default {
 .page {
   position: relative;
   top: 50px;
+}
+.about-router {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
