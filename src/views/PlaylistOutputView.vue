@@ -14,6 +14,7 @@
       </router-link>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -72,7 +73,12 @@ export default {
             this.songs.push(songData)
           } 
         })
-        this.randomizeSongList()
+        if(this.songs === []) {
+
+        } else {
+          this.randomizeSongList()
+        }
+        
       })
     },
     //random selection of top 5
@@ -106,6 +112,9 @@ export default {
   position: relative;
   top: 50px;
 }
+.to-home {
+  
+}
 .home-button {
   text-decoration: none;
   color: white;
@@ -114,6 +123,7 @@ export default {
   padding: 10px 15px;
   border-radius: 5px;
   transition: opacity 0.15s;
+  
 }
 .home-button:hover{
   opacity: 0.8;
