@@ -1,8 +1,8 @@
 <template>
   <button @click="$router.back()" class='go-back' id="circle-button">
     <img src="../images/icons8-back-arrow-30.png">
+    <!-- Back icon by Icons8: https://icons8.com -->
   </button>
-  <!-- Back icon by Icons8: https://icons8.com -->
 </template>
 
 <style scoped>

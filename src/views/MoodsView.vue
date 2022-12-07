@@ -3,8 +3,8 @@
     <BackButtonComp />
     <router-link to="/mood-help" class="to-mood-help">
       <img src="../images/icons8-question-mark-30.png">
+      <!-- Question Mark icon by Icons8: https://icons8.com -->
     </router-link>
-    <!-- Question Mark icon by Icons8: https://icons8.com -->
   </div>
   <div class="page">
     <h1>Step 2: Your Mood</h1>

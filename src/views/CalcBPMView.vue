@@ -3,8 +3,8 @@
     <BackButtonComp />
     <router-link to="/bpm-help" class="to-help">
       <img src="../images/icons8-question-mark-30.png">
+      <!-- Question Mark icon by Icons8: https://icons8.com -->
     </router-link>
-    <!-- Question Mark icon by Icons8: https://icons8.com -->
   </div>
   <div class="page">
     <div class="title">
