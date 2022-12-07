@@ -10,8 +10,10 @@
       Go
     </button>
     <button v-else type="button" @click="restart()" class="reset">
-      Reset
+      <img src="../images/icons8-replay-60.png">
+      <!-- Replay icon by Icons8: https://icons8.com -->
     </button>
+    
   </div>
 	
 </template>
