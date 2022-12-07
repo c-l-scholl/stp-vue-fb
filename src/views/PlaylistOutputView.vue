@@ -36,7 +36,6 @@ export default {
       songs: [],
       bpm: null,
       mood: null,
-      hasUserData: false,
       randomSongs: [],
       numRandomSongs: 5,
       loading: true

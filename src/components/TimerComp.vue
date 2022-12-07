@@ -81,8 +81,10 @@ export default {
     opacity: 0.6px;
   }
   .reset {
+    justify-content: center;
+    align-items: center;
     background-color: red;
-    
+    padding: 22px;
   }
   .start {
     background-color: green;
@@ -92,7 +94,6 @@ export default {
   .reset,
   .start {
     border-width: 0;
-    padding: 25px 20px;
     border-radius: 50%;
     color: white;
     transition: opacity 0.15s;

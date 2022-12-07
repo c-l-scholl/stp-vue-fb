@@ -13,13 +13,14 @@
       </div>  
     </div>
     <ModalComp v-show="showModal" class="modal">
-      <h3>Song Details:</h3>
+      <h3>Song Details:</h3> 
+      <br>
       <p>Song Title: {{ song.track_name }}</p>
-      <p>|</p>
+      <br>
       <p>Artist: {{ song.artist_name }}</p>
-      <p>|</p>
+      <br>
       <p>Duration: {{ songDuration }}</p>
-      <p>|</p>
+      <br>
       <p>Tempo: {{ roundedTempo }}</p>
     </ModalComp>
   </div>
