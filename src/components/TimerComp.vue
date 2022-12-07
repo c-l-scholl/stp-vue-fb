@@ -7,10 +7,10 @@
   
   <div class="timer-buttons">
     <button v-if="!timerEnabled" type="button" @click="play()" class="start">
-      Start Timer
+      Go
     </button>
     <button v-else type="button" @click="restart()" class="reset">
-      Reset Timer
+      Reset
     </button>
   </div>
 	
@@ -80,15 +80,18 @@ export default {
   }
   .reset {
     background-color: red;
+    
   }
   .start {
     background-color: green;
+    padding: 25px 20px;
+    font-size: 3em;
   } 
   .reset,
   .start {
     border-width: 0;
-    padding: 50px 20px;
-    border-radius: 75px;
+    padding: 25px 20px;
+    border-radius: 50%;
     color: white;
     transition: opacity 0.15s;
     font-weight: bold;
