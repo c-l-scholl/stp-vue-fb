@@ -1,5 +1,6 @@
 <template>
-  <div class="help-button">
+  <div class="nav-buttons">
+    <BackButtonComp />
     <router-link to="/bpm-help" class="to-help">
       <img src="../images/icons8-question-mark-30.png">
     </router-link>
@@ -19,13 +20,14 @@
       <h3>Click Start Timer when ready. </h3>
     </div>
     <div class="timer-comp">
-      <TimerComp/>
+      <TimerComp />
     </div>
-    
+
 
     <div class="user-input">
       <div class="input-box">
-        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1 @input="checkBpm" />
+        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1
+          @input="checkBpm" />
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
 
@@ -45,7 +47,9 @@
 </template>
 
 <script>
-import TimerComp from '../components/TimerComp.vue' 
+import TimerComp from '../components/TimerComp.vue'
+import BackButtonComp from '../components/BackButtonComp.vue'
+
 //pulls in text based timer created in separate vue 
 //https://stackoverflow.com/questions/55773602/how-do-i-create-a-simple-10-seconds-countdown-in-vue-js
 export default {
@@ -58,6 +62,7 @@ export default {
   },
   components: {
     TimerComp,
+    BackButtonComp
   },
   methods: {
     checkBpm() { //is bpm in valid human range and is it an entered value?
@@ -82,34 +87,36 @@ export default {
 
 <style scoped>
 
-.page {
-  position: relative;
-  top: 50px;
-}
 .instructions {
   margin-bottom: 50px;
 }
-.help-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+
+.nav-buttons {
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .timer-text {
   margin-bottom: 50px;
 }
+
 .to-help {
   max-width: 30px;
   text-decoration: none;
   color: white;
   display: flex;
   background-color: rgb(13, 181, 103);
-  padding: 10px ;
+  padding: 10px;
   border-radius: 50px;
   transition: opacity 0.15s;
 }
+
 .to-help:hover {
   opacity: 0.8;
 }
+
 .heartbeat-input {
   position: relative;
   width: 200px;
@@ -123,6 +130,7 @@ export default {
   text-align: center;
   font-size: large;
 }
+
 .user-input {
   display: flex;
   align-items: center;
@@ -130,34 +138,38 @@ export default {
   margin-bottom: 25px;
   margin-top: 25px;
 }
+
 .input-box {
   padding: 10px;
 }
-.to-mood,
+
 .skip {
   display: flex;
   border-width: 0;
   padding: 10px 15px;
   border-radius: 5px;
   color: white;
-  transition: opacity 0.15s;
   text-decoration: none;
   margin: 5px;
+  background-color: grey;
+  transition: background-color 0.15s;
+  box-shadow: 0 6px 0 0 rgb(68, 68, 68);
 }
+
+.skip:hover {
+  background-color: rgb(106, 106, 106);
+}
+
+.skip:active {
+  transform: translateY(3px);
+	box-shadow: 0px 3px 0 0 rgb(39, 39, 39);
+}
+
 .routers {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 }
-.to-mood {
-  background-color: blue;
-}
-.disabled {
-  cursor: not-allowed;
-  opacity: 0.2;
-}
-.skip {
-  background-color: grey;
-}
+
 </style>

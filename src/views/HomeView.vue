@@ -46,11 +46,20 @@
   border-radius: 5px;
   color: black;
   transition: opacity 0.15s;
+  transition: letter-spacing 0.75s;
+  letter-spacing: normal;
   text-decoration: none;
 }
 .about:hover,
 .begin:hover {
-  opacity: 0.6;
+  opacity: 0.8;
+}
+
+.begin:hover {
+  letter-spacing: 5px;
+}
+.about:hover {
+  letter-spacing: 3px;
 }
 .begin {
   font-size: 4em;
@@ -62,4 +71,6 @@
   font-weight: bold;
   max-width: fit-content;
 }
+
+
 </style>

@@ -1,5 +1,8 @@
 <template>
   <div class="page">
+    <div class="about-router">
+      <BackButtonComp/>
+    </div>
     <h1>About our Playlist Generator</h1>
     <p>
       Our playlist generator provides you with a list of songs perfect for <br>
@@ -11,9 +14,7 @@
       No problem! We can help. <br>
       Then just select the mood you want to be in!
     </p>
-    <div class="about-router">
-      <BackButtonComp/>
-    </div>
+    
     
   </div>
 </template>
@@ -26,13 +27,10 @@ export default {
 </script>
   
 <style scoped>
-.page {
-  position: relative;
-  top: 50px;
-}
+
 .about-router {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 </style>

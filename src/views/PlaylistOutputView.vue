@@ -1,5 +1,8 @@
 <template>
   <div class="page">
+    <div class="intro">
+      <BackButtonComp />
+    </div>
     <div class="intro-text">
       <h1>Step 3: Your Playlist</h1>
       <p>
@@ -26,6 +29,7 @@
 import { db } from '../firebase/firebase.js'
 import { ref, onValue } from 'firebase/database'
 import SongDisplayComp from '@/components/SongDisplayComp.vue'
+import BackButtonComp from '@/components/BackButtonComp.vue'
 export default {
   data() {
     return {
@@ -38,7 +42,7 @@ export default {
       loading: true
     }
   },
-  components: { SongDisplayComp },
+  components: { SongDisplayComp, BackButtonComp },
   methods: {
     //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
@@ -112,10 +116,10 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  position: relative;
-  top: 50px;
-  margin: 15px;
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .home-button {
@@ -126,7 +130,6 @@ export default {
   padding: 10px 15px;
   border-radius: 5px;
   transition: opacity 0.15s;
-
 }
 
 .home-button:hover {
