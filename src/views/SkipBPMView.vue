@@ -19,7 +19,7 @@
       <option value=110>High</option>
     </select>
     <div class="skip-routers">
-      <router-link to="/mood" @click="setBpm()" class="to-mood-skip" :class="{ 'disabled': !this.isValidBpm }">
+      <router-link to="/mood" @click="setBpm()" class="next-button" :class="{ 'disabled': !this.isValidBpm }">
         Next
       </router-link>
     </div>
