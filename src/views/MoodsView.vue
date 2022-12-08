@@ -9,12 +9,12 @@
   <div class="page">
     <h1>Step 2: Your Mood</h1>
     <p>
-      Pick your current or desired mood. <br>
+      Pick your current or desired mood. <br><br>
       For a detailed description of the moods, please click the ? above.
     </p>
 
     <!--sets possible values for mood drop down -->
-    <select name="Mood" id="Mood" class="mood" value="" v-model="mood" @click="checkMood()">
+    <select name="Mood" class="mood" value="" v-model="mood" @click="checkMood()">
       <option value="" selected disabled > Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>

@@ -37,10 +37,16 @@
         Next
       </button>
     </router-link> -->
-    <!-- still doesn't work need to fix -->
-      <a :href="youtubeHref" target='_blank' class="to-youtube-search">
-        <img src="../images/Youtube-logo-png.png" alt="To YouTube" class="youtube-logo">
-      </a>
+      <!-- still doesn't work need to fix -->
+      <div class="music-search-buttons">
+        <a :href="youtubeHref" target='_blank' class="to-youtube-search">
+          <img src="../images/Youtube-logo-png.png" alt="To YouTube" class="youtube-logo">
+        </a>
+        <a :href="spotifyHref" target='_blank' class="to-spotify-search">
+          <img src="../images/spotifylogo.png" alt="To Spotify" class="spotify-logo">
+        </a>
+      </div>
+
     </ModalComp>
   </div>
 </template>
@@ -56,7 +62,8 @@ export default {
       songDuration: null,
       truncatedSongName: '',
       maxSongNameLength: 30,
-      youtubeHref: "https://www.youtube.com/results?search_query="
+      youtubeHref: "https://www.youtube.com/results?search_query=",
+      spotifyHref: "https://open.spotify.com/search/"
     }
   },
   props: ["song"],
@@ -81,8 +88,10 @@ export default {
     setYoutubeLink() {
       const youtubeSongName = encodeURIComponent(this.song.track_name)
       const youtubeArtistName = encodeURIComponent(this.song.artist_name)
-      this.youtubeHref += youtubeSongName + "+" + youtubeArtistName + "+song" 
-      console.log(this.youtubeHref)
+      this.youtubeHref += youtubeSongName + "+" + youtubeArtistName + "+song"
+    },
+    setSpotifyLink() {
+      this.spotifyHref += this.song.track_name + " " + this.song.artist_name
     }
   },
 
@@ -97,6 +106,7 @@ export default {
     }
 
     this.setYoutubeLink()
+    this.setSpotifyLink()
   }
 }
 </script>
@@ -177,7 +187,31 @@ export default {
   display: block;
 }
 
-.youtube-logo {
-  max-width: 20%;
+.music-search-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.to-spotify-search,
+.to-youtube-search {
+  padding: 0;
+  margin: 15px;
+}
+
+.to-youtube-search {
+  max-width: 150px;
+}  
+
+.to-spotify-search {
+  max-width: 70px;
+}
+
+.youtube-logo {
+  width: 150px;
+} 
+.spotify-logo {
+  width: 70px;
+}
+
 </style>
