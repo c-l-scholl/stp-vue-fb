@@ -128,11 +128,19 @@ export default {
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: opacity 0.15s;
+  transition: background-color 0.15s;
+	text-decoration: none;
+	box-shadow: 0 6px 0 0 rgb(85, 87, 87);
 }
 
+
 .home-button:hover {
-  opacity: 0.8;
+	background-color:  rgb(22, 156, 201);
+}
+
+.home-button:active {
+	transform: translateY(3px);
+	box-shadow: 0px 3px 0 0 rgb(54, 56, 56);
 }
 
 .container {
