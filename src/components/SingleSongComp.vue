@@ -38,9 +38,9 @@
       </button>
     </router-link> -->
     <!-- still doesn't work need to fix -->
-      <button class="to-youtube-search"> 
-        <a :href="youtubeHref" target='_blank'></a>
-      </button>
+      <a :href="youtubeHref" target='_blank' class="to-youtube-search">
+        <img src="../images/Youtube-logo-png.png" alt="To YouTube" class="youtube-logo">
+      </a>
     </ModalComp>
   </div>
 </template>
@@ -175,5 +175,9 @@ export default {
 .modal .song-tempo-desc,
 .modal .song-details {
   display: block;
+}
+
+.youtube-logo {
+  max-width: 20%;
 }
 </style>
