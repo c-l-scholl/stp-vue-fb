@@ -140,7 +140,7 @@ export default {
   margin: 40px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid rgb(227, 27, 77);
   padding: 30px;
   border-radius: 5px;
 }
