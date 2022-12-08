@@ -8,6 +8,7 @@
       <p>
         Your Playlist is below!
       </p>
+      <p v-if="(this.bpm != null && this.mood != null)">You have a bpm of {{ bpm }} and are {{ mood.toLowerCase() }}, so these songs have {{ explanation }}</p>
     </div>
 
     <div class="container">
@@ -38,11 +39,34 @@ export default {
       mood: null,
       randomSongs: [],
       numRandomSongs: 5,
-      loading: true
+      loading: true,
+      explanation: '',
     }
   },
   components: { SongDisplayComp, BackButtonComp },
   methods: {
+    setExplanationText() {
+      switch (this.mood) {
+        case 'Happy':
+          this.explanation = 'high danceability, high energy, and medium to high valence.'
+        case 'Sad':
+          this.explanation = 'high acousticness, lots of singing, and low to medium valence.'
+        case 'Relaxed':
+          this.explanation = 'high acousticness and medium valence.'
+        case 'Nervous':
+          this.explanation = 'high energy, and lots of singing.'
+        case 'Angry':
+          this.explanation = 'medium to high danceability, high energy, and lots of singing.'
+        case 'Annoyed':
+          this.explanation = 'lots of singing and are usually live performances.'
+        case 'Sleepy':
+          this.explanation = 'medium to high danceability, medium to high energy, and high acousticness.'
+        case 'Heartbroken':
+          this.explanation = 'lots of singing, medium to high energy, and medium to high valence.'
+        default:
+          this.explanation = 'not been selected yet.'
+      }
+    },
     //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
       return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo < (this.bpm * 2) + 10) && (tempo > (this.bpm * 2) - 10)))
@@ -109,6 +133,7 @@ export default {
     // uses vuex to get data from other views
     this.bpm = this.$store.state.bpm
     this.mood = this.$store.state.mood
+    this.setExplanationText()
     this.getSongsFromFB()
   },
 }
