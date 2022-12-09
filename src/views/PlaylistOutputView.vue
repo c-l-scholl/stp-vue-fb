@@ -49,20 +49,28 @@ export default {
       switch (this.mood) {
         case 'Happy':
           this.explanation = 'high danceability, high energy, and medium to high valence.'
+          break;
         case 'Sad':
           this.explanation = 'high acousticness, lots of singing, and low to medium valence.'
+          break;
         case 'Relaxed':
           this.explanation = 'high acousticness and medium valence.'
+          break;
         case 'Nervous':
           this.explanation = 'high energy, and lots of singing.'
+          break;
         case 'Angry':
           this.explanation = 'medium to high danceability, high energy, and lots of singing.'
+          break;
         case 'Annoyed':
           this.explanation = 'lots of singing and are usually live performances.'
+          break;
         case 'Sleepy':
           this.explanation = 'medium to high danceability, medium to high energy, and high acousticness.'
+          break;
         case 'Heartbroken':
           this.explanation = 'lots of singing, medium to high energy, and medium to high valence.'
+          break;
         default:
           this.explanation = 'not been selected yet.'
       }
