@@ -8,7 +8,11 @@
       <p>
         Your Playlist is below!
       </p>
-      <p v-if="(this.bpm != null && this.mood != null)">You have a bpm of {{ bpm }} and are {{ mood.toLowerCase() }}, so these songs have {{ explanation }}</p>
+      <p v-if="(this.bpm != null && this.mood != null)" class="description-text">
+        You have a bpm of {{ bpm }} and are {{ mood.toLowerCase() }}, so these songs have {{ explanation }}
+        <br><br>The tempo is close to your original heartbeat or close to twice your heartbeat!
+      </p>
+      <p><br>Click on the songs to find out more information!</p>
     </div>
 
     <div class="container">

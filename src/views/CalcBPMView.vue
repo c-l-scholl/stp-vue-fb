@@ -26,7 +26,12 @@
 
     <div class="user-input">
       <div class="input-box">
-        <input v-model="bpm" type="number" class="heartbeat-input" placeholder="Number of beats" step=1
+        <input 
+          v-model="bpm" 
+          type="number" 
+          class="heartbeat-input" 
+          :placeholder="this.bpm" 
+          step=1
           @input="checkBpm" />
       </div>
       <!-- creates input entry box, checking input against method below, looking for valid entry -->
@@ -55,7 +60,7 @@ import BackButtonComp from '../components/BackButtonComp.vue'
 export default {
   data() {
     return {
-      bpm: null, //sets bpm entry as empty from start
+      bpm: "Number of beats" , //sets bpm entry as empty from start
       bpmMultiplier: 4, //because 15 second timer, standardizes input to beats per minute
       isValidBpm: false //boolean watcher set to ensure next button starts as disabled
     }
@@ -86,7 +91,6 @@ export default {
 </script>
 
 <style scoped>
-
 .instructions {
   margin-bottom: 50px;
 }
@@ -162,7 +166,7 @@ export default {
 
 .skip:active {
   transform: translateY(3px);
-	box-shadow: 0px 3px 0 0 rgb(39, 39, 39);
+  box-shadow: 0px 3px 0 0 rgb(39, 39, 39);
 }
 
 .routers {
@@ -171,5 +175,4 @@ export default {
   align-items: center;
   padding: 10px;
 }
-
 </style>
