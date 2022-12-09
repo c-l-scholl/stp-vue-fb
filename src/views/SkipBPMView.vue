@@ -6,9 +6,9 @@
     <h1>Step 1: Your Estimated Heartbeat</h1>
     <p>From the drop down, select your estimated state. <br> <br>
       Heart Rate Categories: <br> <br>
-      Normal ==> You are relaxed, most likely seated or laying down<br><br>
-      Raised ==> You are moving, doing some light activity like walking, not in a relaxed state <br><br>
-      High ==> Your heart is beating hard and fast. You might be exercising or stressed <br><br>
+      Normal: You are relaxed, most likely seated or laying down<br><br>
+      Raised: You are moving, doing some light activity like walking, not in a relaxed state <br><br>
+      High: Your heart is beating hard and fast. You might be exercising or stressed <br><br>
     </p>
     <select v-model="bpm" class="heartbeat" @click="checkBpm()">
       <!-- ^not the greatest way to do this -->
