@@ -77,7 +77,8 @@ export default {
     },
     //filter songs by bpm for step 1 of algorithim
     filterByBpm(tempo) {
-      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) || (((tempo < (this.bpm * 2) + 10) && (tempo > (this.bpm * 2) - 10)))
+      return ((tempo < this.bpm + 20) && (tempo > this.bpm - 20)) ||
+         (((tempo < (this.bpm * 2) + 10) && (tempo > (this.bpm * 2) - 10)))
     },
     //filter songs by relevant metrics for step 2
     filterByMood(song) {
