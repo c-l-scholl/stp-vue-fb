@@ -54,7 +54,7 @@ export default {
           this.explanation = 'high acousticness, lots of singing, and low to medium valence.'
           break;
         case 'Relaxed':
-          this.explanation = 'high acousticness and medium valence.'
+          this.explanation = 'high acousticness and low to medium valence.'
           break;
         case 'Nervous':
           this.explanation = 'high energy, and lots of singing.'
@@ -66,10 +66,10 @@ export default {
           this.explanation = 'lots of singing and are usually live performances.'
           break;
         case 'Sleepy':
-          this.explanation = 'medium to high danceability, medium to high energy, and high acousticness.'
+          this.explanation = 'low danceability, low energy, and high acousticness.'
           break;
         case 'Heartbroken':
-          this.explanation = 'lots of singing, medium to high energy, and medium to high valence.'
+          this.explanation = 'lots of singing, low to medium energy, and low to medium valence.'
           break;
         default:
           this.explanation = 'not been selected yet.'
