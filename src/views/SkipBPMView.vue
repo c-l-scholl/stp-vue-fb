@@ -10,16 +10,19 @@
       Raised: You are moving, doing some light activity like walking, not in a relaxed state <br><br>
       High: Your heart is beating hard and fast. You might be exercising or stressed <br><br>
     </p>
-    <select v-model="bpm" class="heartbeat" placeholder="Select an Option" @change="checkBpm()">
-      <!-- ^not the greatest way to do this -->
+    <select 
+      v-model="bpm" 
+      class="heartbeat" 
+      @change="checkBpm()"
+      required>
       <!-- Assigning bpm values to categorical selections to use check bpm again -->
-      <option value="" selected disabled>Select an Option</option>
+      <option value="" disabled selected>Select an Option</option>
       <option value=55>Normal</option>
       <option value=85>Raised</option>
       <option value=110>High</option>
     </select>
     <div class="skip-routers">
-      <router-link to="/mood" @click="setBpm()" class="next-button" :class="{ 'disabled': !this.isValidBpm }">
+      <router-link to="/mood" @click="setBpm()" class="next-button" :class="{ 'next-button-disabled': !this.isValidBpm }">
         Next
       </router-link>
     </div>
@@ -40,7 +43,7 @@ export default {
   methods: {
     checkBpm() {
       this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
-      console.log(this.isValidBpm) //if valid, log to console and save for algorithim 
+      //if valid, log to console and save for algorithim 
     },
     setBpm() {
       if(this.isValidBpm) {
@@ -103,7 +106,7 @@ export default {
   background-color: rgb(10, 97, 190);
 }
 
-.disabled {
+.next-button-disabled {
   cursor: not-allowed;
   opacity: 0.2;
 }

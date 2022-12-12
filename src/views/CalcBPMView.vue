@@ -76,7 +76,6 @@ export default {
     setUserBpm() { //stores valid input as the user bpm and logs to save
       if (this.isValidBpm) {
         this.$store.commit('setBpm', (this.bpm * this.bpmMultiplier))
-        console.log(this.bpm)
       }
     }
   },
