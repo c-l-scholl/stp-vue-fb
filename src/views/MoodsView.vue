@@ -14,7 +14,7 @@
     </p>
 
     <!--sets possible values for mood drop down -->
-    <select name="Mood" class="mood" value="" v-model="mood" @click="checkMood()">
+    <select name="Mood" class="mood" value="" v-model="mood" @change="checkMood()">
       <option value="" selected disabled > Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>
