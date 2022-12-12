@@ -38,11 +38,14 @@ export default {
 			}
 		},
     play() {
-      this.timerCreated = true
-      setTimeout(() => {
-        this.timerEnabled = true
-        this.countDownTimer()
-      }, 1500)
+      if(!this.timerCreated) {
+        this.timerCreated = true
+        setTimeout(() => {
+          this.timerEnabled = true
+          this.countDownTimer()
+        }, 1500)
+      }
+      
 	  },
     restart() {
       clearTimeout(this.timerId) // stops timer from counting down
