@@ -12,6 +12,10 @@ This is a function needed to help with other installations, including allowing t
 ## Other installations
 Next: 
 ```
+npm install vue@next --save
+
+npm install vue0router@4
+
 npm install vuex@next --save
 
 npm install firebase
