@@ -1,7 +1,10 @@
 <template>
   <div class="timer" :class="{ 'show-timer': this.timerCreated }"> 
-    <span class="timer-text" v-if="timerEnabled"> <!-- boolean watch variable to show conditionally -->
+    <span class="timer-text" v-if="(timerEnabled && countDown > 0)"> <!-- boolean watch variable to show conditionally -->
       {{ countDown }}
+    </span>
+    <span class="timer-text" v-if="(countDown <= 0)">
+      Stop
     </span>
   </div>
   
