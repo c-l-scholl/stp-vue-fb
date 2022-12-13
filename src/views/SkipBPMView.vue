@@ -44,12 +44,12 @@ export default {
   methods: {
     checkBpm() {
       this.isValidBpm = (this.bpm >= 55 && this.bpm <= 110)
-      //if valid, log to console and save for algorithim 
+      //if valid, save for algorithim 
     },
     setBpm() {
       if(this.isValidBpm) {
         this.$store.commit('setBpm', this.bpm)
-        //if valid, log selection to console and save for algorithim
+        //if valid, save for algorithim
       }
     }
   },

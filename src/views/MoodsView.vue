@@ -57,7 +57,7 @@ export default {
     },
   },
   beforeRouteLeave(to, from) {
-    if (to.name === 'playlist-output') {
+    if (to.name === 'playlist-output' && this.$store.state.bpm != null) {
       return (this.isValidMood)
     } 
     return (true)

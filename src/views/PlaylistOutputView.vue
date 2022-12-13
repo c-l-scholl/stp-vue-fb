@@ -77,6 +77,7 @@ export default {
           break;
         default:
           this.explanation = 'not been selected yet.'
+          break;
       }
     },
     //filter songs by bpm for step 1 of algorithim
@@ -149,6 +150,7 @@ export default {
     this.setExplanationText()
     this.getSongsFromFB()
   },
+  
 }
 </script>
 

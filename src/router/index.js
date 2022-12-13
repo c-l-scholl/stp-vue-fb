@@ -49,7 +49,17 @@ const routes = [
   {
     path: '/playlist-output',
     name: 'playlist-output',
-    component: PlaylistOutputView
+    component: PlaylistOutputView,
+    beforeEnter: (to, from) => {
+      if(from.name == 'mood') {
+        return true
+      } else {
+        return { name: 'home' }
+      }
+    }
+  },
+  {
+    path: '/:catchAll(.*)'
   }
 
 ]
