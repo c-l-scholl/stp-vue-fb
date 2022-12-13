@@ -14,7 +14,8 @@
       v-model="bpm" 
       class="heartbeat" 
       @change="checkBpm()"
-      required>
+      required
+      >
       <!-- Assigning bpm values to categorical selections to use check bpm again -->
       <option value="" disabled selected>Select an Option</option>
       <option value=55>Normal</option>
@@ -88,7 +89,7 @@ export default {
   background: white;
   border: 1px solid rgb(0, 0, 0);
   box-shadow: 10px 10px 0 0 rgba(black, .03);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 00.15s);
   box-sizing: border-box;
   text-align: center;
   font-size: large;

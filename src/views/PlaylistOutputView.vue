@@ -104,7 +104,7 @@ export default {
         case 'Heartbroken':
           return (song.energy <= 0.4 && song.speechiness >= 0.1 && song.valence <= 0.5)
         default:
-          console.log('The current mood ' + this.mood + ' is not available yet')
+          break;
       }
     },
     //song retrieval 

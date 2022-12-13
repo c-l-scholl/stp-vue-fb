@@ -60,10 +60,6 @@
 }
 .about:hover {
   letter-spacing: 3px;
-
-
-
-  
 }
 .begin {
   font-size: 4em;

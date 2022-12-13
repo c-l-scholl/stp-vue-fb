@@ -15,7 +15,7 @@
 
     <!--sets possible values for mood drop down -->
     <select name="Mood" class="mood" value="" placeholder="Select an Option" v-model="mood" @change="checkMood()">
-      <option value="" selected disabled > Select an Option</option>
+      <option value="" selected disabled>Select an Option</option>
       <option value="Happy">Happy</option>
       <option value="Relaxed">Relaxed</option>
       <option value="Nervous">Nervous</option>
@@ -52,7 +52,6 @@ export default {
     },
     setMood() {
       if (this.isValidMood) {
-        console.log(this.mood)
         this.$store.commit('setMood', this.mood) //if so, log to console and save input for algorithm
       }
     },
